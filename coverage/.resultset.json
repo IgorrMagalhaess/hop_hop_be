@@ -19,6 +19,12 @@
           1,
           1,
           1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -28,8 +34,16 @@
           1,
           null
         ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/serializers/trips_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1712703560
+    "timestamp": 1712704760
   }
 }
