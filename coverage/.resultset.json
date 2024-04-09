@@ -1,0 +1,35 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/trip.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/api/v1/trips_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1712703560
+  }
+}
