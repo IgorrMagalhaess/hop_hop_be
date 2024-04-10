@@ -1,8 +1,9 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/trip.rb": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/accomodation.rb": {
         "lines": [
+          1,
           1,
           null
         ]
@@ -14,29 +15,62 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/api/v1/trips_controller.rb": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/activity_spec.rb": {
         "lines": [
           1,
-          1,
-          1,
-          1,
-          null,
           null,
           1,
           1,
-          1,
+          2,
+          2,
           null,
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/application_controller.rb": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/activity.rb": {
         "lines": [
+          1,
+          1,
           1,
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/serializers/trips_serializer.rb": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/daily_itinerary_spec.rb": {
         "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/daily_itinerary.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/trip_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/trip.rb": {
+        "lines": [
+          1,
           1,
           1,
           1,
@@ -44,6 +78,6 @@
         ]
       }
     },
-    "timestamp": 1712704760
+    "timestamp": 1712708462
   }
 }

@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_223332) do
     t.string "address"
     t.float "lat"
     t.float "lon"
-    t.integer "type", default: 0
+    t.integer "type_of_accomodation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_accomodations_on_trip_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_223332) do
     t.string "location"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "total_budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

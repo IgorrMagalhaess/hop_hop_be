@@ -5,7 +5,7 @@ class CreateAccomodations < ActiveRecord::Migration[7.1]
       t.string :address
       t.float :lat
       t.float :lon
-      t.integer :type, default: 0
+      t.integer :type_of_accomodation
 
       t.timestamps
     end

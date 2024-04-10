@@ -5,7 +5,7 @@ class CreateTrips < ActiveRecord::Migration[7.1]
       t.string :location
       t.datetime :start_date
       t.datetime :end_date
-      t.integer :status
+      t.integer :status, default: 0
       t.integer :total_budget
 
       t.timestamps
