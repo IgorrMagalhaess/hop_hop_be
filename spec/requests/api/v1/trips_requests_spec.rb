@@ -106,7 +106,7 @@ RSpec.describe 'Trips API', type: :request do
 
    describe "PATCH /api/v1/trips/:id" do
       it 'update trip detail' do
-         trip_id = create(:trip).id
+         trip_id = create(:trip, user_id: 1).id
          previous_name = Trip.last.name
          trip_params = { name: 'Different Name' }
 
@@ -136,12 +136,13 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       it 'will raise an error if params are blank' do
-         trip_params = { name: '' }
-         patch "/api/v1/trips/12323232", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+         trip_id = create(:trip, user_id: 1).id
+         trip_params = { name: "" }
+         patch "/api/v1/trips/#{trip_id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
-         expect(response.status).to eq(404)
+         expect(response.status).to eq(400)
          expect(response).to_not be_successful
          expect(update_response[:errors]).to be_a(Array)
          expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
