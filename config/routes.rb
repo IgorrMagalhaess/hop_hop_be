@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :trips do
-        resources :activities, only: [:index, :create]
         resources :accomodations, only: [:show]
       end
+      resources :activities, only: [:index, :create]
     end
   end
 end
