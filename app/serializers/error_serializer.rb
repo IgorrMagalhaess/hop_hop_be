@@ -8,10 +8,10 @@ class ErrorSerializer
   def serializer_validation
     {
       errors: [
-          {
-            detail: @error_object.message
-          }
-        ]
-      }
+        {
+          detail: @error_object.message
+        }
+      ]
+    }
   end
 end

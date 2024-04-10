@@ -1,6 +1,4 @@
 class Activity < ApplicationRecord
-   belongs_to :trip
-
-   validates :activity_type, presence: true
-   validates :address, presence: true
+  belongs_to :daily_itinerary
+  has_many :trip, through: :daily_itinerary
 end

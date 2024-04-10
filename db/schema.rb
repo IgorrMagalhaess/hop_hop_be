@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_165002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accomodations", force: :cascade do |t|
     t.bigint "trip_id", null: false
+    t.string "name"
     t.string "address"
     t.float "lat"
     t.float "lon"
-    t.integer "type_of_accomodation"
+    t.string "type_of_accomodation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -27,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
   end
 
   create_table "activities", force: :cascade do |t|
+    t.string "name"
     t.string "address"
     t.string "description"
     t.float "lat"
@@ -34,12 +36,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
     t.string "activity_type"
     t.integer "expenses"
     t.float "rating"
+    t.bigint "daily_itinerary_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["daily_itinerary_id"], name: "index_activities_on_daily_itinerary_id"
+  end
+
+  create_table "daily_itineraries", force: :cascade do |t|
+    t.bigint "trip_id", null: false
     t.date "date"
     t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trip_id", null: false
-    t.index ["trip_id"], name: "index_activities_on_trip_id"
+    t.index ["trip_id"], name: "index_daily_itineraries_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -55,5 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
   end
 
   add_foreign_key "accomodations", "trips"
-  add_foreign_key "activities", "trips"
+  add_foreign_key "activities", "daily_itineraries"
+  add_foreign_key "daily_itineraries", "trips"
 end
