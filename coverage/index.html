@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T16:06:13-04:00">2024-04-10T16:06:13-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T16:25:31-04:00">2024-04-10T16:25:31-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.21
+         1.24
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>203</b> relevant lines,
-    <span class="green"><b>203</b> lines covered</span> and
+    <b>215</b> relevant lines,
+    <span class="green"><b>215</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8d8e006e629a0dff656fd8dd7a0bddc4b9c9d34b" class="src_link" title="app/controllers/api/v1/trips_controller.rb">app/controllers/api/v1/trips_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">30</td>
+            <td class="cell--number">28</td>
             <td class="cell--number">17</td>
             <td class="cell--number">17</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.47</td>
+            <td class="cell--number">1.59</td>
             
           </tr>
         
@@ -88,7 +88,7 @@
             <td class="cell--number">8</td>
             <td class="cell--number">8</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.25</td>
+            <td class="cell--number">1.38</td>
             
           </tr>
         
@@ -154,7 +154,7 @@
             <td class="cell--number">5</td>
             <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.20</td>
+            <td class="cell--number">2.60</td>
             
           </tr>
         
@@ -165,7 +165,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.00</td>
+            <td class="cell--number">2.33</td>
             
           </tr>
         
@@ -205,20 +205,20 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#bbabecf5588e5c3196320f897f7394770af5b044" class="src_link" title="spec/models/trip_spec.rb">spec/models/trip_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">14</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">18</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.71</td>
+            <td class="cell--number">1.56</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#d6dee35b11b25fc4f9d67a9d4be417f6a8c1c898" class="src_link" title="spec/requests/api/v1/trips_requests_spec.rb">spec/requests/api/v1/trips_requests_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">204</td>
-            <td class="cell--number">118</td>
-            <td class="cell--number">118</td>
+            <td class="cell--number">225</td>
+            <td class="cell--number">126</td>
+            <td class="cell--number">126</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.06</td>
             
@@ -466,8 +466,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="19">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="19">
+            <span class="hits">3</span>
             
 
             
@@ -543,8 +543,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="26">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="26">
+            <span class="hits">5</span>
             
 
             
@@ -572,28 +572,6 @@
             
 
             <code class="ruby">end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby"># </code>
           </li>
         </div>
       
@@ -761,8 +739,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="13">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="13">
+            <span class="hits">3</span>
             
 
             
@@ -1208,7 +1186,7 @@
 
             
 
-            <code class="ruby">   validates :end_date, presence: true</code>
+            <code class="ruby">   validates :end_date, presence: true, comparison: { greater_than: :start_date }</code>
           </li>
         </div>
       
@@ -1343,8 +1321,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="4">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="4">
+            <span class="hits">5</span>
             
 
             
@@ -1354,8 +1332,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="5">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="5">
+            <span class="hits">5</span>
             
 
             
@@ -1462,8 +1440,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="5">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="5">
+            <span class="hits">5</span>
             
 
             
@@ -1517,8 +1495,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="10">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="10">
+            <span class="hits">5</span>
             
 
             
@@ -1936,8 +1914,8 @@
     
 
     <div class="t-line-summary">
-      <b>14</b> relevant lines.
-      <span class="green"><b>14</b> lines covered</span> and
+      <b>18</b> relevant lines.
+      <span class="green"><b>18</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2076,18 +2054,18 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">   </code>
+            
+
+            <code class="ruby">      it &#39;validates that start date cannot be later than end date&#39; do</code>
           </li>
         </div>
       
@@ -2098,40 +2076,40 @@
 
             
 
-            <code class="ruby">   describe &#39;relationships&#39; do</code>
+            <code class="ruby">         trip = Trip.new({</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="15">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="15">
+            
             
 
             
 
-            <code class="ruby">      it { should have_many :daily_itineraries }</code>
+            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="16">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="16">
+            
             
 
             
 
-            <code class="ruby">      it { should have_many(:activities).through(:daily_itineraries) }</code>
+            <code class="ruby">            location: &quot;Brazil&quot;,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="17">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="17">
+            
             
 
             
 
-            <code class="ruby">      it { should have_many(:accomodations) }</code>
+            <code class="ruby">            start_date: DateTime.new(2025,1,10),</code>
           </li>
         </div>
       
@@ -2142,12 +2120,166 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">            end_date: DateTime.new(2024,1,10),</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby">            total_budget: 10000,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">            user_id: 1  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">         })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(trip).to_not be_valid</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(trip.errors[:end_date]).to include(&quot;must be greater than #{trip.start_date}&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">   </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   describe &#39;relationships&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="29">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      it { should have_many :daily_itineraries }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="30">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      it { should have_many(:activities).through(:daily_itineraries) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="31">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      it { should have_many(:accomodations) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -2176,8 +2308,8 @@
     
 
     <div class="t-line-summary">
-      <b>118</b> relevant lines.
-      <span class="green"><b>118</b> lines covered</span> and
+      <b>126</b> relevant lines.
+      <span class="green"><b>126</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2233,8 +2365,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="5">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="9" data-linenumber="5">
+            <span class="hits">9</span>
             
 
             
@@ -4417,12 +4549,243 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="204">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &#39;will not create a new trip if end_date is earlier than start_date&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="205">
+            
+            
+
+            
+
+            <code class="ruby">         trip_params = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="206">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="207">
+            
+            
+
+            
+
+            <code class="ruby">            location: &quot;Brazil&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="208">
+            
+            
+
+            
+
+            <code class="ruby">            start_date: DateTime.new(2025,12,10,12,0,0),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="209">
+            
+            
+
+            
+
+            <code class="ruby">            end_date: DateTime.new(2025,1,10),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="210">
+            
+            
+
+            
+
+            <code class="ruby">            total_budget: 10000,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="211">
+            
+            
+
+            
+
+            <code class="ruby">            user_id: 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="212">
+            
+            
+
+            
+
+            <code class="ruby">         }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="213">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="214">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="215">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="216">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="217">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(response.status).to eq(400)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="218">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="219">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         create_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="220">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="221">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(create_response[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="222">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">         expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="223">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="224">
+            
+            
+
+            
+
             <code class="ruby">   end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="204">
+          <li class="never" data-hits="" data-linenumber="225">
             
             
 

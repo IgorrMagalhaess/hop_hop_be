@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
    validates :name, presence: true
    validates :location, presence: true
    validates :start_date, presence: true
-   validates :end_date, presence: true
+   validates :end_date, presence: true, comparison: { greater_than: :start_date }
    validates :status, presence: true
    validates :total_budget, presence: true
    validates :user_id, presence: true

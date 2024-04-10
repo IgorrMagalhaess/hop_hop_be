@@ -205,10 +205,10 @@ RSpec.describe 'Trips API', type: :request do
          trip_params = {
             name: "Visiting Family",
             location: "Brazil",
-            start_date: DateTime.new(2024,12,10),
+            start_date: DateTime.new(2025,12,10,12,0,0),
             end_date: DateTime.new(2025,1,10),
             total_budget: 10000,
-            # user_id: 1
+            user_id: 1
          }
 
          post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
@@ -219,7 +219,7 @@ RSpec.describe 'Trips API', type: :request do
          create_response = JSON.parse(response.body, symbolize_names: true)
 
          expect(create_response[:errors]).to be_a(Array)
-         expect(create_response[:errors].first[:detail]).to eq("Validation failed: End Date can not be earlier than start_date")
+         expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC")
       end
    end
 end
