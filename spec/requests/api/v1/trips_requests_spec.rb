@@ -49,7 +49,7 @@ RSpec.describe 'Trips API', type: :request do
    end
 
    describe 'GET /api/v1/trips/:id' do
-      it 'returns a trip details' do
+      it 'returns a trip detail' do
          trip = create(:trip, user_id: 1) 
          
          get "/api/v1/trips/#{trip.id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: { user_id: 1 }
@@ -100,12 +100,12 @@ RSpec.describe 'Trips API', type: :request do
          expect(response).to_not be_successful
          expect(response.status).to eq(404)
 
-         expect(trip_response[:errors].first[:details]).to eq("Couldn't find Trip with 'id'=123123123")
+         expect(trip_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
       end
    end
 
    describe "PATCH /api/v1/trips/:id" do
-      it 'update trip details' do
+      it 'update trip detail' do
          trip_id = create(:trip).id
          previous_name = Trip.last.name
          trip_params = { name: 'Different Name' }
@@ -121,6 +121,30 @@ RSpec.describe 'Trips API', type: :request do
 
          expect(trip.name).to eq('Different Name')
          expect(trip.name).to_not eq(previous_name)
+      end
+
+      it 'will raise error if trip ID is not found' do
+         trip_params = { name: 'Different Name' }
+         patch "/api/v1/trips/12323232", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+
+         update_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response.status).to eq(404)
+         expect(response).to_not be_successful
+         expect(update_response[:errors]).to be_a(Array)
+         expect(update_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=12323232")
+      end
+
+      it 'will raise an error if params are blank' do
+         trip_params = { name: '' }
+         patch "/api/v1/trips/12323232", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+
+         update_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response.status).to eq(404)
+         expect(response).to_not be_successful
+         expect(update_response[:errors]).to be_a(Array)
+         expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
       end
    end
 end
