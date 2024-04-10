@@ -7,3 +7,35 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+5.times do
+Trip.create!({
+  name: Faker::Name.name,
+  location: Faker::Address.country,
+  start_date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+  end_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 3),
+  status: Faker::Number.between(from: 0, to: 1),
+  total_budget: Faker::Number.between(from: 500, to: 10000),
+  user_id: 1
+
+})
+end
+
+5.times do
+  Activity.create!({
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    lat: Faker::Address.latitude,
+    lon: Faker::Address.longitude,
+    activity_type: Faker::Sport.sport(include_ancient: true),
+    expenses: Faker::Number.between(from: 0, to: 500),
+    rating: Faker::Number.between(from: 2.0, to: 5.0)
+  })
+end
+Activity.all.each do |activity|
+  DailyItinerary.create!(
+    trip_id: Trip.last.id,
+    activity_id: activity.id,
+    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
+  )
+end
