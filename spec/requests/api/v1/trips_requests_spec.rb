@@ -91,5 +91,14 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:attributes]).to have_key(:total_budget)
          expect(trip[:attributes][:total_budget]).to be_a(Integer)
       end
+
+      it 'will return 404 if the trip id is not found' do
+         get "/api/v1/trips/123123123", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: { user_id: 1 }
+
+         trip_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(404)
+      end
    end
 end

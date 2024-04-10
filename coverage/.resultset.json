@@ -173,6 +173,15 @@
           1,
           null,
           null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -185,7 +194,7 @@
           null,
           null,
           1,
-          1,
+          2,
           1,
           null,
           null
@@ -194,6 +203,21 @@
       "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -204,8 +228,40 @@
           1,
           null
         ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/serializers/error_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/poros/error_message.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1712768440
+    "timestamp": 1712769140
   }
 }
