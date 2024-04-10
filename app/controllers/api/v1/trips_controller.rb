@@ -15,6 +15,11 @@ class Api::V1::TripsController < ApplicationController
       render json: TripSerializer.new(trip)
    end
 
+   def create
+      trip = Trip.create!(trip_params)
+      render json: TripSerializer.new(trip), status: :created
+   end
+
    private
 
    def trip_params

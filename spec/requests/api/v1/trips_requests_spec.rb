@@ -1,11 +1,15 @@
 require "rails_helper"
 
 RSpec.describe 'Trips API', type: :request do
+   before do
+      @headers = { "Content-Type" => "application/json", accept => 'application/json' }
+   end
+
    describe 'GET /api/v1/trips' do
       it 'returns a list of trips' do
          trips = create_list(:trip, 5, user_id: 1) 
 
-         get '/api/v1/trips', headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: { user_id: 1 }
+         get '/api/v1/trips', headers: @headers, params: { user_id: 1 }
 
          trips_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -52,7 +56,7 @@ RSpec.describe 'Trips API', type: :request do
       it 'returns a trip detail' do
          trip = create(:trip, user_id: 1) 
          
-         get "/api/v1/trips/#{trip.id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: { user_id: 1 }
+         get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 1 }
 
          trip_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -93,7 +97,7 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       it 'will return 404 if the trip id is not found' do
-         get "/api/v1/trips/123123123", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: { user_id: 1 }
+         get "/api/v1/trips/123123123", headers: @headers, params: { user_id: 1 }
 
          trip_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -110,7 +114,7 @@ RSpec.describe 'Trips API', type: :request do
          previous_name = Trip.last.name
          trip_params = { name: 'Different Name' }
 
-         patch "/api/v1/trips/#{trip_id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -125,7 +129,7 @@ RSpec.describe 'Trips API', type: :request do
 
       it 'will raise error if trip ID is not found' do
          trip_params = { name: 'Different Name' }
-         patch "/api/v1/trips/12323232", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/12323232", headers: @headers, params: JSON.generate({trip: trip_params })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -138,7 +142,7 @@ RSpec.describe 'Trips API', type: :request do
       it 'will raise an error if params are blank' do
          trip_id = create(:trip, user_id: 1).id
          trip_params = { name: "" }
-         patch "/api/v1/trips/#{trip_id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -146,6 +150,34 @@ RSpec.describe 'Trips API', type: :request do
          expect(response).to_not be_successful
          expect(update_response[:errors]).to be_a(Array)
          expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
+      end
+   end
+
+   describe 'POST /api/v1/trips' do
+      it 'will create a new trip' do
+         trip_params = {
+            name: "Visiting Family",
+            location: "Brazil",
+            start_date: DateTime.new(2024,12,10),
+            end_date: DateTime.new(2025,1,10),
+            total_budget: 10000,
+            user_id: 1
+         }
+
+         post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
+
+         created_trip = Trip.last
+
+         expect(response).to be_successful
+         expect(response.status).to eq(201)
+         
+         expect(created_trip.name).to eq(trip_params[:name])
+         expect(created_trip.location).to eq(trip_params[:location])
+         expect(created_trip.start_date).to eq(trip_params[:start_date])
+         expect(created_trip.end_date).to eq(trip_params[:end_date])
+         expect(created_trip.status).to eq("in_progress")
+         expect(created_trip.total_budget).to eq(trip_params[:total_budget])
+         expect(created_trip.user_id).to eq(trip_params[:user_id])
       end
    end
 end
