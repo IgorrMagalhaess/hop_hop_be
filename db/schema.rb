@@ -41,7 +41,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_054404) do
   create_table "daily_itineraries", force: :cascade do |t|
     t.bigint "trip_id", null: false
     t.bigint "activity_id", null: false
-    t.datetime "date_and_time"
+    t.date "date"
+    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_daily_itineraries_on_activity_id"
@@ -51,8 +52,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_054404) do
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "status", default: 0
     t.integer "total_budget"
     t.datetime "created_at", null: false

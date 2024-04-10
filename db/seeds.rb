@@ -37,7 +37,8 @@ Activity.all.each do |activity|
 DailyItinerary.create!(
 trip_id: Faker::Number.between(from: 1, to: 5),
 activity_id: activity.id,
-date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
+date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short)
 )
 end
 
