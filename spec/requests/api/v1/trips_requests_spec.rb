@@ -45,7 +45,7 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:attributes][:end_date]).to be_a(String)
 
          expect(trip[:attributes]).to have_key(:status)
-         expect(trip[:attributes][:status]).to be_a(Integer)
+         expect(trip[:attributes][:status]).to be_a(String)
 
          expect(trip[:attributes]).to have_key(:total_budget)
          expect(trip[:attributes][:total_budget]).to be_a(Integer)
@@ -90,7 +90,7 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:attributes][:end_date]).to be_a(String)
 
          expect(trip[:attributes]).to have_key(:status)
-         expect(trip[:attributes][:status]).to be_a(Integer)
+         expect(trip[:attributes][:status]).to be_a(String)
 
          expect(trip[:attributes]).to have_key(:total_budget)
          expect(trip[:attributes][:total_budget]).to be_a(Integer)

@@ -10,4 +10,6 @@ class Trip < ApplicationRecord
    validates :status, presence: true
    validates :total_budget, presence: true
    validates :user_id, presence: true
+
+   enum status: [:in_progress, :completed]
 end
