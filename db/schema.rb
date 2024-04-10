@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_165002) do
     t.string "description"
     t.float "lat"
     t.float "lon"
-    t.string "type"
+    t.string "activity_type"
     t.integer "expenses"
     t.float "rating"
     t.bigint "daily_itinerary_id", null: false
