@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T14:46:17-07:00">2024-04-10T14:46:17-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T16:08:59-07:00">2024-04-10T16:08:59-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  100.0%
+  98.8%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.24
+         1.19
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>14</b> files in total.
+    <b>17</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>215</b> relevant lines,
-    <span class="green"><b>215</b> lines covered</span> and
-    <span class="red"><b>0</b> lines missed. </span>
+    <b>251</b> relevant lines,
+    <span class="green"><b>248</b> lines covered</span> and
+    <span class="red"><b>3</b> lines missed. </span>
     (<span class="green">
-  100.0%
+  98.8%
 </span>
 )
   </div>
@@ -69,6 +69,17 @@
         </tr>
       </thead>
       <tbody>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#0fa297e81af38ee2ab9cdd20a2f328a075431628" class="src_link" title="app/controllers/api/v1/accommodations_controller.rb">app/controllers/api/v1/accommodations_controller.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">72.73 %</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">0.73</td>
+            
+          </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ce6e8a68570f4943db68c6384d9b9942e70da3c4" class="src_link" title="app/controllers/api/v1/trips_controller.rb">app/controllers/api/v1/trips_controller.rb</a></td>
@@ -159,6 +170,17 @@
           </tr>
         
           <tr class="t-file">
+            <td class="strong t-file__name"><a href="#b4422c47ae8181422ed52ab32725846de1fbb98c" class="src_link" title="app/serializers/accommodation_serializer.rb">app/serializers/accommodation_serializer.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
             <td class="strong t-file__name"><a href="#c664be99cea51d05a365055a53b130e5b987315f" class="src_link" title="app/serializers/error_serializer.rb">app/serializers/error_serializer.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">17</td>
@@ -214,6 +236,17 @@
           </tr>
         
           <tr class="t-file">
+            <td class="strong t-file__name"><a href="#00474f559247b0fda9bd9f066ad1e2292b9cf83a" class="src_link" title="spec/requests/api/v1/accommodations_requests_spec.rb">spec/requests/api/v1/accommodations_requests_spec.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">139</td>
+            <td class="cell--number">22</td>
+            <td class="cell--number">22</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
             <td class="strong t-file__name"><a href="#56d96e7c85089f9c41a5bc8e2b3554276d095f4f" class="src_link" title="spec/requests/api/v1/trips_requests_spec.rb">spec/requests/api/v1/trips_requests_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">225</td>
@@ -240,6 +273,235 @@
       </div>
 
       <div class="source_files">
+      
+        <div class="source_table" id="0fa297e81af38ee2ab9cdd20a2f328a075431628">
+  <div class="header">
+    <h3>app/controllers/api/v1/accommodations_controller.rb</h3>
+    <h4>
+      <span class="red">
+  72.73%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>11</b> relevant lines.
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Api::V1::AccommodationsController &lt; ApplicationController</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def update</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby">    accommodation = Accommodation.find(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">    accommodation.update!(accommodation_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">    render json: AccommodationSerializer.new(accommodation)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def create</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    accommodation = Accommodation.create!(accommodation_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    render json: AccommodationSerializer.new(accommodation), status: :created</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def accommodation_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    params.require(:accommodation).permit(:trip_id, :name, :address, :check_in, :check_out, :type_of_accommodation, :expenses, :lat, :lon)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
       
         <div class="source_table" id="ce6e8a68570f4943db68c6384d9b9942e70da3c4">
   <div class="header">
@@ -1369,6 +1631,81 @@
 </div>
 
       
+        <div class="source_table" id="b4422c47ae8181422ed52ab32725846de1fbb98c">
+  <div class="header">
+    <h3>app/serializers/accommodation_serializer.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>3</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class AccommodationSerializer</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  include JSONAPI::Serializer</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  attributes :trip_id, :name, :check_in, :check_out, :expenses, :address, :lat, :lon, :type_of_accommodation</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="c664be99cea51d05a365055a53b130e5b987315f">
   <div class="header">
     <h3>app/serializers/error_serializer.rb</h3>
@@ -2294,6 +2631,1566 @@
 </div>
 
       
+        <div class="source_table" id="00474f559247b0fda9bd9f066ad1e2292b9cf83a">
+  <div class="header">
+    <h3>spec/requests/api/v1/accommodations_requests_spec.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>22</b> relevant lines.
+      <span class="green"><b>22</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">require &quot;rails_helper&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="2">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">RSpec.describe &#39;Accommodations API&#39;, type: :request do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="4">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  before do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    @headers = { &quot;Content-Type&quot; =&gt; &quot;application/json&quot;, accept =&gt; &#39;application/json&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    @trip = create(:trip, user_id: 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    @accommodation_params = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      &quot;trip_id&quot;: @trip.id,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;name&quot;: &quot;Mariott&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;address&quot;: &quot;123 Main Street, Phuket, Thailand&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;type_of_accommodation&quot;: &quot;Hotel&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;lat&quot;: &quot;7.8833043&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;lon&quot;: &quot;98.3507689&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;check_in&quot;: Time.parse(&quot;10:00&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;check_out&quot;: Time.parse(&quot;16:00&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">      &quot;expenses&quot;: 1000</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">  #   {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby">  #     &quot;id&quot;: &quot;1&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">  #     &quot;type&quot;: &quot;accommodations&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">  #     &quot;attributes&quot;: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;name&quot;: &quot;Motel 6&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;address&quot;: &quot;123 Star Boulevard&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;type_of_accommodation&quot;: &quot;Motel&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;lat&quot;: &quot;7.8833043&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;lon&quot;: &quot;98.3507689&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;check_in&quot;: &quot;10:00&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;check_out&quot;: &quot;11:00&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">  #       &quot;expenses&quot;: 2000</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">  #     }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">  # },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="34">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;POST /api/v1/trips/1/accommodations&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="35">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;will create a new accommodation with correct params&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="36">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      post &quot;/api/v1/trips/#{@trip.id}/accommodations&quot;, headers: @headers, params: JSON.generate(accommodation: @accommodation_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="37">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      require &#39;pry&#39;; binding.pry</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="38">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      accommodation = Accommodation.last</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="40">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(201)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.name).to eq(&quot;Mariott&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.address).to eq(&quot;123 Main Street, Phuket, Thailand&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.check_in).to eq(@accommodation_params[:check_in])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.check_out).to eq(@accommodation_params[:check_out])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.type_of_accommodation).to eq(&quot;Hotel&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.expenses).to eq(1000)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="49">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.trip_id).to eq(@trip.id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.lat).to eq(7.8833043)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(accommodation.lon).to eq(98.3507689)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="52">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">  #   it &#39;will not create a new accommodation if missing parameters&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="56">
+            
+            
+
+            
+
+            <code class="ruby">  #     accommodation_params = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">  #       name: &quot;Visiting Family&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
+            
+            
+
+            
+
+            <code class="ruby">  #       location: &quot;Brazil&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby">  #       start_date: DateTime.new(2024,12,10),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  #       end_date: DateTime.new(2025,1,10),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
+            
+            
+
+            
+
+            <code class="ruby">  #       total_budget: 10000,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">  #       # user_id: 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="63">
+            
+            
+
+            
+
+            <code class="ruby">  #     }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">  #     post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(accommodation: @accommodation_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response.status).to eq(400)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="70">
+            
+            
+
+            
+
+            <code class="ruby">  #     create_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="71">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="72">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(create_response[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="73">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: User can&#39;t be blank&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="74">
+            
+            
+
+            
+
+            <code class="ruby">  #   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="76">
+            
+            
+
+            
+
+            <code class="ruby">  #   it &#39;will not create a new accommodation if end_date is earlier than start_date&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby">  #     accommodation_params = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">  #       name: &quot;Visiting Family&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="79">
+            
+            
+
+            
+
+            <code class="ruby">  #       location: &quot;Brazil&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="80">
+            
+            
+
+            
+
+            <code class="ruby">  #       start_date: DateTime.new(2025,12,10,12,0,0),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="81">
+            
+            
+
+            
+
+            <code class="ruby">  #       end_date: DateTime.new(2025,1,10),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">  #       total_budget: 10000,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby">  #       user_id: 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">  #     }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
+            
+            
+
+            
+
+            <code class="ruby">  #     post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(accommodation: @accommodation_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="87">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response.status).to eq(400)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="90">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="91">
+            
+            
+
+            
+
+            <code class="ruby">  #     create_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="92">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="93">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(create_response[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="94">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="95">
+            
+            
+
+            
+
+            <code class="ruby">  #   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="96">
+            
+            
+
+            
+
+            <code class="ruby">  # end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="97">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="98">
+            
+            
+
+            
+
+            <code class="ruby">  # describe &quot;PATCH /api/v1/trips/:id/accommodations&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">  #   it &#39;updates accommodation details&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="100">
+            
+            
+
+            
+
+            <code class="ruby">  #     previous_name = Accommodation.last.name</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="101">
+            
+            
+
+            
+
+            <code class="ruby">  #     accommodation_params = { name: &#39;Different Name&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="102">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
+            
+            
+
+            
+
+            <code class="ruby">  #     patch &quot;/api/v1/trips/#{trip_id}/accommodations&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="104">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="105">
+            
+            
+
+            
+
+            <code class="ruby">  #     update_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="106">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="107">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response).to be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response.status).to eq(200)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby">  #     accommodation = Trip.find_by(id: trip_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(accommodation.name).to eq(&#39;Different Name&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(accommodation.name).to_not eq(previous_name)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
+            
+            
+
+            
+
+            <code class="ruby">  #   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="115">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="116">
+            
+            
+
+            
+
+            <code class="ruby">  #   it &#39;will raise error if accommodation ID is not found&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+            
+
+            
+
+            <code class="ruby">  #     accommodation_params = { name: &#39;Different Name&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">  #     patch &quot;/api/v1/trips/12323232/accommodations&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
+            
+            
+
+            
+
+            <code class="ruby">  #     update_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="122">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response.status).to eq(404)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(update_response[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(update_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=12323232&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="126">
+            
+            
+
+            
+
+            <code class="ruby">  #   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="127">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+            
+
+            
+
+            <code class="ruby">  #   it &#39;will raise an error if params are blank&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="129">
+            
+            
+
+            
+
+            <code class="ruby">  #     patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="130">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="131">
+            
+            
+
+            
+
+            <code class="ruby">  #     update_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="132">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="133">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response.status).to eq(400)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="135">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(update_response[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="136">
+            
+            
+
+            
+
+            <code class="ruby">  #     expect(update_response[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="137">
+            
+            
+
+            
+
+            <code class="ruby">  # end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="138">
+            
+            
+
+            
+
+            <code class="ruby">  # end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="139">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="56d96e7c85089f9c41a5bc8e2b3554276d095f4f">
   <div class="header">
     <h3>spec/requests/api/v1/trips_requests_spec.rb</h3>
@@ -2360,7 +4257,7 @@
 
             
 
-            <code class="ruby">   before do</code>
+            <code class="ruby">  before do</code>
           </li>
         </div>
       
@@ -2371,7 +4268,7 @@
 
             
 
-            <code class="ruby">      @headers = { &quot;Content-Type&quot; =&gt; &quot;application/json&quot;, accept =&gt; &#39;application/json&#39; }</code>
+            <code class="ruby">    @headers = { &quot;Content-Type&quot; =&gt; &quot;application/json&quot;, accept =&gt; &#39;application/json&#39; }</code>
           </li>
         </div>
       
@@ -2382,7 +4279,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2404,7 +4301,7 @@
 
             
 
-            <code class="ruby">   describe &#39;GET /api/v1/trips&#39; do</code>
+            <code class="ruby">  describe &#39;GET /api/v1/trips&#39; do</code>
           </li>
         </div>
       
@@ -2415,7 +4312,7 @@
 
             
 
-            <code class="ruby">      it &#39;returns a list of trips&#39; do</code>
+            <code class="ruby">    it &#39;returns a list of trips&#39; do</code>
           </li>
         </div>
       
@@ -2426,7 +4323,7 @@
 
             
 
-            <code class="ruby">         trips = create_list(:trip, 5, user_id: 1) </code>
+            <code class="ruby">      trips = create_list(:trip, 5, user_id: 1)</code>
           </li>
         </div>
       
@@ -2448,7 +4345,7 @@
 
             
 
-            <code class="ruby">         get &#39;/api/v1/trips&#39;, headers: @headers, params: { user_id: 1 }</code>
+            <code class="ruby">      get &#39;/api/v1/trips&#39;, headers: @headers, params: { user_id: 1 }</code>
           </li>
         </div>
       
@@ -2470,7 +4367,7 @@
 
             
 
-            <code class="ruby">         trips_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      trips_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -2492,7 +4389,7 @@
 
             
 
-            <code class="ruby">         expect(response).to be_successful</code>
+            <code class="ruby">      expect(response).to be_successful</code>
           </li>
         </div>
       
@@ -2503,7 +4400,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(200)</code>
+            <code class="ruby">      expect(response.status).to eq(200)</code>
           </li>
         </div>
       
@@ -2525,7 +4422,7 @@
 
             
 
-            <code class="ruby">         trips = trips_response[:data]</code>
+            <code class="ruby">      trips = trips_response[:data]</code>
           </li>
         </div>
       
@@ -2547,7 +4444,7 @@
 
             
 
-            <code class="ruby">         expect(trips.count).to eq(5)</code>
+            <code class="ruby">      expect(trips.count).to eq(5)</code>
           </li>
         </div>
       
@@ -2558,7 +4455,7 @@
 
             
 
-            <code class="ruby">         expect(trips).to be_a(Array)</code>
+            <code class="ruby">      expect(trips).to be_a(Array)</code>
           </li>
         </div>
       
@@ -2580,7 +4477,7 @@
 
             
 
-            <code class="ruby">         trip = trips.first</code>
+            <code class="ruby">      trip = trips.first</code>
           </li>
         </div>
       
@@ -2602,7 +4499,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:id)</code>
+            <code class="ruby">      expect(trip).to have_key(:id)</code>
           </li>
         </div>
       
@@ -2613,7 +4510,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:id]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:id]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2635,7 +4532,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:type)</code>
+            <code class="ruby">      expect(trip).to have_key(:type)</code>
           </li>
         </div>
       
@@ -2646,7 +4543,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:type]).to eq(&quot;trip&quot;)</code>
+            <code class="ruby">      expect(trip[:type]).to eq(&quot;trip&quot;)</code>
           </li>
         </div>
       
@@ -2668,7 +4565,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:attributes)</code>
+            <code class="ruby">      expect(trip).to have_key(:attributes)</code>
           </li>
         </div>
       
@@ -2679,7 +4576,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to be_a(Hash)</code>
+            <code class="ruby">      expect(trip[:attributes]).to be_a(Hash)</code>
           </li>
         </div>
       
@@ -2701,7 +4598,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:name)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:name)</code>
           </li>
         </div>
       
@@ -2712,7 +4609,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:name]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:name]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2734,7 +4631,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:location)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:location)</code>
           </li>
         </div>
       
@@ -2745,7 +4642,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:location]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:location]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2767,7 +4664,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:start_date)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:start_date)</code>
           </li>
         </div>
       
@@ -2778,7 +4675,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:start_date]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:start_date]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2800,7 +4697,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:end_date)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:end_date)</code>
           </li>
         </div>
       
@@ -2811,7 +4708,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:end_date]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:end_date]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2833,7 +4730,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:status)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:status)</code>
           </li>
         </div>
       
@@ -2844,7 +4741,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:status]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:status]).to be_a(String)</code>
           </li>
         </div>
       
@@ -2866,7 +4763,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:total_budget)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:total_budget)</code>
           </li>
         </div>
       
@@ -2877,7 +4774,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:total_budget]).to be_a(Integer)</code>
+            <code class="ruby">      expect(trip[:attributes][:total_budget]).to be_a(Integer)</code>
           </li>
         </div>
       
@@ -2888,7 +4785,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2899,7 +4796,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">end</code>
           </li>
         </div>
       
@@ -2921,7 +4818,7 @@
 
             
 
-            <code class="ruby">   describe &#39;GET /api/v1/trips/:id&#39; do</code>
+            <code class="ruby">describe &#39;GET /api/v1/trips/:id&#39; do</code>
           </li>
         </div>
       
@@ -2932,7 +4829,7 @@
 
             
 
-            <code class="ruby">      it &#39;returns a trip detail&#39; do</code>
+            <code class="ruby">  it &#39;returns a trip detail&#39; do</code>
           </li>
         </div>
       
@@ -2943,7 +4840,7 @@
 
             
 
-            <code class="ruby">         trip = create(:trip, user_id: 1) </code>
+            <code class="ruby">      trip = create(:trip, user_id: 1)</code>
           </li>
         </div>
       
@@ -2954,7 +4851,7 @@
 
             
 
-            <code class="ruby">         </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2965,7 +4862,7 @@
 
             
 
-            <code class="ruby">         get &quot;/api/v1/trips/#{trip.id}&quot;, headers: @headers, params: { user_id: 1 }</code>
+            <code class="ruby">      get &quot;/api/v1/trips/#{trip.id}&quot;, headers: @headers, params: { user_id: 1 }</code>
           </li>
         </div>
       
@@ -2987,7 +4884,7 @@
 
             
 
-            <code class="ruby">         trip_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      trip_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -3009,7 +4906,7 @@
 
             
 
-            <code class="ruby">         expect(response).to be_successful</code>
+            <code class="ruby">      expect(response).to be_successful</code>
           </li>
         </div>
       
@@ -3020,7 +4917,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(200)</code>
+            <code class="ruby">      expect(response.status).to eq(200)</code>
           </li>
         </div>
       
@@ -3042,7 +4939,7 @@
 
             
 
-            <code class="ruby">         expect(trip_response).to have_key(:data)</code>
+            <code class="ruby">      expect(trip_response).to have_key(:data)</code>
           </li>
         </div>
       
@@ -3053,7 +4950,7 @@
 
             
 
-            <code class="ruby">         expect(trip_response[:data]).to be_a(Hash)</code>
+            <code class="ruby">      expect(trip_response[:data]).to be_a(Hash)</code>
           </li>
         </div>
       
@@ -3075,7 +4972,7 @@
 
             
 
-            <code class="ruby">         trip = trip_response[:data]</code>
+            <code class="ruby">      trip = trip_response[:data]</code>
           </li>
         </div>
       
@@ -3097,7 +4994,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:id)</code>
+            <code class="ruby">      expect(trip).to have_key(:id)</code>
           </li>
         </div>
       
@@ -3108,7 +5005,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:id]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:id]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3130,7 +5027,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:type)</code>
+            <code class="ruby">      expect(trip).to have_key(:type)</code>
           </li>
         </div>
       
@@ -3141,7 +5038,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:type]).to eq(&quot;trip&quot;)</code>
+            <code class="ruby">      expect(trip[:type]).to eq(&quot;trip&quot;)</code>
           </li>
         </div>
       
@@ -3163,7 +5060,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to have_key(:attributes)</code>
+            <code class="ruby">      expect(trip).to have_key(:attributes)</code>
           </li>
         </div>
       
@@ -3174,7 +5071,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to be_a(Hash)</code>
+            <code class="ruby">      expect(trip[:attributes]).to be_a(Hash)</code>
           </li>
         </div>
       
@@ -3196,7 +5093,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:name)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:name)</code>
           </li>
         </div>
       
@@ -3207,7 +5104,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:name]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:name]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3229,7 +5126,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:location)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:location)</code>
           </li>
         </div>
       
@@ -3240,7 +5137,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:location]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:location]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3262,7 +5159,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:start_date)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:start_date)</code>
           </li>
         </div>
       
@@ -3273,7 +5170,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:start_date]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:start_date]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3295,7 +5192,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:end_date)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:end_date)</code>
           </li>
         </div>
       
@@ -3306,7 +5203,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:end_date]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:end_date]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3328,7 +5225,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:status)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:status)</code>
           </li>
         </div>
       
@@ -3339,7 +5236,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:status]).to be_a(String)</code>
+            <code class="ruby">      expect(trip[:attributes][:status]).to be_a(String)</code>
           </li>
         </div>
       
@@ -3361,7 +5258,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes]).to have_key(:total_budget)</code>
+            <code class="ruby">      expect(trip[:attributes]).to have_key(:total_budget)</code>
           </li>
         </div>
       
@@ -3372,7 +5269,7 @@
 
             
 
-            <code class="ruby">         expect(trip[:attributes][:total_budget]).to be_a(Integer)</code>
+            <code class="ruby">      expect(trip[:attributes][:total_budget]).to be_a(Integer)</code>
           </li>
         </div>
       
@@ -3383,7 +5280,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -3405,7 +5302,7 @@
 
             
 
-            <code class="ruby">      it &#39;will return 404 if the trip id is not found&#39; do</code>
+            <code class="ruby">    it &#39;will return 404 if the trip id is not found&#39; do</code>
           </li>
         </div>
       
@@ -3416,7 +5313,7 @@
 
             
 
-            <code class="ruby">         get &quot;/api/v1/trips/123123123&quot;, headers: @headers, params: { user_id: 1 }</code>
+            <code class="ruby">      get &quot;/api/v1/trips/123123123&quot;, headers: @headers, params: { user_id: 1 }</code>
           </li>
         </div>
       
@@ -3438,7 +5335,7 @@
 
             
 
-            <code class="ruby">         trip_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      trip_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -3460,7 +5357,7 @@
 
             
 
-            <code class="ruby">         expect(response).to_not be_successful</code>
+            <code class="ruby">      expect(response).to_not be_successful</code>
           </li>
         </div>
       
@@ -3471,7 +5368,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(404)</code>
+            <code class="ruby">      expect(response.status).to eq(404)</code>
           </li>
         </div>
       
@@ -3493,7 +5390,7 @@
 
             
 
-            <code class="ruby">         expect(trip_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=123123123&quot;)</code>
+            <code class="ruby">      expect(trip_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=123123123&quot;)</code>
           </li>
         </div>
       
@@ -3504,7 +5401,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -3515,7 +5412,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3537,7 +5434,7 @@
 
             
 
-            <code class="ruby">   describe &quot;PATCH /api/v1/trips/:id&quot; do</code>
+            <code class="ruby">  describe &quot;PATCH /api/v1/trips/:id&quot; do</code>
           </li>
         </div>
       
@@ -3548,7 +5445,7 @@
 
             
 
-            <code class="ruby">      it &#39;update trip detail&#39; do</code>
+            <code class="ruby">    it &#39;update trip detail&#39; do</code>
           </li>
         </div>
       
@@ -3559,7 +5456,7 @@
 
             
 
-            <code class="ruby">         trip_id = create(:trip, user_id: 1).id</code>
+            <code class="ruby">      trip_id = create(:trip, user_id: 1).id</code>
           </li>
         </div>
       
@@ -3570,7 +5467,7 @@
 
             
 
-            <code class="ruby">         previous_name = Trip.last.name</code>
+            <code class="ruby">      previous_name = Trip.last.name</code>
           </li>
         </div>
       
@@ -3581,7 +5478,7 @@
 
             
 
-            <code class="ruby">         trip_params = { name: &#39;Different Name&#39; }</code>
+            <code class="ruby">      trip_params = { name: &#39;Different Name&#39; }</code>
           </li>
         </div>
       
@@ -3603,7 +5500,7 @@
 
             
 
-            <code class="ruby">         patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
           </li>
         </div>
       
@@ -3625,7 +5522,7 @@
 
             
 
-            <code class="ruby">         update_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      update_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -3647,7 +5544,7 @@
 
             
 
-            <code class="ruby">         expect(response).to be_successful</code>
+            <code class="ruby">      expect(response).to be_successful</code>
           </li>
         </div>
       
@@ -3658,7 +5555,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(200)</code>
+            <code class="ruby">      expect(response.status).to eq(200)</code>
           </li>
         </div>
       
@@ -3669,7 +5566,7 @@
 
             
 
-            <code class="ruby">         </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3680,7 +5577,7 @@
 
             
 
-            <code class="ruby">         trip = Trip.find_by(id: trip_id)</code>
+            <code class="ruby">      trip = Trip.find_by(id: trip_id)</code>
           </li>
         </div>
       
@@ -3702,7 +5599,7 @@
 
             
 
-            <code class="ruby">         expect(trip.name).to eq(&#39;Different Name&#39;)</code>
+            <code class="ruby">      expect(trip.name).to eq(&#39;Different Name&#39;)</code>
           </li>
         </div>
       
@@ -3713,7 +5610,7 @@
 
             
 
-            <code class="ruby">         expect(trip.name).to_not eq(previous_name)</code>
+            <code class="ruby">      expect(trip.name).to_not eq(previous_name)</code>
           </li>
         </div>
       
@@ -3724,7 +5621,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -3746,7 +5643,7 @@
 
             
 
-            <code class="ruby">      it &#39;will raise error if trip ID is not found&#39; do</code>
+            <code class="ruby">    it &#39;will raise error if trip ID is not found&#39; do</code>
           </li>
         </div>
       
@@ -3757,7 +5654,7 @@
 
             
 
-            <code class="ruby">         trip_params = { name: &#39;Different Name&#39; }</code>
+            <code class="ruby">      trip_params = { name: &#39;Different Name&#39; }</code>
           </li>
         </div>
       
@@ -3768,7 +5665,7 @@
 
             
 
-            <code class="ruby">         patch &quot;/api/v1/trips/12323232&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
+            <code class="ruby">      patch &quot;/api/v1/trips/12323232&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
           </li>
         </div>
       
@@ -3790,7 +5687,7 @@
 
             
 
-            <code class="ruby">         update_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      update_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -3812,7 +5709,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(404)</code>
+            <code class="ruby">      expect(response.status).to eq(404)</code>
           </li>
         </div>
       
@@ -3823,7 +5720,7 @@
 
             
 
-            <code class="ruby">         expect(response).to_not be_successful</code>
+            <code class="ruby">      expect(response).to_not be_successful</code>
           </li>
         </div>
       
@@ -3834,7 +5731,7 @@
 
             
 
-            <code class="ruby">         expect(update_response[:errors]).to be_a(Array)</code>
+            <code class="ruby">      expect(update_response[:errors]).to be_a(Array)</code>
           </li>
         </div>
       
@@ -3845,7 +5742,7 @@
 
             
 
-            <code class="ruby">         expect(update_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=12323232&quot;)</code>
+            <code class="ruby">      expect(update_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=12323232&quot;)</code>
           </li>
         </div>
       
@@ -3856,7 +5753,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -3878,7 +5775,7 @@
 
             
 
-            <code class="ruby">      it &#39;will raise an error if params are blank&#39; do</code>
+            <code class="ruby">    it &#39;will raise an error if params are blank&#39; do</code>
           </li>
         </div>
       
@@ -3889,7 +5786,7 @@
 
             
 
-            <code class="ruby">         trip_id = create(:trip, user_id: 1).id</code>
+            <code class="ruby">        trip_id = create(:trip, user_id: 1).id</code>
           </li>
         </div>
       
@@ -3900,7 +5797,7 @@
 
             
 
-            <code class="ruby">         trip_params = { name: &quot;&quot; }</code>
+            <code class="ruby">      trip_params = { name: &quot;&quot; }</code>
           </li>
         </div>
       
@@ -3911,7 +5808,7 @@
 
             
 
-            <code class="ruby">         patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({trip: trip_params })</code>
           </li>
         </div>
       
@@ -3933,7 +5830,7 @@
 
             
 
-            <code class="ruby">         update_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      update_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -3955,7 +5852,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(400)</code>
+            <code class="ruby">      expect(response.status).to eq(400)</code>
           </li>
         </div>
       
@@ -3966,7 +5863,7 @@
 
             
 
-            <code class="ruby">         expect(response).to_not be_successful</code>
+            <code class="ruby">      expect(response).to_not be_successful</code>
           </li>
         </div>
       
@@ -3977,7 +5874,7 @@
 
             
 
-            <code class="ruby">         expect(update_response[:errors]).to be_a(Array)</code>
+            <code class="ruby">      expect(update_response[:errors]).to be_a(Array)</code>
           </li>
         </div>
       
@@ -3988,7 +5885,7 @@
 
             
 
-            <code class="ruby">         expect(update_response[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
+            <code class="ruby">      expect(update_response[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
           </li>
         </div>
       
@@ -3999,7 +5896,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4010,7 +5907,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4032,7 +5929,7 @@
 
             
 
-            <code class="ruby">   describe &#39;POST /api/v1/trips&#39; do</code>
+            <code class="ruby">  describe &#39;POST /api/v1/trips&#39; do</code>
           </li>
         </div>
       
@@ -4043,7 +5940,7 @@
 
             
 
-            <code class="ruby">      it &#39;will create a new trip&#39; do</code>
+            <code class="ruby">    it &#39;will create a new trip&#39; do</code>
           </li>
         </div>
       
@@ -4054,7 +5951,7 @@
 
             
 
-            <code class="ruby">         trip_params = {</code>
+            <code class="ruby">      trip_params = {</code>
           </li>
         </div>
       
@@ -4065,7 +5962,7 @@
 
             
 
-            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
+            <code class="ruby">        name: &quot;Visiting Family&quot;,</code>
           </li>
         </div>
       
@@ -4076,7 +5973,7 @@
 
             
 
-            <code class="ruby">            location: &quot;Brazil&quot;,</code>
+            <code class="ruby">        location: &quot;Brazil&quot;,</code>
           </li>
         </div>
       
@@ -4087,7 +5984,7 @@
 
             
 
-            <code class="ruby">            start_date: DateTime.new(2024,12,10),</code>
+            <code class="ruby">        start_date: DateTime.new(2024,12,10),</code>
           </li>
         </div>
       
@@ -4098,7 +5995,7 @@
 
             
 
-            <code class="ruby">            end_date: DateTime.new(2025,1,10),</code>
+            <code class="ruby">        end_date: DateTime.new(2025,1,10),</code>
           </li>
         </div>
       
@@ -4109,7 +6006,7 @@
 
             
 
-            <code class="ruby">            total_budget: 10000,</code>
+            <code class="ruby">        total_budget: 10000,</code>
           </li>
         </div>
       
@@ -4120,7 +6017,7 @@
 
             
 
-            <code class="ruby">            user_id: 1</code>
+            <code class="ruby">        user_id: 1</code>
           </li>
         </div>
       
@@ -4131,7 +6028,7 @@
 
             
 
-            <code class="ruby">         }</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
@@ -4153,7 +6050,7 @@
 
             
 
-            <code class="ruby">         post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
+            <code class="ruby">      post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
           </li>
         </div>
       
@@ -4175,7 +6072,7 @@
 
             
 
-            <code class="ruby">         created_trip = Trip.last</code>
+            <code class="ruby">      created_trip = Trip.last</code>
           </li>
         </div>
       
@@ -4197,7 +6094,7 @@
 
             
 
-            <code class="ruby">         expect(response).to be_successful</code>
+            <code class="ruby">      expect(response).to be_successful</code>
           </li>
         </div>
       
@@ -4208,7 +6105,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(201)</code>
+            <code class="ruby">      expect(response.status).to eq(201)</code>
           </li>
         </div>
       
@@ -4219,7 +6116,7 @@
 
             
 
-            <code class="ruby">         </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4230,7 +6127,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.name).to eq(trip_params[:name])</code>
+            <code class="ruby">      expect(created_trip.name).to eq(trip_params[:name])</code>
           </li>
         </div>
       
@@ -4241,7 +6138,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.location).to eq(trip_params[:location])</code>
+            <code class="ruby">      expect(created_trip.location).to eq(trip_params[:location])</code>
           </li>
         </div>
       
@@ -4252,7 +6149,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.start_date).to eq(trip_params[:start_date])</code>
+            <code class="ruby">      expect(created_trip.start_date).to eq(trip_params[:start_date])</code>
           </li>
         </div>
       
@@ -4263,7 +6160,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.end_date).to eq(trip_params[:end_date])</code>
+            <code class="ruby">      expect(created_trip.end_date).to eq(trip_params[:end_date])</code>
           </li>
         </div>
       
@@ -4274,7 +6171,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.status).to eq(&quot;in_progress&quot;)</code>
+            <code class="ruby">      expect(created_trip.status).to eq(&quot;in_progress&quot;)</code>
           </li>
         </div>
       
@@ -4285,7 +6182,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.total_budget).to eq(trip_params[:total_budget])</code>
+            <code class="ruby">      expect(created_trip.total_budget).to eq(trip_params[:total_budget])</code>
           </li>
         </div>
       
@@ -4296,7 +6193,7 @@
 
             
 
-            <code class="ruby">         expect(created_trip.user_id).to eq(trip_params[:user_id])</code>
+            <code class="ruby">      expect(created_trip.user_id).to eq(trip_params[:user_id])</code>
           </li>
         </div>
       
@@ -4307,7 +6204,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4329,7 +6226,7 @@
 
             
 
-            <code class="ruby">      it &#39;will not create a new trip if missing parameters&#39; do</code>
+            <code class="ruby">    it &#39;will not create a new trip if missing parameters&#39; do</code>
           </li>
         </div>
       
@@ -4340,7 +6237,7 @@
 
             
 
-            <code class="ruby">         trip_params = {</code>
+            <code class="ruby">      trip_params = {</code>
           </li>
         </div>
       
@@ -4351,7 +6248,7 @@
 
             
 
-            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
+            <code class="ruby">        name: &quot;Visiting Family&quot;,</code>
           </li>
         </div>
       
@@ -4362,7 +6259,7 @@
 
             
 
-            <code class="ruby">            location: &quot;Brazil&quot;,</code>
+            <code class="ruby">        location: &quot;Brazil&quot;,</code>
           </li>
         </div>
       
@@ -4373,7 +6270,7 @@
 
             
 
-            <code class="ruby">            start_date: DateTime.new(2024,12,10),</code>
+            <code class="ruby">        start_date: DateTime.new(2024,12,10),</code>
           </li>
         </div>
       
@@ -4384,7 +6281,7 @@
 
             
 
-            <code class="ruby">            end_date: DateTime.new(2025,1,10),</code>
+            <code class="ruby">        end_date: DateTime.new(2025,1,10),</code>
           </li>
         </div>
       
@@ -4395,7 +6292,7 @@
 
             
 
-            <code class="ruby">            total_budget: 10000,</code>
+            <code class="ruby">        total_budget: 10000,</code>
           </li>
         </div>
       
@@ -4406,7 +6303,7 @@
 
             
 
-            <code class="ruby">            # user_id: 1</code>
+            <code class="ruby">        # user_id: 1</code>
           </li>
         </div>
       
@@ -4417,7 +6314,7 @@
 
             
 
-            <code class="ruby">         }</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
@@ -4439,7 +6336,7 @@
 
             
 
-            <code class="ruby">         post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
+            <code class="ruby">      post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
           </li>
         </div>
       
@@ -4461,7 +6358,7 @@
 
             
 
-            <code class="ruby">         expect(response).to_not be_successful</code>
+            <code class="ruby">      expect(response).to_not be_successful</code>
           </li>
         </div>
       
@@ -4472,7 +6369,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(400)</code>
+            <code class="ruby">      expect(response.status).to eq(400)</code>
           </li>
         </div>
       
@@ -4494,7 +6391,7 @@
 
             
 
-            <code class="ruby">         create_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      create_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -4516,7 +6413,7 @@
 
             
 
-            <code class="ruby">         expect(create_response[:errors]).to be_a(Array)</code>
+            <code class="ruby">      expect(create_response[:errors]).to be_a(Array)</code>
           </li>
         </div>
       
@@ -4527,7 +6424,7 @@
 
             
 
-            <code class="ruby">         expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: User can&#39;t be blank&quot;)</code>
+            <code class="ruby">      expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: User can&#39;t be blank&quot;)</code>
           </li>
         </div>
       
@@ -4538,7 +6435,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4560,7 +6457,7 @@
 
             
 
-            <code class="ruby">      it &#39;will not create a new trip if end_date is earlier than start_date&#39; do</code>
+            <code class="ruby">    it &#39;will not create a new trip if end_date is earlier than start_date&#39; do</code>
           </li>
         </div>
       
@@ -4571,7 +6468,7 @@
 
             
 
-            <code class="ruby">         trip_params = {</code>
+            <code class="ruby">      trip_params = {</code>
           </li>
         </div>
       
@@ -4582,7 +6479,7 @@
 
             
 
-            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
+            <code class="ruby">        name: &quot;Visiting Family&quot;,</code>
           </li>
         </div>
       
@@ -4593,7 +6490,7 @@
 
             
 
-            <code class="ruby">            location: &quot;Brazil&quot;,</code>
+            <code class="ruby">        location: &quot;Brazil&quot;,</code>
           </li>
         </div>
       
@@ -4604,7 +6501,7 @@
 
             
 
-            <code class="ruby">            start_date: DateTime.new(2025,12,10,12,0,0),</code>
+            <code class="ruby">        start_date: DateTime.new(2025,12,10,12,0,0),</code>
           </li>
         </div>
       
@@ -4615,7 +6512,7 @@
 
             
 
-            <code class="ruby">            end_date: DateTime.new(2025,1,10),</code>
+            <code class="ruby">        end_date: DateTime.new(2025,1,10),</code>
           </li>
         </div>
       
@@ -4626,7 +6523,7 @@
 
             
 
-            <code class="ruby">            total_budget: 10000,</code>
+            <code class="ruby">        total_budget: 10000,</code>
           </li>
         </div>
       
@@ -4637,7 +6534,7 @@
 
             
 
-            <code class="ruby">            user_id: 1</code>
+            <code class="ruby">        user_id: 1</code>
           </li>
         </div>
       
@@ -4648,7 +6545,7 @@
 
             
 
-            <code class="ruby">         }</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
@@ -4670,7 +6567,7 @@
 
             
 
-            <code class="ruby">         post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
+            <code class="ruby">      post &#39;/api/v1/trips&#39;, headers: @headers, params: JSON.generate(trip: trip_params)</code>
           </li>
         </div>
       
@@ -4692,7 +6589,7 @@
 
             
 
-            <code class="ruby">         expect(response).to_not be_successful</code>
+            <code class="ruby">      expect(response).to_not be_successful</code>
           </li>
         </div>
       
@@ -4703,7 +6600,7 @@
 
             
 
-            <code class="ruby">         expect(response.status).to eq(400)</code>
+            <code class="ruby">      expect(response.status).to eq(400)</code>
           </li>
         </div>
       
@@ -4725,7 +6622,7 @@
 
             
 
-            <code class="ruby">         create_response = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      create_response = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -4747,7 +6644,7 @@
 
             
 
-            <code class="ruby">         expect(create_response[:errors]).to be_a(Array)</code>
+            <code class="ruby">      expect(create_response[:errors]).to be_a(Array)</code>
           </li>
         </div>
       
@@ -4758,7 +6655,7 @@
 
             
 
-            <code class="ruby">         expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC&quot;)</code>
+            <code class="ruby">      expect(create_response[:errors].first[:detail]).to eq(&quot;Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC&quot;)</code>
           </li>
         </div>
       
@@ -4769,7 +6666,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4780,7 +6677,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       

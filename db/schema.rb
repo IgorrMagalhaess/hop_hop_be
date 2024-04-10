@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_215234) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_224531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,8 +23,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_215234) do
     t.string "type_of_accommodation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "check_in"
-    t.time "check_out"
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.integer "expenses"
     t.index ["trip_id"], name: "index_accommodations_on_trip_id"
   end
 
@@ -40,13 +41,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_215234) do
     t.bigint "daily_itinerary_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "time"
     t.index ["daily_itinerary_id"], name: "index_activities_on_daily_itinerary_id"
   end
 
   create_table "daily_itineraries", force: :cascade do |t|
     t.bigint "trip_id", null: false
     t.date "date"
+    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_daily_itineraries_on_trip_id"
@@ -55,8 +56,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_215234) do
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "status", default: 0
     t.integer "total_budget"
     t.datetime "created_at", null: false
