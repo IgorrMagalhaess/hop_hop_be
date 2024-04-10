@@ -1,4 +1,4 @@
 class Activity < ApplicationRecord
-   has_many :daily_itineraries
-   has_many :trips, through: :daily_itineraries
+  belongs_to :daily_itinerary
+  has_many :trip, through: :daily_itinerary
 end

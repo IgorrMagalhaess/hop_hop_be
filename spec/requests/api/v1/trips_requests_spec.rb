@@ -23,7 +23,7 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:id]).to be_a(String)
 
          expect(trip).to have_key(:type)
-         expect(trip[:type]).to eq("trips")
+         expect(trip[:type]).to eq("trip")
 
          expect(trip).to have_key(:attributes)
          expect(trip[:attributes]).to be_a(Hash)
@@ -68,7 +68,7 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:id]).to be_a(String)
 
          expect(trip).to have_key(:type)
-         expect(trip[:type]).to eq("trips")
+         expect(trip[:type]).to eq("trip")
 
          expect(trip).to have_key(:attributes)
          expect(trip[:attributes]).to be_a(Hash)
