@@ -23,7 +23,6 @@ class Trip < ApplicationRecord
    end
 
    def activities_per_day(date)
-      daily_itineraries.daily_activities(date)
-      # activities.where("daily_itineraries.date = ?", date)
+      activities.where("date = ?", date)
    end
 end
