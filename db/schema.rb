@@ -34,18 +34,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
     t.string "activity_type"
     t.integer "expenses"
     t.float "rating"
+    t.date "date"
+    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "trip_id", null: false
-    t.datetime "date_and_time"
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "status", default: 0
     t.integer "total_budget"
     t.datetime "created_at", null: false

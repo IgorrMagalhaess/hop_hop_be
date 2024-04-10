@@ -8,6 +8,8 @@ class CreateActivities < ActiveRecord::Migration[7.1]
       t.string :type
       t.integer :expenses
       t.float :rating
+      t.date :date
+      t.time :time
 
       t.timestamps
     end

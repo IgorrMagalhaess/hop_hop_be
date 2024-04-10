@@ -31,7 +31,8 @@ end
     expenses: Faker::Number.between(from: 0, to: 500),
     rating: Faker::Number.between(from: 2.0, to: 5.0),
     trip_id: Trip.last.id,
-    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+    date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+    time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
   })
 end
 
@@ -54,7 +55,8 @@ Accomodation.create!({
     expenses: Faker::Number.between(from: 0, to: 500),
     rating: Faker::Number.between(from: 2.0, to: 5.0),
     trip_id: Trip.first.id,
-    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+    date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+    time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
   })
 
   Accomodation.create!({
