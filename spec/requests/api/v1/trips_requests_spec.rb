@@ -99,6 +99,28 @@ RSpec.describe 'Trips API', type: :request do
 
          expect(response).to_not be_successful
          expect(response.status).to eq(404)
+
+         expect(trip_response[:errors].first[:details]).to eq("Couldn't find Trip with 'id'=123123123")
+      end
+   end
+
+   describe "PATCH /api/v1/trips/:id" do
+      it 'update trip details' do
+         trip_id = create(:trip).id
+         previous_name = Trip.last.name
+         trip_params = { name: 'Different Name' }
+
+         patch "/api/v1/trips/#{trip_id}", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate({trip: trip_params })
+
+         update_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response).to be_successful
+         expect(response.status).to eq(200)
+         
+         trip = Trip.find_by(id: trip_id)
+
+         expect(trip.name).to eq('Different Name')
+         expect(trip.name).to_not eq(previous_name)
       end
    end
 end

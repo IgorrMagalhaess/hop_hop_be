@@ -8,10 +8,4 @@ class ApplicationController < ActionController::API
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
       .serializer_validation, status: :not_found
    end
-
-   def invalid_response(exception)
-      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400))
-      .serializer_validation, status: :bad_request
-   end
-
 end
