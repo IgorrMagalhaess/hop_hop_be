@@ -22,6 +22,13 @@ Trip.create!({
 end
 
 5.times do
+  DailyItinerary.create!({
+    trip_id: Faker::Number.between(from: 1, to: 5),
+    date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
+  })
+end
+5.times do
   Activity.create!({
     address: Faker::Address.street_address,
     description: Faker::Lorem.paragraph(sentence_count: 2),
@@ -30,7 +37,7 @@ end
     activity_type: Faker::Sport.sport(include_ancient: true),
     expenses: Faker::Number.between(from: 0, to: 500),
     rating: Faker::Number.between(from: 2.0, to: 5.0),
-    trip_id: Trip.last.id,
+    itinerary_id: Trip.last.id,
     date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
     time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
   })
