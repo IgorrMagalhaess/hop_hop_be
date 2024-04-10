@@ -1,41 +1,21 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/accommodation.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/accommodation.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/application_record.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/activity_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/activity.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/daily_itinerary_spec.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/spec/models/activity_spec.rb": {
         "lines": [
           1,
           null,
@@ -47,7 +27,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/daily_itinerary.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/activity.rb": {
         "lines": [
           1,
           1,
@@ -55,7 +35,27 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/models/trip_spec.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/spec/models/daily_itinerary_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/daily_itinerary.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/spec/models/trip_spec.rb": {
         "lines": [
           1,
           null,
@@ -92,7 +92,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/trip.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/trip.rb": {
         "lines": [
           1,
           1,
@@ -111,7 +111,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/spec/requests/api/v1/trips_requests_spec.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/spec/requests/api/v1/trips_requests_spec.rb": {
         "lines": [
           1,
           null,
@@ -340,7 +340,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/api/v1/trips_controller.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/controllers/api/v1/trips_controller.rb": {
         "lines": [
           1,
           1,
@@ -372,7 +372,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/controllers/application_controller.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -392,7 +392,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/serializers/trip_serializer.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/serializers/trip_serializer.rb": {
         "lines": [
           1,
           1,
@@ -400,7 +400,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/serializers/error_serializer.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/serializers/error_serializer.rb": {
         "lines": [
           1,
           1,
@@ -421,7 +421,7 @@
           null
         ]
       },
-      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/poros/error_message.rb": {
+      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/poros/error_message.rb": {
         "lines": [
           1,
           1,
@@ -433,6 +433,6 @@
         ]
       }
     },
-    "timestamp": 1712784314
+    "timestamp": 1712785577
   }
 }
