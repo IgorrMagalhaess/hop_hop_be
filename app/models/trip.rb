@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
    has_many :daily_itineraries
    has_many :activities, through: :daily_itineraries
-   has_many :accomodations
+   has_many :accommodations
 
    validates :name, presence: true
    validates :location, presence: true
