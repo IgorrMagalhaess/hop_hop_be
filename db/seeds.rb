@@ -29,13 +29,40 @@ end
     lon: Faker::Address.longitude,
     activity_type: Faker::Sport.sport(include_ancient: true),
     expenses: Faker::Number.between(from: 0, to: 500),
-    rating: Faker::Number.between(from: 2.0, to: 5.0)
+    rating: Faker::Number.between(from: 2.0, to: 5.0),
+    trip_id: Trip.last.id,
+    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
   })
 end
-Activity.all.each do |activity|
-  DailyItinerary.create!(
-    trip_id: Trip.last.id,
-    activity_id: activity.id,
-    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3)
-  )
+
+Accomodation.create!({
+  name: Faker::Company.name,
+  trip_id: Trip.last.id,
+  address: Faker::Address.street_address,
+  lat: Faker::Address.latitude,
+  lon: Faker::Address.longitude,
+  type_of_accomodation: Faker::Number.between(from: 0, to: 1),
+})
+
+7.times do
+  Activity.create!({
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    lat: Faker::Address.latitude,
+    lon: Faker::Address.longitude,
+    activity_type: Faker::Sport.sport(include_ancient: true),
+    expenses: Faker::Number.between(from: 0, to: 500),
+    rating: Faker::Number.between(from: 2.0, to: 5.0),
+    trip_id: Trip.first.id,
+    date_and_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 3),
+  })
+
+  Accomodation.create!({
+    name: Faker::Company.name,
+    trip_id: Trip.first.id,
+    address: Faker::Address.street_address,
+    lat: Faker::Address.latitude,
+    lon: Faker::Address.longitude,
+    type_of_accomodation: Faker::Number.between(from: 0, to: 1),
+  })
 end

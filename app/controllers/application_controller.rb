@@ -4,7 +4,8 @@ class ApplicationController < ActionController::API
   private
 
   def not_found_response(exception)
-    render json: ErrorSerializer.serializer_market_vendor_validation(exception, 404), status: :not_found
+    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
+    .serializer_validation, status: :not_found
   end
 
   def invalid_response(exception)

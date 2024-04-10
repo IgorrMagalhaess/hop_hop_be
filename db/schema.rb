@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_012455) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_050151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_012455) do
     t.integer "type_of_accomodation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["trip_id"], name: "index_accomodations_on_trip_id"
   end
 
@@ -35,16 +36,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_012455) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "daily_itineraries", force: :cascade do |t|
     t.bigint "trip_id", null: false
-    t.bigint "activity_id", null: false
     t.datetime "date_and_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_daily_itineraries_on_activity_id"
-    t.index ["trip_id"], name: "index_daily_itineraries_on_trip_id"
+    t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -60,6 +54,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_012455) do
   end
 
   add_foreign_key "accomodations", "trips"
-  add_foreign_key "daily_itineraries", "activities"
-  add_foreign_key "daily_itineraries", "trips"
+  add_foreign_key "activities", "trips"
 end
