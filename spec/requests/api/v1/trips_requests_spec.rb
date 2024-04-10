@@ -179,5 +179,47 @@ RSpec.describe 'Trips API', type: :request do
          expect(created_trip.total_budget).to eq(trip_params[:total_budget])
          expect(created_trip.user_id).to eq(trip_params[:user_id])
       end
+
+      it 'will not create a new trip if missing parameters' do
+         trip_params = {
+            name: "Visiting Family",
+            location: "Brazil",
+            start_date: DateTime.new(2024,12,10),
+            end_date: DateTime.new(2025,1,10),
+            total_budget: 10000,
+            # user_id: 1
+         }
+
+         post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(400)
+
+         create_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(create_response[:errors]).to be_a(Array)
+         expect(create_response[:errors].first[:detail]).to eq("Validation failed: User can't be blank")
+      end
+
+      it 'will not create a new trip if end_date is earlier than start_date' do
+         trip_params = {
+            name: "Visiting Family",
+            location: "Brazil",
+            start_date: DateTime.new(2024,12,10),
+            end_date: DateTime.new(2025,1,10),
+            total_budget: 10000,
+            # user_id: 1
+         }
+
+         post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(400)
+
+         create_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(create_response[:errors]).to be_a(Array)
+         expect(create_response[:errors].first[:detail]).to eq("Validation failed: End Date can not be earlier than start_date")
+      end
    end
 end
