@@ -49,6 +49,19 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(accommodation.lat).to eq(7.8833043)
       expect(accommodation.lon).to eq(98.3507689)
     end
+
+    it "will render 404 if trip id doesn't exist" do
+      @accommodation_params[:trip_id] = 2
+
+      post "/api/v1/trips/2/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      accommodation_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(accommodation_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=2")
+    end
   end
 
   #   it 'will not create a new accommodation if missing parameters' do
