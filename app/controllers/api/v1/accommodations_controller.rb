@@ -1,14 +1,15 @@
 class Api::V1::AccommodationsController < ApplicationController
-  def update
-    accommodation = Accommodation.find(params[:id])
-    accommodation.update!(accommodation_params)
-    render json: AccommodationSerializer.new(accommodation)
-  end
 
   def create
     trip = Trip.find(params[:trip_id])
     accommodation = trip.accommodations.create!(accommodation_params)
     render json: AccommodationSerializer.new(accommodation), status: :created
+  end
+
+  def update
+    accommodation = Accommodation.find(params[:id])
+    accommodation.update!(accommodation_params)
+    render json: AccommodationSerializer.new(accommodation)
   end
 
   private
