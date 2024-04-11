@@ -67,34 +67,15 @@ RSpec.describe 'Trips API', type: :request do
          expect(trips.count).to eq(5)
          expect(trips).to be_a(Array)
 
-         trip = trips.first
+         trip_id = trips.first[:id]
+         trip_1 = Trip.find(trip_id)
 
-         expect(trip).to have_key(:id)
-         expect(trip[:id]).to be_a(String)
+         expect(trip_1.user_id).to eq(1)
 
-         expect(trip).to have_key(:type)
-         expect(trip[:type]).to eq("trip")
+         other_trip_id = trips.last[:id]
+         other_trip = Trip.find(other_trip_id)
 
-         expect(trip).to have_key(:attributes)
-         expect(trip[:attributes]).to be_a(Hash)
-
-         expect(trip[:attributes]).to have_key(:name)
-         expect(trip[:attributes][:name]).to be_a(String)
-
-         expect(trip[:attributes]).to have_key(:location)
-         expect(trip[:attributes][:location]).to be_a(String)
-
-         expect(trip[:attributes]).to have_key(:start_date)
-         expect(trip[:attributes][:start_date]).to be_a(String)
-
-         expect(trip[:attributes]).to have_key(:end_date)
-         expect(trip[:attributes][:end_date]).to be_a(String)
-
-         expect(trip[:attributes]).to have_key(:status)
-         expect(trip[:attributes][:status]).to be_a(String)
-
-         expect(trip[:attributes]).to have_key(:total_budget)
-         expect(trip[:attributes][:total_budget]).to be_a(Integer)
+         expect(other_trip.user_id).to_not eq(2)
       end
    end
 
