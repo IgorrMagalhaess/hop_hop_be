@@ -37,16 +37,16 @@ RSpec.describe 'Accommodations API', type: :request do
     end
 
     it "renders 404 if trip id doesn't exist" do
-      @accommodation_params[:trip_id] = 2
+      @accommodation_params[:trip_id] = nil
 
-      post "/api/v1/trips/2/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
+      post "/api/v1/trips/2222/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
 
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
 
       accommodation_response = JSON.parse(response.body, symbolize_names: true)
 
-      expect(accommodation_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=2")
+      expect(accommodation_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=2222")
     end
 
     it 'renders 400 if name is missing parameters' do
@@ -74,7 +74,7 @@ RSpec.describe 'Accommodations API', type: :request do
     end
 
     it 'renders 400 if check in is after check out' do
-      @accommodation_params[:check_in] = Time.parse("16:00")
+      @accommodation_params[:check_in] = DateTime.new(2025,1,10)
       post "/api/v1/trips/#{@trip.id}/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
 
       expect(response).to_not be_successful
@@ -82,7 +82,7 @@ RSpec.describe 'Accommodations API', type: :request do
       create_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(create_response[:errors]).to be_a(Array)
-      expect(create_response[:errors].first[:detail]).to eq("Validation failed: Check out must be greater than 2024-04-10 23:00:00 UTC")
+      expect(create_response[:errors].first[:detail]).to eq("Validation failed: Check out must be greater than 2025-01-10 00:00:00 UTC")
     end
   end
 
@@ -261,6 +261,46 @@ RSpec.describe 'Accommodations API', type: :request do
 
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=5")
+    end
+  end
+
+  describe "delete an accommodation" do
+    it "renders  204 if successful" do
+      accommodation = Accommodation.create!(@accommodation_params)
+
+      expect(Accommodation.count).to eq(1)
+
+      delete "/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
+      expect(Accommodation.count).to eq(0)
+    end
+
+    it 'renders 404 if trip id is invalid' do
+      accommodation = Accommodation.create!(@accommodation_params)
+
+      delete "/api/v1/trips/55/accommodations/#{accommodation.id}"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      delete_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=55")
+    end
+
+    it "renders 404 if accommodation id is invalid" do
+      delete "/api/v1/trips/#{@trip.id}/accommodations/55"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      delete_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=55")
     end
   end
 end

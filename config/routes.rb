@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :daily_itineraries, only: [:index] do
           resources :activities, only: [:index, :create, :update]
         end
-        resources :accommodations, only: [:create, :update, :show]
+        resources :accommodations, only: [:create, :update, :show, :destroy]
       end
     end
   end

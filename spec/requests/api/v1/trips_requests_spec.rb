@@ -221,32 +221,31 @@ describe 'GET /api/v1/trips/:id' do
       expect(create_response[:errors]).to be_a(Array)
       expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC")
     end
-  end    
+  end
 
-   describe "DELETE /api/v1/trips/:id" do
-      it 'will delete a trip' do
-         trip = create(:trip, user_id: 1)
+  describe "DELETE /api/v1/trips/:id" do
+    it 'will delete a trip' do
+      trip = create(:trip, user_id: 1)
 
-         expect(Trip.count).to eq(1)
+      expect(Trip.count).to eq(1)
 
-         delete "/api/v1/trips/#{trip.id}"
+      delete "/api/v1/trips/#{trip.id}"
 
-         expect(response).to be_successful
-         expect(response.status).to eq(204)
-         expect(Trip.count).to eq(0)
-      end
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
+      expect(Trip.count).to eq(0)
+    end
 
-      it 'will not delete a trip if id is invalid' do
-         delete "/api/v1/trips/123123123"
+    it 'will not delete a trip if id is invalid' do
+      delete "/api/v1/trips/123123123"
 
-         expect(response).to_not be_successful
-         expect(response.status).to eq(404)
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
 
-         delete_response = JSON.parse(response.body, symbolize_names: true)
+      delete_response = JSON.parse(response.body, symbolize_names: true)
 
-         expect(delete_response[:errors]).to be_a(Array)
-         expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
-      end
-   end
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
+    end
+  end
 end
-
