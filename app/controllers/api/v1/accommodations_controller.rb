@@ -1,5 +1,11 @@
 class Api::V1::AccommodationsController < ApplicationController
   before_action :validate_trip
+
+  def show
+    accommodation = Accommodation.find(params[:id])
+    render json: AccommodationSerializer.new(accommodation)
+  end
+
   def create
     accommodation = Accommodation.create!(accommodation_params)
     render json: AccommodationSerializer.new(accommodation), status: :created

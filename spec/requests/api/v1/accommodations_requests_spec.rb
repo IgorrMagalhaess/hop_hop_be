@@ -187,4 +187,80 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(data[:errors].first[:detail]).to eq("Validation failed: Check out must be greater than 2024-04-10 10:00:00 UTC")
     end
   end
+
+  describe "GET /trips/1/accommodations/1" do
+    it "will return data for an Accommodation" do
+      accommodation = Accommodation.create!(@accommodation_params)
+
+      get "/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}", headers: @headers, params: JSON.generate(trip_id: @trip.id)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      data = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(data).to be_a(Hash)
+
+      expect(data[:id]).to be_a(String)
+      expect(data[:id]).to eq(accommodation.id.to_s)
+
+      expect(data[:type]).to be_a(String)
+      expect(data[:type]).to eq("accommodation")
+
+      expect(data[:attributes]).to be_a(Hash)
+
+      expect(data[:attributes][:trip_id]).to be_an(Integer)
+      expect(data[:attributes][:trip_id]).to eq(@trip.id)
+
+      expect(data[:attributes][:name]).to be_a(String)
+      expect(data[:attributes][:name]).to eq("Mariott")
+
+      expect(data[:attributes][:check_in]).to be_a(String)
+      expect(data[:attributes][:check_in]).to eq("2024-04-10T10:00:00.000Z")
+
+      expect(data[:attributes][:check_out]).to be_a(String)
+      expect(data[:attributes][:check_out]).to eq("2024-04-10T16:00:00.000Z")
+
+      expect(data[:attributes][:expenses]).to be_an(Integer)
+      expect(data[:attributes][:expenses]).to eq(1000)
+
+      expect(data[:attributes][:address]).to be_a(String)
+      expect(data[:attributes][:address]).to eq("123 Main Street, Phuket, Thailand")
+
+      expect(data[:attributes][:lat]).to be_a(Float)
+      expect(data[:attributes][:lat]).to eq(7.8833043)
+
+      expect(data[:attributes][:lon]).to be_a(Float)
+      expect(data[:attributes][:lon]).to eq(98.3507689)
+
+      expect(data[:attributes][:type_of_accommodation]).to be_a(String)
+      expect(data[:attributes][:type_of_accommodation]).to eq("Hotel")
+    end
+
+    it "renders 404 if Trip doesn't exist" do
+      accommodation = Accommodation.create!(@accommodation_params)
+
+      get "/api/v1/trips/4/accommodations/#{accommodation.id}"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=4")
+    end
+
+    it "renders 404 if Accommodation doesn't exist" do
+      get "/api/v1/trips/#{@trip.id}/accommodations/5"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=5")
+    end
+  end
 end

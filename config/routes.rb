@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :trips do
         resources :activities, only: [:index]
-        resources :accommodations, only: [:create, :update]
+        resources :accommodations, only: [:create, :update, :show]
       end
     end
   end
