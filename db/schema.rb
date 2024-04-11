@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_224531) do
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "status", default: 0
     t.integer "total_budget"
     t.datetime "created_at", null: false
