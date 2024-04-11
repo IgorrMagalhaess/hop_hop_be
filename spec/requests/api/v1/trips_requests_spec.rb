@@ -133,7 +133,8 @@ RSpec.describe 'Trips API', type: :request do
          expect(response).to_not be_successful
          expect(response.status).to eq(400)
 
-         require 'pry' ; binding.pry
+         expect(trip_response).to have_key(:errors)
+         expect(trip_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
       end
 
       it 'will return 404 if the trip id is not found' do

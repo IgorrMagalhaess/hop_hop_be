@@ -13,4 +13,10 @@ class ApplicationController < ActionController::API
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400))
       .serializer_validation, status: :bad_request
    end
+
+   def render_user_error(parameters)
+      message = "Validation failed: Invalid User ID provided"
+      render json: ErrorSerializer.new(ErrorMessage.new(message, 400))
+      .serializer_validation, status: :bad_request
+   end
 end

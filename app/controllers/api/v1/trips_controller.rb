@@ -6,7 +6,11 @@ class Api::V1::TripsController < ApplicationController
 
    def show
       trip = Trip.find(params[:id])
-      render json: TripSerializer.new(trip)
+      if trip.user_id == params[:user_id].to_i
+         render json: TripSerializer.new(trip)
+      else
+         render_user_error(params)
+      end
    end
 
    def update
