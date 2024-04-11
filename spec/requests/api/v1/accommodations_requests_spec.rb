@@ -49,7 +49,7 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(accommodation_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=2")
     end
 
-    it 'renders 404 if name is missing parameters' do
+    it 'renders 400 if name is missing parameters' do
       @accommodation_params[:name] = nil
       post "/api/v1/trips/#{@trip.id}/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
 
@@ -61,7 +61,7 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(create_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
     end
 
-    it 'renders 404 if address is missing parameters' do
+    it 'renders 400 if address is missing parameters' do
       @accommodation_params[:address] = nil
       post "/api/v1/trips/#{@trip.id}/accommodations", headers: @headers, params: JSON.generate(accommodation: @accommodation_params)
 
