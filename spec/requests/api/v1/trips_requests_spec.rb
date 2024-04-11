@@ -141,16 +141,16 @@ describe 'GET /api/v1/trips/:id' do
 
     it 'will raise an error if params are blank' do
         trip_id = create(:trip, user_id: 1).id
-      trip_params = { name: "" }
-      patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
+        trip_params = { name: "" }
+        patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
 
-      update_response = JSON.parse(response.body, symbolize_names: true)
+        update_response = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response.status).to eq(400)
-      expect(response).to_not be_successful
-      expect(update_response[:errors]).to be_a(Array)
-      expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
-  end
+        expect(response.status).to eq(400)
+        expect(response).to_not be_successful
+        expect(update_response[:errors]).to be_a(Array)
+        expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
+     end
   end
 
   describe 'POST /api/v1/trips' do
@@ -221,5 +221,32 @@ describe 'GET /api/v1/trips/:id' do
       expect(create_response[:errors]).to be_a(Array)
       expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC")
     end
-  end
+  end    
+
+   describe "DELETE /api/v1/trips/:id" do
+      it 'will delete a trip' do
+         trip = create(:trip, user_id: 1)
+
+         expect(Trip.count).to eq(1)
+
+         delete "/api/v1/trips/#{trip.id}"
+
+         expect(response).to be_successful
+         expect(response.status).to eq(204)
+         expect(Trip.count).to eq(0)
+      end
+
+      it 'will not delete a trip if id is invalid' do
+         delete "/api/v1/trips/123123123"
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(404)
+
+         delete_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(delete_response[:errors]).to be_a(Array)
+         expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
+      end
+   end
 end
+
