@@ -113,7 +113,7 @@ RSpec.describe "Activities API", type: :request do
       expect(activity[:attributes][:rating]).to be_a(Float)
     end
 
-    it "renders 404 when missing name" do
+    it "renders 400 when missing name" do
       activities_body = {
         address: Faker::Address.street_address,
         description: Faker::Lorem.paragraph(sentence_count: 2),
@@ -172,6 +172,105 @@ RSpec.describe "Activities API", type: :request do
       expect(response.status).to eq(404)
 
       expect(activity_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=3")
+    end
+
+    it "tries to create an activity for a DailyItinerary that doesn't exist" do
+      activities_body = {
+        name: Faker::Sport.sport(include_ancient: true),
+        address: Faker::Address.street_address,
+        description: Faker::Lorem.paragraph(sentence_count: 2),
+        lat: Faker::Address.latitude,
+        lon: Faker::Address.longitude,
+        expenses: Faker::Number.between(from: 0, to: 500),
+        rating: Faker::Number.between(from: 2.0, to: 5.0)
+      }
+
+      post "/api/v1/trips/#{trip.id}/daily_itineraries/3/activities/", headers: @headers, params: JSON.generate(activities_body)
+
+      activity_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      expect(activity_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=3")
+    end
+  end
+
+  describe "PATCH Activity" do
+    let(:trip) { create(:trip, user_id: 1) }
+    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: trip.start_date) }
+    let(:activity) {create(:activity, daily_itinerary_id: daily_itinerary.id)}
+
+    it "renders 200 when successful" do
+      params = { name: "Lunch" }
+
+      patch "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}", headers: @headers, params: JSON.generate(params)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      edited_activity = Activity.find_by(daily_itinerary_id: daily_itinerary.id)
+
+
+      expect(edited_activity.name).to eq("Lunch")
+      expect(edited_activity.name).to_not eq(activity.name)
+    end
+
+    it "renders 404 when daily_itinerary id doesn't exist" do
+      params = { name: "Lunch" }
+
+      patch "/api/v1/trips/#{trip.id}/daily_itineraries/100/activities/#{activity.id}", headers: @headers, params: JSON.generate(params)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=100")
+    end
+
+    it "renders 404 when trip id doesn't exist" do
+      params = { name: "Lunch" }
+
+      patch "/api/v1/trips/100/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}", headers: @headers, params: JSON.generate(params)
+
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=100")
+    end
+
+    it "renders 404 when activity id doesn't exist" do
+      params = { name: "Lunch" }
+
+      patch "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/100", headers: @headers, params: JSON.generate(params)
+
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=100")
+    end
+
+    it "renders 400 when name is blank" do
+      params = { name: nil }
+
+      patch "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}", headers: @headers, params: JSON.generate(params)
+
+      activity_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
     end
   end
 end

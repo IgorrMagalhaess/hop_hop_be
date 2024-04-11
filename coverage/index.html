@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-11T11:22:52-07:00">2024-04-11T11:22:52-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-11T11:39:00-07:00">2024-04-11T11:39:00-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.44
+         1.51
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>538</b> relevant lines,
-    <span class="green"><b>538</b> lines covered</span> and
+    <b>592</b> relevant lines,
+    <span class="green"><b>592</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -84,11 +84,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8e7ad812f45be665c85cb74405a1dfcf1bb22ee2" class="src_link" title="app/controllers/api/v1/activities_controller.rb">app/controllers/api/v1/activities_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">17</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.59</td>
+            <td class="cell--number">2.24</td>
             
           </tr>
         
@@ -110,7 +110,7 @@
             <td class="cell--number">8</td>
             <td class="cell--number">8</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.38</td>
+            <td class="cell--number">4.00</td>
             
           </tr>
         
@@ -176,7 +176,7 @@
             <td class="cell--number">5</td>
             <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">9.00</td>
+            <td class="cell--number">11.00</td>
             
           </tr>
         
@@ -209,7 +209,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">7.67</td>
+            <td class="cell--number">9.33</td>
             
           </tr>
         
@@ -271,11 +271,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#eb9801f65dc5264f9b473a155525aec614531ff9" class="src_link" title="spec/requests/api/v1/activities_requests_spec.rb">spec/requests/api/v1/activities_requests_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">177</td>
-            <td class="cell--number">81</td>
-            <td class="cell--number">81</td>
+            <td class="cell--number">276</td>
+            <td class="cell--number">131</td>
+            <td class="cell--number">131</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.14</td>
+            <td class="cell--number">1.24</td>
             
           </tr>
         
@@ -737,8 +737,8 @@
     
 
     <div class="t-line-summary">
-      <b>17</b> relevant lines.
-      <span class="green"><b>17</b> lines covered</span> and
+      <b>21</b> relevant lines.
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -910,40 +910,40 @@
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">  def update</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="16">
+            <span class="hits">3</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    activity = Activity.find(params[:id])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def activity_params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="18">
+          <li class="covered" data-hits="2" data-linenumber="17">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    params.require(:activity).permit(:name, :address, :description, :lat, :lon, :expenses, :rating, :trip_id)</code>
+            <code class="ruby">    activity.update!(activity_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    render json: ActivitySerializer.new(activity)</code>
           </li>
         </div>
       
@@ -976,34 +976,12 @@
 
             
 
-            <code class="ruby">  def trip</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="22">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    Trip.find(params[:trip_id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="23">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -1014,29 +992,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
+          <li class="covered" data-hits="1" data-linenumber="23">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def daily_itinerary</code>
+            <code class="ruby">  def activity_params</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="26">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="4" data-linenumber="24">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    DailyItinerary.find(params[:daily_itinerary_id])</code>
+            <code class="ruby">    params.require(:activity).permit(:name, :address, :description, :lat, :lon, :expenses, :rating, :trip_id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="27">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -1047,7 +1025,95 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="27">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def trip</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="28">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    Trip.find(params[:trip_id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="31">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def daily_itinerary</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="32">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    DailyItinerary.find(params[:daily_itinerary_id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -1571,8 +1637,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="8">
-            <span class="hits">11</span>
+          <li class="covered" data-hits="15" data-linenumber="8">
+            <span class="hits">15</span>
             
 
             
@@ -1626,8 +1692,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="13">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="11" data-linenumber="13">
+            <span class="hits">11</span>
             
 
             
@@ -2263,8 +2329,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="4">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="26" data-linenumber="4">
+            <span class="hits">26</span>
             
 
             
@@ -2274,8 +2340,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="5">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="26" data-linenumber="5">
+            <span class="hits">26</span>
             
 
             
@@ -2532,8 +2598,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="5">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="26" data-linenumber="5">
+            <span class="hits">26</span>
             
 
             
@@ -2587,8 +2653,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="10">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="26" data-linenumber="10">
+            <span class="hits">26</span>
             
 
             
@@ -6797,8 +6863,8 @@
     
 
     <div class="t-line-summary">
-      <b>81</b> relevant lines.
-      <span class="green"><b>81</b> lines covered</span> and
+      <b>131</b> relevant lines.
+      <span class="green"><b>131</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -6854,8 +6920,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="5">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="10" data-linenumber="5">
+            <span class="hits">10</span>
             
 
             
@@ -7459,8 +7525,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="60">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="60">
+            <span class="hits">5</span>
             
 
             
@@ -8081,7 +8147,7 @@
 
             
 
-            <code class="ruby">    it &quot;renders 404 when missing name&quot; do</code>
+            <code class="ruby">    it &quot;renders 400 when missing name&quot; do</code>
           </li>
         </div>
       
@@ -8741,12 +8807,1101 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="177">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;tries to create an activity for a DailyItinerary that doesn&#39;t exist&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="178">
+            
+            
+
+            
+
+            <code class="ruby">      activities_body = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="179">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        name: Faker::Sport.sport(include_ancient: true),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="180">
+            
+            
+
+            
+
+            <code class="ruby">        address: Faker::Address.street_address,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="181">
+            
+            
+
+            
+
+            <code class="ruby">        description: Faker::Lorem.paragraph(sentence_count: 2),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="182">
+            
+            
+
+            
+
+            <code class="ruby">        lat: Faker::Address.latitude,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="183">
+            
+            
+
+            
+
+            <code class="ruby">        lon: Faker::Address.longitude,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="184">
+            
+            
+
+            
+
+            <code class="ruby">        expenses: Faker::Number.between(from: 0, to: 500),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="185">
+            
+            
+
+            
+
+            <code class="ruby">        rating: Faker::Number.between(from: 2.0, to: 5.0)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="186">
+            
+            
+
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="187">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="188">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      post &quot;/api/v1/trips/#{trip.id}/daily_itineraries/3/activities/&quot;, headers: @headers, params: JSON.generate(activities_body)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="189">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="190">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      activity_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="191">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="192">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="193">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(404)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="194">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="195">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(activity_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find DailyItinerary with &#39;id&#39;=3&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="196">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="197">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="177">
+          <li class="never" data-hits="" data-linenumber="198">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="199">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &quot;PATCH Activity&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="200">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    let(:trip) { create(:trip, user_id: 1) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="201">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: trip.start_date) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="202">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">    let(:activity) {create(:activity, daily_itinerary_id: daily_itinerary.id)}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="203">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="204">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 200 when successful&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="205">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params = { name: &quot;Lunch&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="206">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="207">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="208">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="209">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="210">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(200)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="211">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="212">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      edited_activity = Activity.find_by(daily_itinerary_id: daily_itinerary.id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="213">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="214">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="215">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(edited_activity.name).to eq(&quot;Lunch&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="216">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(edited_activity.name).to_not eq(activity.name)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="217">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="218">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="219">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 404 when daily_itinerary id doesn&#39;t exist&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="220">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params = { name: &quot;Lunch&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="221">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="222">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip.id}/daily_itineraries/100/activities/#{activity.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="223">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="224">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="225">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(404)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="226">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="227">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="228">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="229">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="230">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find DailyItinerary with &#39;id&#39;=100&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="231">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="232">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="233">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 404 when trip id doesn&#39;t exist&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="234">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params = { name: &quot;Lunch&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="235">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="236">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/100/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="237">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="238">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="239">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="240">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(404)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="241">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="242">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="243">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="244">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="245">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=100&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="246">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="247">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="248">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 404 when activity id doesn&#39;t exist&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="249">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params = { name: &quot;Lunch&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="250">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="251">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/100&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="252">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="253">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="254">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="255">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(404)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="256">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="257">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="258">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="259">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors]).to be_a(Array)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="260">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Activity with &#39;id&#39;=100&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="261">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="262">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="263">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 400 when name is blank&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="264">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params = { name: nil }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="265">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="266">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="267">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="268">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      activity_response = JSON.parse(response.body, symbolize_names: true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="269">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="270">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="271">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response.status).to eq(400)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="272">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="273">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(activity_response[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="274">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="275">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="276">
             
             
 

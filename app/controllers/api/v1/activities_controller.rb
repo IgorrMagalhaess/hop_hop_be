@@ -12,6 +12,12 @@ class Api::V1::ActivitiesController < ApplicationController
       render json: ActivitySerializer.new(activity), status: :created
   end
 
+  def update
+    activity = Activity.find(params[:id])
+    activity.update!(activity_params)
+    render json: ActivitySerializer.new(activity)
+  end
+
   private
 
   def activity_params
