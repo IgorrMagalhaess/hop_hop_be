@@ -235,5 +235,17 @@ RSpec.describe 'Trips API', type: :request do
          expect(response.status).to eq(204)
          expect(Trip.count).to eq(0)
       end
+
+      it 'will not delete a trip if id is invalid' do
+         delete "/api/v1/trips/123123123"
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(404)
+
+         delete_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(delete_response[:errors]).to be_a(Array)
+         expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
+      end
    end
 end
