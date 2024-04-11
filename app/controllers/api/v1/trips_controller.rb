@@ -1,6 +1,5 @@
 class Api::V1::TripsController < ApplicationController
    def index
-      # trips = Trip.all
       trips = Trip.where(user_id: params[:user_id])
       render json: TripSerializer.new(trips)
    end

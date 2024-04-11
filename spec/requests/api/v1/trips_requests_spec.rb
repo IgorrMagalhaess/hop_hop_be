@@ -123,6 +123,19 @@ RSpec.describe 'Trips API', type: :request do
          expect(trip[:attributes][:total_budget]).to be_a(Integer)
       end
 
+      it 'returns a trip detail only if user passed in parameters is the user_id in the trip' do
+         trip = create(:trip, user_id: 1) 
+         
+         get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 2 }
+
+         trip_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(400)
+
+         require 'pry' ; binding.pry
+      end
+
       it 'will return 404 if the trip id is not found' do
          get "/api/v1/trips/123123123", headers: @headers, params: { user_id: 1 }
 
