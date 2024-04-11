@@ -222,4 +222,18 @@ RSpec.describe 'Trips API', type: :request do
          expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC")
       end
    end
+
+   describe "DELETE /api/v1/trips/:id" do
+      it 'will delete a trip' do
+         trip = create(:trip, user_id: 1)
+
+         expect(Trip.count).to eq(1)
+
+         delete "/api/v1/trips/#{trip.id}"
+
+         expect(response).to be_successful
+         expect(response.status).to eq(204)
+         expect(Trip.count).to eq(0)
+      end
+   end
 end
