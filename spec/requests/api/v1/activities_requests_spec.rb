@@ -36,6 +36,9 @@ RSpec.describe "Activities API", type: :request do
       expect(activity).to have_key(:attributes)
       expect(activity[:attributes]).to be_a(Hash)
 
+      expect(activity[:attributes]).to have_key(:name)
+      expect(activity[:attributes][:name]).to be_a(String)
+
       expect(activity[:attributes]).to have_key(:address)
       expect(activity[:attributes][:address]).to be_a(String)
 
@@ -93,6 +96,9 @@ RSpec.describe "Activities API", type: :request do
 
       expect(activity).to have_key(:attributes)
       expect(activity[:attributes]).to be_a(Hash)
+
+      expect(activity[:attributes]).to have_key(:name)
+      expect(activity[:attributes][:name]).to be_a(String)
 
       expect(activity[:attributes]).to have_key(:address)
       expect(activity[:attributes][:address]).to be_a(String)
