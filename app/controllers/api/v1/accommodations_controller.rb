@@ -17,6 +17,12 @@ class Api::V1::AccommodationsController < ApplicationController
     render json: AccommodationSerializer.new(accommodation)
   end
 
+  def destroy
+    accommodation = Accommodation.find(params[:id])
+    accommodation.destroy
+    head :no_content, status: :no_content
+  end
+
   private
 
   def accommodation_params
