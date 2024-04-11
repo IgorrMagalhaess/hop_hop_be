@@ -18,6 +18,12 @@ class Api::V1::ActivitiesController < ApplicationController
     render json: ActivitySerializer.new(activity)
   end
 
+  def destroy
+    activity = Activity.find(params[:id])
+    activity.destroy
+    head :no_content, status: :no_content
+  end
+
   private
 
   def activity_params

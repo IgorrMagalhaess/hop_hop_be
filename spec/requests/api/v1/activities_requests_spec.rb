@@ -273,4 +273,57 @@ RSpec.describe "Activities API", type: :request do
       expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
     end
   end
+
+  describe "DESTROY Activity" do
+    let(:trip) { create(:trip, user_id: 1) }
+    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: trip.start_date) }
+    let(:activity) {create(:activity, daily_itinerary_id: daily_itinerary.id)}
+
+    it "renders  204 if successful" do
+      activity
+      expect(Activity.count).to eq(1)
+
+      delete "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
+      expect(Activity.count).to eq(0)
+    end
+
+    it 'renders 404 if trip id is invalid' do
+      delete "/api/v1/trips/200/daily_itineraries/#{daily_itinerary.id}/activities/#{activity.id}"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      delete_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=200")
+    end
+
+    it "renders 404 if activity id is invalid" do
+      delete "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/55"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      delete_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=55")
+    end
+
+    it "renders 404 if daily_itinerary id is invalid" do
+      delete "/api/v1/trips/#{trip.id}/daily_itineraries/55/activities/#{activity.id}"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      delete_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(delete_response[:errors]).to be_a(Array)
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=55")
+    end
+  end
 end
