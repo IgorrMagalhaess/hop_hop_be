@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T20:15:01-04:00">2024-04-10T20:15:01-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T20:17:38-04:00">2024-04-10T20:17:38-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  99.1%
+  100.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.22
+         1.23
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>223</b> relevant lines,
-    <span class="green"><b>221</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed. </span>
+    <b>227</b> relevant lines,
+    <span class="green"><b>227</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
-  99.1%
+  100.0%
 </span>
 )
   </div>
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8d8e006e629a0dff656fd8dd7a0bddc4b9c9d34b" class="src_link" title="app/controllers/api/v1/trips_controller.rb">app/controllers/api/v1/trips_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">17</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.59</td>
+            <td class="cell--number">1.48</td>
             
           </tr>
         
@@ -215,12 +215,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#d6dee35b11b25fc4f9d67a9d4be417f6a8c1c898" class="src_link" title="spec/requests/api/v1/trips_requests_spec.rb">spec/requests/api/v1/trips_requests_spec.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.51 %</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">239</td>
             <td class="cell--number">134</td>
-            <td class="cell--number">132</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">1.05</td>
+            <td class="cell--number">134</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.07</td>
             
           </tr>
         
@@ -255,8 +255,8 @@
     
 
     <div class="t-line-summary">
-      <b>17</b> relevant lines.
-      <span class="green"><b>17</b> lines covered</span> and
+      <b>21</b> relevant lines.
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -516,18 +516,18 @@
 
             
 
-            <code class="ruby">   private</code>
+            <code class="ruby">   def destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      trip = Trip.find(params[:id])</code>
           </li>
         </div>
       
@@ -538,18 +538,18 @@
 
             
 
-            <code class="ruby">   def trip_params</code>
+            <code class="ruby">      trip.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="26">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      params.require(:trip).permit(:name, :location, :start_date, :end_date, :status, :total_budget, :user_id)</code>
+            <code class="ruby">      head :no_content, status: :no_content</code>
           </li>
         </div>
       
@@ -566,6 +566,72 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="31">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def trip_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="32">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      params.require(:trip).permit(:name, :location, :start_date, :end_date, :status, :total_budget, :user_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -2299,7 +2365,7 @@
     <h3>spec/requests/api/v1/trips_requests_spec.rb</h3>
     <h4>
       <span class="green">
-  98.51%
+  100.0%
 </span>
 
       lines covered
@@ -2309,8 +2375,8 @@
 
     <div class="t-line-summary">
       <b>134</b> relevant lines.
-      <span class="green"><b>132</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="green"><b>134</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -4895,8 +4961,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="235">
-            
+          <li class="covered" data-hits="1" data-linenumber="235">
+            <span class="hits">1</span>
             
 
             
@@ -4906,8 +4972,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="236">
-            
+          <li class="covered" data-hits="1" data-linenumber="236">
+            <span class="hits">1</span>
             
 
             
