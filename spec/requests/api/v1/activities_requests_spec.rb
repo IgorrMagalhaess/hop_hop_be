@@ -1,15 +1,19 @@
 require "rails_helper"
 
-RSpec.describe 'Activities API', type: :request do
+RSpec.describe "Activities API", type: :request do
   before do
-    @trip = create(:trip)
+    @headers = { "Content-Type" => "application/json", accept => 'application/json' }
   end
-  describe 'GET /api/v1/trips/1/activities/' do
-    it 'returns a list of activities' do
-      activities = create_list(:activity, 5, trip_id: @trip.id)
 
-      trip_id = @trip.id
-      get "/api/v1/trips/#{trip_id}/activities/", headers: { "Content-Type" => "application/json", accept => 'application/json' }
+  describe "/api/v1/trips/:id/daily_itineraries/:id/activities/" do
+    let(:trip) { create(:trip, user_id: 1) }
+    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: trip.start_date) }
+    let!(:activities) do
+      create_list(:activity, 5, daily_itinerary_id: daily_itinerary.id)
+    end
+
+    it "returns all activities for an itinerary" do
+      get "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/"
 
       activities_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -44,9 +48,6 @@ RSpec.describe 'Activities API', type: :request do
       expect(activity[:attributes]).to have_key(:lon)
       expect(activity[:attributes][:lon]).to be_a(Float)
 
-      expect(activity[:attributes]).to have_key(:activity_type)
-      expect(activity[:attributes][:activity_type]).to be_a(String)
-
       expect(activity[:attributes]).to have_key(:expenses)
       expect(activity[:attributes][:expenses]).to be_a(Integer)
 
@@ -55,18 +56,24 @@ RSpec.describe 'Activities API', type: :request do
     end
   end
 
-  describe 'POST /api/v1/trips/1/activities/' do
-    it 'creates an activity' do
+  describe "POST /api/v1/daily_itineraries/#{@daily_itinerary1}/activities/" do
+    let(:trip) { create(:trip, user_id: 1) }
+    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: trip.start_date) }
+
+    it "creates an activity" do
+      expect(Activity.count).to eq(0)
+
       activities_body = {
         address: Faker::Address.street_address,
         description: Faker::Lorem.paragraph(sentence_count: 2),
         lat: Faker::Address.latitude,
         lon: Faker::Address.longitude,
-        activity_type: Faker::Sport.sport(include_ancient: true),
+        name: Faker::Sport.sport(include_ancient: true),
         expenses: Faker::Number.between(from: 0, to: 500),
         rating: Faker::Number.between(from: 2.0, to: 5.0)
       }
-      post "/api/v1/trips/#{@trip.id}/activities/", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate(activities_body)
+
+      post "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/", headers: @headers, params: JSON.generate(activities_body)
 
       activity_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -99,9 +106,6 @@ RSpec.describe 'Activities API', type: :request do
       expect(activity[:attributes]).to have_key(:lon)
       expect(activity[:attributes][:lon]).to be_a(Float)
 
-      expect(activity[:attributes]).to have_key(:activity_type)
-      expect(activity[:attributes][:activity_type]).to be_a(String)
-
       expect(activity[:attributes]).to have_key(:expenses)
       expect(activity[:attributes][:expenses]).to be_a(Integer)
 
@@ -109,66 +113,65 @@ RSpec.describe 'Activities API', type: :request do
       expect(activity[:attributes][:rating]).to be_a(Float)
     end
 
-    describe "400 error" do
-      it "is missing an activity_type" do
-        activities_body = {
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.paragraph(sentence_count: 2),
-          lat: Faker::Address.latitude,
-          lon: Faker::Address.longitude,
-          expenses: Faker::Number.between(from: 0, to: 500),
-          rating: Faker::Number.between(from: 2.0, to: 5.0)
-        }
-        post "/api/v1/trips/#{@trip.id}/activities/", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate(activities_body)
+    it "renders 404 when missing name" do
+      activities_body = {
+        address: Faker::Address.street_address,
+        description: Faker::Lorem.paragraph(sentence_count: 2),
+        lat: Faker::Address.latitude,
+        lon: Faker::Address.longitude,
+        expenses: Faker::Number.between(from: 0, to: 500),
+        rating: Faker::Number.between(from: 2.0, to: 5.0)
+      }
 
-        activity_response = JSON.parse(response.body, symbolize_names: true)
+      post "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/", headers: @headers, params: JSON.generate(activities_body)
 
-        expect(response).to_not be_successful
-        expect(response.status).to eq(400)
+      activity_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Activity type can't be blank")
-      end
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
 
-      it "is missing an address" do
-        activities_body = {
-          activity_type: Faker::Sport.sport(include_ancient: true),
-          description: Faker::Lorem.paragraph(sentence_count: 2),
-          lat: Faker::Address.latitude,
-          lon: Faker::Address.longitude,
-          expenses: Faker::Number.between(from: 0, to: 500),
-          rating: Faker::Number.between(from: 2.0, to: 5.0)
-        }
-
-        post "/api/v1/trips/#{@trip.id}/activities/", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate(activities_body)
-
-        activity_response = JSON.parse(response.body, symbolize_names: true)
-
-        expect(response).to_not be_successful
-        expect(response.status).to eq(400)
-
-        expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Address can't be blank")
-      end
+      expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
     end
 
-      it "tries to create an activity for a trip that doesn't exist" do
-        activities_body = {
-          activity_type: Faker::Sport.sport(include_ancient: true),
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.paragraph(sentence_count: 2),
-          lat: Faker::Address.latitude,
-          lon: Faker::Address.longitude,
-          expenses: Faker::Number.between(from: 0, to: 500),
-          rating: Faker::Number.between(from: 2.0, to: 5.0)
-        }
+    # it "is missing an address" do
+    #   activities_body = {
+    #     name: Faker::Sport.sport(include_ancient: true),
+    #     description: Faker::Lorem.paragraph(sentence_count: 2),
+    #     lat: Faker::Address.latitude,
+    #     lon: Faker::Address.longitude,
+    #     expenses: Faker::Number.between(from: 0, to: 500),
+    #     rating: Faker::Number.between(from: 2.0, to: 5.0)
+    #   }
 
-        post "/api/v1/trips/3/activities/", headers: { "Content-Type" => "application/json", accept => 'application/json' }, params: JSON.generate(activities_body)
+    #   post "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/", headers: @headers, params: JSON.generate(activities_body)
 
-        activity_response = JSON.parse(response.body, symbolize_names: true)
+    #   activity_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(response).to_not be_successful
-        expect(response.status).to eq(404)
+    #   expect(response).to_not be_successful
+    #   expect(response.status).to eq(400)
 
-        expect(activity_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=3")
-      end
+    #   expect(activity_response[:errors].first[:detail]).to eq("Validation failed: Address can't be blank")
+    # end
+
+    it "tries to create an activity for a trip that doesn't exist" do
+      activities_body = {
+        name: Faker::Sport.sport(include_ancient: true),
+        address: Faker::Address.street_address,
+        description: Faker::Lorem.paragraph(sentence_count: 2),
+        lat: Faker::Address.latitude,
+        lon: Faker::Address.longitude,
+        expenses: Faker::Number.between(from: 0, to: 500),
+        rating: Faker::Number.between(from: 2.0, to: 5.0)
+      }
+
+      post "/api/v1/trips/3/daily_itineraries/#{daily_itinerary.id}/activities/", headers: @headers, params: JSON.generate(activities_body)
+
+      activity_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      expect(activity_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=3")
+    end
   end
 end

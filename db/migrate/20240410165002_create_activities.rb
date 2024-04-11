@@ -6,7 +6,6 @@ class CreateActivities < ActiveRecord::Migration[7.1]
       t.string :description
       t.float :lat
       t.float :lon
-      t.string :activity_type
       t.integer :expenses
       t.float :rating
       t.references :daily_itinerary, null: false, foreign_key: true
