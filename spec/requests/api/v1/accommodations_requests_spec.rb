@@ -105,7 +105,6 @@ RSpec.describe 'Accommodations API', type: :request do
     end
 
     it "renders 404 if accommodation id doesn't exist" do
-      accommodation = Accommodation.create(@accommodation_params)
       params = { address: "1234567 Mario Kart" }
 
       patch "/api/v1/trips/#{@trip.id}/accommodations/2", headers: @headers, params: JSON.generate(params)
@@ -118,6 +117,23 @@ RSpec.describe 'Accommodations API', type: :request do
 
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=2")
+    end
+
+    it "renders 404 if trip id doesn't exist" do
+      accommodation = Accommodation.create(@accommodation_params)
+
+      params = { address: "1234567 Mario Kart" }
+
+      patch "/api/v1/trips/2/accommodations/#{accommodation.id}", headers: @headers, params: JSON.generate(params)
+
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=2")
     end
 
     it "renders 400 if name is blank" do

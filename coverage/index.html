@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T16:49:00-07:00">2024-04-10T16:49:00-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-10T17:11:29-07:00">2024-04-10T17:11:29-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.42
+         1.45
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>331</b> relevant lines,
-    <span class="green"><b>331</b> lines covered</span> and
+    <b>341</b> relevant lines,
+    <span class="green"><b>341</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0fa297e81af38ee2ab9cdd20a2f328a075431628" class="src_link" title="app/controllers/api/v1/accommodations_controller.rb">app/controllers/api/v1/accommodations_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">12</td>
+            <td class="cell--number">23</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">14</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.75</td>
+            <td class="cell--number">2.93</td>
             
           </tr>
         
@@ -99,7 +99,7 @@
             <td class="cell--number">8</td>
             <td class="cell--number">8</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.38</td>
+            <td class="cell--number">2.50</td>
             
           </tr>
         
@@ -165,7 +165,7 @@
             <td class="cell--number">5</td>
             <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.80</td>
+            <td class="cell--number">6.20</td>
             
           </tr>
         
@@ -187,7 +187,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.00</td>
+            <td class="cell--number">5.33</td>
             
           </tr>
         
@@ -238,9 +238,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#00474f559247b0fda9bd9f066ad1e2292b9cf83a" class="src_link" title="spec/requests/api/v1/accommodations_requests_spec.rb">spec/requests/api/v1/accommodations_requests_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">217</td>
-            <td class="cell--number">98</td>
-            <td class="cell--number">98</td>
+            <td class="cell--number">190</td>
+            <td class="cell--number">106</td>
+            <td class="cell--number">106</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.28</td>
             
@@ -288,8 +288,8 @@
     
 
     <div class="t-line-summary">
-      <b>12</b> relevant lines.
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>14</b> relevant lines.
+      <span class="green"><b>14</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -312,13 +312,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="2">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  before_action :validate_trip</code>
           </li>
         </div>
       
@@ -334,29 +334,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="4">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    trip = Trip.find(params[:trip_id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="5">
+          <li class="covered" data-hits="4" data-linenumber="4">
             <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    accommodation = trip.accommodations.create!(accommodation_params)</code>
+            <code class="ruby">    accommodation = Accommodation.create!(accommodation_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
+          <li class="covered" data-hits="1" data-linenumber="5">
             <span class="hits">1</span>
             
 
@@ -367,7 +356,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
+          <li class="never" data-hits="" data-linenumber="6">
             
             
 
@@ -378,7 +367,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -389,7 +378,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="8">
             <span class="hits">1</span>
             
 
@@ -400,7 +389,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="10">
+          <li class="covered" data-hits="5" data-linenumber="9">
             <span class="hits">5</span>
             
 
@@ -411,7 +400,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="11">
+          <li class="covered" data-hits="4" data-linenumber="10">
             <span class="hits">4</span>
             
 
@@ -422,7 +411,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
+          <li class="covered" data-hits="1" data-linenumber="11">
             <span class="hits">1</span>
             
 
@@ -433,7 +422,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="12">
             
             
 
@@ -444,7 +433,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="13">
             
             
 
@@ -455,7 +444,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
+          <li class="covered" data-hits="1" data-linenumber="14">
             <span class="hits">1</span>
             
 
@@ -466,7 +455,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -477,7 +466,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="1" data-linenumber="16">
             <span class="hits">1</span>
             
 
@@ -488,7 +477,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="18">
+          <li class="covered" data-hits="8" data-linenumber="17">
             <span class="hits">8</span>
             
 
@@ -499,7 +488,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="18">
             
             
 
@@ -510,7 +499,51 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def validate_trip</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="21">
+            <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    Trip.find(params[:trip_id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
             
             
 
@@ -968,8 +1001,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="8">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="5" data-linenumber="8">
+            <span class="hits">5</span>
             
 
             
@@ -1649,8 +1682,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="4">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="14" data-linenumber="4">
+            <span class="hits">14</span>
             
 
             
@@ -1660,8 +1693,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="5">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="14" data-linenumber="5">
+            <span class="hits">14</span>
             
 
             
@@ -1843,8 +1876,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="5">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="14" data-linenumber="5">
+            <span class="hits">14</span>
             
 
             
@@ -1898,8 +1931,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="10">
-            <span class="hits">13</span>
+          <li class="covered" data-hits="14" data-linenumber="10">
+            <span class="hits">14</span>
             
 
             
@@ -2369,7 +2402,7 @@
 
             
 
-            <code class="ruby">   describe &#39;validations&#39; do</code>
+            <code class="ruby">  describe &#39;validations&#39; do</code>
           </li>
         </div>
       
@@ -2380,7 +2413,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:name) }</code>
+            <code class="ruby">    it { should validate_presence_of(:name) }</code>
           </li>
         </div>
       
@@ -2391,7 +2424,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:location) }</code>
+            <code class="ruby">    it { should validate_presence_of(:location) }</code>
           </li>
         </div>
       
@@ -2402,7 +2435,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:start_date) }</code>
+            <code class="ruby">    it { should validate_presence_of(:start_date) }</code>
           </li>
         </div>
       
@@ -2413,7 +2446,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:end_date) }</code>
+            <code class="ruby">    it { should validate_presence_of(:end_date) }</code>
           </li>
         </div>
       
@@ -2424,7 +2457,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:status) }</code>
+            <code class="ruby">    it { should validate_presence_of(:status) }</code>
           </li>
         </div>
       
@@ -2435,7 +2468,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:total_budget) }</code>
+            <code class="ruby">    it { should validate_presence_of(:total_budget) }</code>
           </li>
         </div>
       
@@ -2446,7 +2479,7 @@
 
             
 
-            <code class="ruby">      it { should validate_presence_of(:user_id) }</code>
+            <code class="ruby">    it { should validate_presence_of(:user_id) }</code>
           </li>
         </div>
       
@@ -2468,7 +2501,7 @@
 
             
 
-            <code class="ruby">      it &#39;validates that start date cannot be later than end date&#39; do</code>
+            <code class="ruby">    it &#39;validates that start date cannot be later than end date&#39; do</code>
           </li>
         </div>
       
@@ -2479,7 +2512,7 @@
 
             
 
-            <code class="ruby">         trip = Trip.new({</code>
+            <code class="ruby">      trip = Trip.new({</code>
           </li>
         </div>
       
@@ -2490,7 +2523,7 @@
 
             
 
-            <code class="ruby">            name: &quot;Visiting Family&quot;,</code>
+            <code class="ruby">        name: &quot;Visiting Family&quot;,</code>
           </li>
         </div>
       
@@ -2501,7 +2534,7 @@
 
             
 
-            <code class="ruby">            location: &quot;Brazil&quot;,</code>
+            <code class="ruby">        location: &quot;Brazil&quot;,</code>
           </li>
         </div>
       
@@ -2512,7 +2545,7 @@
 
             
 
-            <code class="ruby">            start_date: DateTime.new(2025,1,10),</code>
+            <code class="ruby">        start_date: DateTime.new(2025,1,10),</code>
           </li>
         </div>
       
@@ -2523,7 +2556,7 @@
 
             
 
-            <code class="ruby">            end_date: DateTime.new(2024,1,10),</code>
+            <code class="ruby">        end_date: DateTime.new(2024,1,10),</code>
           </li>
         </div>
       
@@ -2534,7 +2567,7 @@
 
             
 
-            <code class="ruby">            total_budget: 10000,</code>
+            <code class="ruby">        total_budget: 10000,</code>
           </li>
         </div>
       
@@ -2545,7 +2578,7 @@
 
             
 
-            <code class="ruby">            user_id: 1  </code>
+            <code class="ruby">        user_id: 1</code>
           </li>
         </div>
       
@@ -2556,7 +2589,7 @@
 
             
 
-            <code class="ruby">         })</code>
+            <code class="ruby">      })</code>
           </li>
         </div>
       
@@ -2578,7 +2611,7 @@
 
             
 
-            <code class="ruby">         expect(trip).to_not be_valid</code>
+            <code class="ruby">      expect(trip).to_not be_valid</code>
           </li>
         </div>
       
@@ -2589,7 +2622,7 @@
 
             
 
-            <code class="ruby">         expect(trip.errors[:end_date]).to include(&quot;must be greater than #{trip.start_date}&quot;)</code>
+            <code class="ruby">      expect(trip.errors[:end_date]).to include(&quot;must be greater than #{trip.start_date}&quot;)</code>
           </li>
         </div>
       
@@ -2600,7 +2633,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -2611,7 +2644,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2622,7 +2655,7 @@
 
             
 
-            <code class="ruby">   </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2633,7 +2666,7 @@
 
             
 
-            <code class="ruby">   describe &#39;relationships&#39; do</code>
+            <code class="ruby">  describe &#39;relationships&#39; do</code>
           </li>
         </div>
       
@@ -2644,7 +2677,7 @@
 
             
 
-            <code class="ruby">      it { should have_many :daily_itineraries }</code>
+            <code class="ruby">    it { should have_many :daily_itineraries }</code>
           </li>
         </div>
       
@@ -2655,7 +2688,7 @@
 
             
 
-            <code class="ruby">      it { should have_many(:activities).through(:daily_itineraries) }</code>
+            <code class="ruby">    it { should have_many(:activities).through(:daily_itineraries) }</code>
           </li>
         </div>
       
@@ -2666,7 +2699,7 @@
 
             
 
-            <code class="ruby">      it { should have_many(:accommodations) }</code>
+            <code class="ruby">    it { should have_many(:accommodations) }</code>
           </li>
         </div>
       
@@ -2677,7 +2710,7 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2711,8 +2744,8 @@
     
 
     <div class="t-line-summary">
-      <b>98</b> relevant lines.
-      <span class="green"><b>98</b> lines covered</span> and
+      <b>106</b> relevant lines.
+      <span class="green"><b>106</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2768,8 +2801,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="5">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="11" data-linenumber="5">
+            <span class="hits">11</span>
             
 
             
@@ -2779,8 +2812,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="6">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="11" data-linenumber="6">
+            <span class="hits">11</span>
             
 
             
@@ -2801,8 +2834,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="8">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="11" data-linenumber="8">
+            <span class="hits">11</span>
             
 
             
@@ -3907,23 +3940,12 @@
 
             
 
-            <code class="ruby">      accommodation = Accommodation.create(@accommodation_params)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="109">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      params = { address: &quot;1234567 Mario Kart&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="110">
+          <li class="never" data-hits="" data-linenumber="109">
             
             
 
@@ -3934,13 +3956,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="111">
+          <li class="covered" data-hits="1" data-linenumber="110">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">      patch &quot;/api/v1/trips/#{@trip.id}/accommodations/2&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3956,18 +3989,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="113">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="114">
+          <li class="covered" data-hits="1" data-linenumber="113">
             <span class="hits">1</span>
             
 
@@ -3978,7 +4000,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="115">
+          <li class="covered" data-hits="1" data-linenumber="114">
             <span class="hits">1</span>
             
 
@@ -3989,7 +4011,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="116">
+          <li class="never" data-hits="" data-linenumber="115">
             
             
 
@@ -4000,7 +4022,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="117">
+          <li class="covered" data-hits="1" data-linenumber="116">
             <span class="hits">1</span>
             
 
@@ -4011,7 +4033,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="118">
+          <li class="never" data-hits="" data-linenumber="117">
             
             
 
@@ -4022,7 +4044,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="119">
+          <li class="covered" data-hits="1" data-linenumber="118">
             <span class="hits">1</span>
             
 
@@ -4033,7 +4055,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="120">
+          <li class="covered" data-hits="1" data-linenumber="119">
             <span class="hits">1</span>
             
 
@@ -4044,7 +4066,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="121">
+          <li class="never" data-hits="" data-linenumber="120">
             
             
 
@@ -4055,13 +4077,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="122">
+          <li class="never" data-hits="" data-linenumber="121">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="122">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 404 if trip id doesn&#39;t exist&quot; do</code>
           </li>
         </div>
       
@@ -4072,23 +4105,12 @@
 
             
 
-            <code class="ruby">    it &quot;renders 400 if name is blank&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="124">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      accommodation = Accommodation.create(@accommodation_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="125">
+          <li class="never" data-hits="" data-linenumber="124">
             
             
 
@@ -4099,18 +4121,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="126">
+          <li class="covered" data-hits="1" data-linenumber="125">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      params = { name: nil }</code>
+            <code class="ruby">      params = { address: &quot;1234567 Mario Kart&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="127">
+          <li class="never" data-hits="" data-linenumber="126">
             
             
 
@@ -4121,13 +4143,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="128">
+          <li class="covered" data-hits="1" data-linenumber="127">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      patch &quot;/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+            <code class="ruby">      patch &quot;/api/v1/trips/2/accommodations/#{accommodation.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4143,18 +4176,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="130">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="131">
+          <li class="covered" data-hits="1" data-linenumber="130">
             <span class="hits">1</span>
             
 
@@ -4165,18 +4187,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="132">
+          <li class="covered" data-hits="1" data-linenumber="131">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(response.status).to eq(400)</code>
+            <code class="ruby">      expect(response.status).to eq(404)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="133">
+          <li class="never" data-hits="" data-linenumber="132">
             
             
 
@@ -4187,7 +4209,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="134">
+          <li class="covered" data-hits="1" data-linenumber="133">
             <span class="hits">1</span>
             
 
@@ -4198,7 +4220,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="135">
+          <li class="never" data-hits="" data-linenumber="134">
             
             
 
@@ -4209,7 +4231,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="136">
+          <li class="covered" data-hits="1" data-linenumber="135">
             <span class="hits">1</span>
             
 
@@ -4220,18 +4242,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="137">
+          <li class="covered" data-hits="1" data-linenumber="136">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=2&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="138">
+          <li class="never" data-hits="" data-linenumber="137">
             
             
 
@@ -4242,13 +4264,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="139">
+          <li class="never" data-hits="" data-linenumber="138">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="139">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 400 if name is blank&quot; do</code>
           </li>
         </div>
       
@@ -4259,23 +4292,12 @@
 
             
 
-            <code class="ruby">    it &quot;renders 400 if address is blank&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="141">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      accommodation = Accommodation.create(@accommodation_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="142">
+          <li class="never" data-hits="" data-linenumber="141">
             
             
 
@@ -4286,18 +4308,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="143">
+          <li class="covered" data-hits="1" data-linenumber="142">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      params = { address: nil }</code>
+            <code class="ruby">      params = { name: nil }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="144">
+          <li class="never" data-hits="" data-linenumber="143">
             
             
 
@@ -4308,13 +4330,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="145">
+          <li class="covered" data-hits="1" data-linenumber="144">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">      patch &quot;/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="145">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4330,18 +4363,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="147">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="148">
+          <li class="covered" data-hits="1" data-linenumber="147">
             <span class="hits">1</span>
             
 
@@ -4352,7 +4374,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="149">
+          <li class="covered" data-hits="1" data-linenumber="148">
             <span class="hits">1</span>
             
 
@@ -4363,7 +4385,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="150">
+          <li class="never" data-hits="" data-linenumber="149">
             
             
 
@@ -4374,7 +4396,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="151">
+          <li class="covered" data-hits="1" data-linenumber="150">
             <span class="hits">1</span>
             
 
@@ -4385,7 +4407,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="152">
+          <li class="never" data-hits="" data-linenumber="151">
             
             
 
@@ -4396,7 +4418,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="153">
+          <li class="covered" data-hits="1" data-linenumber="152">
             <span class="hits">1</span>
             
 
@@ -4407,18 +4429,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="154">
+          <li class="covered" data-hits="1" data-linenumber="153">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Address can&#39;t be blank&quot;)</code>
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="155">
+          <li class="never" data-hits="" data-linenumber="154">
             
             
 
@@ -4429,13 +4451,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="156">
+          <li class="never" data-hits="" data-linenumber="155">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="156">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;renders 400 if address is blank&quot; do</code>
           </li>
         </div>
       
@@ -4446,23 +4479,12 @@
 
             
 
-            <code class="ruby">    it &quot;renders 400 if check out is before check in&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="158">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">      accommodation = Accommodation.create(@accommodation_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="159">
+          <li class="never" data-hits="" data-linenumber="158">
             
             
 
@@ -4473,18 +4495,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="160">
+          <li class="covered" data-hits="1" data-linenumber="159">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      params = { check_out: &quot;2023-04-10 10:00:00 UTC&quot;}</code>
+            <code class="ruby">      params = { address: nil }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="161">
+          <li class="never" data-hits="" data-linenumber="160">
             
             
 
@@ -4495,13 +4517,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="162">
+          <li class="covered" data-hits="1" data-linenumber="161">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">      patch &quot;/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="162">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4517,18 +4550,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="164">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="165">
+          <li class="covered" data-hits="1" data-linenumber="164">
             <span class="hits">1</span>
             
 
@@ -4539,7 +4561,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="166">
+          <li class="covered" data-hits="1" data-linenumber="165">
             <span class="hits">1</span>
             
 
@@ -4550,7 +4572,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="167">
+          <li class="never" data-hits="" data-linenumber="166">
             
             
 
@@ -4561,7 +4583,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="168">
+          <li class="covered" data-hits="1" data-linenumber="167">
             <span class="hits">1</span>
             
 
@@ -4572,7 +4594,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="169">
+          <li class="never" data-hits="" data-linenumber="168">
             
             
 
@@ -4583,7 +4605,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="170">
+          <li class="covered" data-hits="1" data-linenumber="169">
             <span class="hits">1</span>
             
 
@@ -4594,18 +4616,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="171">
+          <li class="covered" data-hits="1" data-linenumber="170">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Check out must be greater than 2024-04-10 10:00:00 UTC&quot;)</code>
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Address can&#39;t be blank&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="172">
+          <li class="never" data-hits="" data-linenumber="171">
             
             
 
@@ -4616,24 +4638,35 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="173">
+          <li class="never" data-hits="" data-linenumber="172">
             
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="174">
+          <li class="covered" data-hits="1" data-linenumber="173">
+            <span class="hits">1</span>
             
+
+            
+
+            <code class="ruby">    it &quot;renders 400 if check out is before check in&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="174">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">end</code>
+            <code class="ruby">      accommodation = Accommodation.create(@accommodation_params)</code>
           </li>
         </div>
       
@@ -4649,13 +4682,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="176">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="176">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      params = { check_out: &quot;2023-04-10 10:00:00 UTC&quot;}</code>
           </li>
         </div>
       
@@ -4666,18 +4699,18 @@
 
             
 
-            <code class="ruby">  # describe &quot;PATCH /api/v1/trips/:id/accommodations&quot; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="178">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="178">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  #   it &#39;updates accommodation details&#39; do</code>
+            
+
+            <code class="ruby">      patch &quot;/api/v1/trips/#{@trip.id}/accommodations/#{accommodation.id}&quot;, headers: @headers, params: JSON.generate(params)</code>
           </li>
         </div>
       
@@ -4688,7 +4721,7 @@
 
             
 
-            <code class="ruby">  #     previous_name = Accommodation.last.name</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4699,29 +4732,29 @@
 
             
 
-            <code class="ruby">  #     accommodation_params = { name: &#39;Different Name&#39; }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="181">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="182">
+          <li class="covered" data-hits="1" data-linenumber="181">
+            <span class="hits">1</span>
             
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="182">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  #     patch &quot;/api/v1/trips/#{trip_id}/accommodations&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
+            <code class="ruby">      expect(response.status).to eq(400)</code>
           </li>
         </div>
       
@@ -4737,13 +4770,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="184">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="184">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  #     response = JSON.parse(response.body, symbolize_names: true)</code>
+            
+
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
@@ -4759,24 +4792,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="186">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="186">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  #     expect(response).to be_successful</code>
+            
+
+            <code class="ruby">      expect(data[:errors]).to be_a(Array)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="187">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="187">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  #     expect(response.status).to eq(200)</code>
+            
+
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Validation failed: Check out must be greater than 2024-04-10 10:00:00 UTC&quot;)</code>
           </li>
         </div>
       
@@ -4787,7 +4820,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4798,7 +4831,7 @@
 
             
 
-            <code class="ruby">  #     accommodation = Trip.find_by(id: trip_id)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4809,304 +4842,7 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="191">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(accommodation.name).to eq(&#39;Different Name&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="192">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(accommodation.name).to_not eq(previous_name)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="193">
-            
-            
-
-            
-
-            <code class="ruby">  #   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="194">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="195">
-            
-            
-
-            
-
-            <code class="ruby">  #   it &#39;will raise error if accommodation ID is not found&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="196">
-            
-            
-
-            
-
-            <code class="ruby">  #     accommodation_params = { name: &#39;Different Name&#39; }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="197">
-            
-            
-
-            
-
-            <code class="ruby">  #     patch &quot;/api/v1/trips/12323232/accommodations&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="198">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="199">
-            
-            
-
-            
-
-            <code class="ruby">  #     update_response = JSON.parse(response.body, symbolize_names: true)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="200">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="201">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(response.status).to eq(404)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="202">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(response).to_not be_successful</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="203">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(update_response[:errors]).to be_a(Array)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="204">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(update_response[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Trip with &#39;id&#39;=12323232&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="205">
-            
-            
-
-            
-
-            <code class="ruby">  #   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="206">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="207">
-            
-            
-
-            
-
-            <code class="ruby">  #   it &#39;will raise an error if params are blank&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="208">
-            
-            
-
-            
-
-            <code class="ruby">  #     patch &quot;/api/v1/trips/#{trip_id}&quot;, headers: @headers, params: JSON.generate({accommodation: @accommodation_params })</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="209">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="210">
-            
-            
-
-            
-
-            <code class="ruby">  #     update_response = JSON.parse(response.body, symbolize_names: true)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="211">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="212">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(response.status).to eq(400)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="213">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(response).to_not be_successful</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="214">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(update_response[:errors]).to be_a(Array)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="215">
-            
-            
-
-            
-
-            <code class="ruby">  #     expect(update_response[:errors].first[:detail]).to eq(&quot;Validation failed: Name can&#39;t be blank&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="216">
-            
-            
-
-            
-
-            <code class="ruby">  # end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="217">
-            
-            
-
-            
-
-            <code class="ruby">  # end</code>
+            <code class="ruby">end</code>
           </li>
         </div>
       

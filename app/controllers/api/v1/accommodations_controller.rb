@@ -1,8 +1,7 @@
 class Api::V1::AccommodationsController < ApplicationController
-
+  before_action :validate_trip
   def create
-    trip = Trip.find(params[:trip_id])
-    accommodation = trip.accommodations.create!(accommodation_params)
+    accommodation = Accommodation.create!(accommodation_params)
     render json: AccommodationSerializer.new(accommodation), status: :created
   end
 
@@ -16,5 +15,9 @@ class Api::V1::AccommodationsController < ApplicationController
 
   def accommodation_params
     params.require(:accommodation).permit(:trip_id, :name, :address, :check_in, :check_out, :type_of_accommodation, :expenses, :lat, :lon)
+  end
+
+  def validate_trip
+    Trip.find(params[:trip_id])
   end
 end

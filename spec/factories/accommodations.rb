@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :accommodation do
     trip_id { Faker::Number.between(from: 1, to: 2) }
     name { Faker::Name.name }
-    address { Faker::Address.street }
+    address { Faker::Address.street_address }
     lat { Faker::Address.latitude }
     lon { Faker::Address.longitude }
     check_in { Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 3) }
