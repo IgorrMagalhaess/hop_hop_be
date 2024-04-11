@@ -219,7 +219,7 @@ describe 'GET /api/v1/trips/:id' do
       create_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(create_response[:errors]).to be_a(Array)
-      expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10 12:00:00 UTC")
+      expect(create_response[:errors].first[:detail]).to eq("Validation failed: End date must be greater than 2025-12-10")
     end
   end
 
