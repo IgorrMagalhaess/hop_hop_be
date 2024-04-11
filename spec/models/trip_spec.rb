@@ -30,4 +30,15 @@ RSpec.describe Trip, type: :model do
       it { should have_many(:activities).through(:daily_itineraries) }
       it { should have_many(:accommodations) }
    end
+
+   describe ".trips_by_user_id" do
+      it "returns trips for a specific user" do
+         trips_1 = create_list(:trip, 5, user_id: 1)
+         trips_2 = create_list(:trip, 5, user_id: 2)
+
+         expect(Trip.trips_by_user_id(1).count).to eq(5)
+         expect(Trip.trips_by_user_id(1).first).to_not eq(trips_2.first)
+         
+      end
+   end
 end

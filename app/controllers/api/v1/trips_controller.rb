@@ -36,6 +36,6 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def filter_user_trips
-      @trips = Trip.where(user_id: params[:user_id])
+      @trips = Trip.trips_by_user_id(params[:user_id])
    end
 end
