@@ -20,6 +20,12 @@ class Api::V1::TripsController < ApplicationController
       render json: TripSerializer.new(trip), status: :created
    end
 
+   def destroy
+      trip = Trip.find(params[:id])
+      trip.destroy
+      head :no_content, status: :no_content
+   end
+
    private
 
    def trip_params
