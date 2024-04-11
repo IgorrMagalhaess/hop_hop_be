@@ -38,7 +38,6 @@ RSpec.describe Trip, type: :model do
 
          expect(Trip.trips_by_user_id(1).count).to eq(5)
          expect(Trip.trips_by_user_id(1).first).to_not eq(trips_2.first)
-         
       end
    end
 end
