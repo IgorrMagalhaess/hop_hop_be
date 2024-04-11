@@ -12,4 +12,8 @@ class Trip < ApplicationRecord
    validates :user_id, presence: true
 
    enum status: [:in_progress, :completed]
+
+   def self.trips_by_user_id(user_id)
+      where(user_id: user_id)
+   end
 end

@@ -1,18 +1,19 @@
 class Api::V1::TripsController < ApplicationController
+   before_action :set_trip, only: [:show, :update]
+   before_action :confirm_user, only: [:show, :update]
+   before_action :filter_user_trips, only: [:index]
+   
    def index
-      trips = Trip.all
-      render json: TripSerializer.new(trips)
+      render json: TripSerializer.new(@trips)
    end
 
    def show
-      trip = Trip.find(params[:id])
-      render json: TripSerializer.new(trip)
+      render json: TripSerializer.new(@trip)
    end
 
    def update
-      trip = Trip.find(params[:id])
-      trip.update!(trip_params)
-      render json: TripSerializer.new(trip)
+      @trip.update!(trip_params)
+      render json: TripSerializer.new(@trip)
    end
 
    def create
@@ -30,5 +31,17 @@ class Api::V1::TripsController < ApplicationController
 
    def trip_params
       params.require(:trip).permit(:name, :location, :start_date, :end_date, :status, :total_budget, :user_id)
+   end
+
+   def set_trip
+      @trip = Trip.find(params[:id])
+   end
+
+   def confirm_user
+      render_user_error(params) if @trip.user_id != params[:user_id].to_i 
+   end
+
+   def filter_user_trips
+      @trips = Trip.trips_by_user_id(params[:user_id])
    end
 end

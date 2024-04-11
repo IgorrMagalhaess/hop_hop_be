@@ -19,15 +19,25 @@ RSpec.describe Trip, type: :model do
         total_budget: 10000,
         user_id: 1
       })
+         expect(trip).to_not be_valid
+         expect(trip.errors[:end_date]).to include("must be greater than #{trip.start_date}")
+      end
+   end
+   
+   describe 'relationships' do
+      it { should have_many :daily_itineraries }
+      it { should have_many(:activities).through(:daily_itineraries) }
+      it { should have_many(:accommodations) }
+   end
 
-      expect(trip).to_not be_valid
-      expect(trip.errors[:end_date]).to include("must be greater than #{trip.start_date}")
-    end
-  end
+   describe ".trips_by_user_id" do
+      it "returns trips for a specific user" do
+         trips_1 = create_list(:trip, 5, user_id: 1)
+         trips_2 = create_list(:trip, 5, user_id: 2)
 
-  describe 'relationships' do
-    it { should have_many :daily_itineraries }
-    it { should have_many(:activities).through(:daily_itineraries) }
-    it { should have_many(:accommodations) }
-  end
+         expect(Trip.trips_by_user_id(1).count).to eq(5)
+         expect(Trip.trips_by_user_id(1).first).to_not eq(trips_2.first)
+      end
+   end
 end
+
