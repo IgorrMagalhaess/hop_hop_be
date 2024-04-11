@@ -7,7 +7,53 @@ RSpec.describe 'Trips API', type: :request do
 
    describe 'GET /api/v1/trips' do
       it 'returns a list of trips' do
-         trips = create_list(:trip, 5, user_id: 1) 
+         trips = create_list(:trip, 5, user_id: 1)
+
+         get '/api/v1/trips', headers: @headers, params: { user_id: 1 }
+
+         trips_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response).to be_successful
+         expect(response.status).to eq(200)
+
+         trips = trips_response[:data]
+
+         expect(trips.count).to eq(5)
+         expect(trips).to be_a(Array)
+
+         trip = trips.first
+
+         expect(trip).to have_key(:id)
+         expect(trip[:id]).to be_a(String)
+
+         expect(trip).to have_key(:type)
+         expect(trip[:type]).to eq("trip")
+
+         expect(trip).to have_key(:attributes)
+         expect(trip[:attributes]).to be_a(Hash)
+
+         expect(trip[:attributes]).to have_key(:name)
+         expect(trip[:attributes][:name]).to be_a(String)
+
+         expect(trip[:attributes]).to have_key(:location)
+         expect(trip[:attributes][:location]).to be_a(String)
+
+         expect(trip[:attributes]).to have_key(:start_date)
+         expect(trip[:attributes][:start_date]).to be_a(String)
+
+         expect(trip[:attributes]).to have_key(:end_date)
+         expect(trip[:attributes][:end_date]).to be_a(String)
+
+         expect(trip[:attributes]).to have_key(:status)
+         expect(trip[:attributes][:status]).to be_a(String)
+
+         expect(trip[:attributes]).to have_key(:total_budget)
+         expect(trip[:attributes][:total_budget]).to be_a(Integer)
+      end
+
+      it 'returns only a list of trips for the user passed on the parameters' do
+         trips_user_1 = create_list(:trip, 5, user_id: 1)
+         trips_user_2 = create_list(:trip, 5, user_id: 2)
 
          get '/api/v1/trips', headers: @headers, params: { user_id: 1 }
 
