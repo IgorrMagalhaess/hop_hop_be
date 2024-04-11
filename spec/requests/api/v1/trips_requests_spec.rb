@@ -155,7 +155,7 @@ RSpec.describe 'Trips API', type: :request do
          previous_name = Trip.last.name
          trip_params = { name: 'Different Name' }
 
-         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -170,7 +170,7 @@ RSpec.describe 'Trips API', type: :request do
 
       it 'will raise error if trip ID is not found' do
          trip_params = { name: 'Different Name' }
-         patch "/api/v1/trips/12323232", headers: @headers, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/12323232", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -183,7 +183,7 @@ RSpec.describe 'Trips API', type: :request do
       it 'will raise an error if params are blank' do
          trip_id = create(:trip, user_id: 1).id
          trip_params = { name: "" }
-         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
+         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
          update_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -191,6 +191,24 @@ RSpec.describe 'Trips API', type: :request do
          expect(response).to_not be_successful
          expect(update_response[:errors]).to be_a(Array)
          expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
+      end
+
+      it 'will raise an error if user_id is not the same as the trip user_id' do
+         trip = create(:trip, user_id: 1) 
+         
+         trip_id = create(:trip, user_id: 1).id
+         previous_name = Trip.last.name
+         trip_params = { name: 'Different Name' }
+
+         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 2 })
+
+         update_response = JSON.parse(response.body, symbolize_names: true)
+
+         expect(response).to_not be_successful
+         expect(response.status).to eq(400)
+
+         expect(update_response).to have_key(:errors)
+         expect(update_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
       end
    end
 
