@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/yainporter/turing_work/3mod/projects/hop_hop_be/app/models/accomodation.rb": {
+      "/Users/igormagalhaes/Desktop/turing/3mod/projects/hop_hop_be/app/models/accommodation.rb": {
         "lines": [
           1,
           1,
@@ -838,6 +838,6 @@
         ]
       }
     },
-    "timestamp": 1712781253
+    "timestamp": 1712784314
   }
 }

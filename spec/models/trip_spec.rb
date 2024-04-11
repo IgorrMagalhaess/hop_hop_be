@@ -17,17 +17,18 @@ RSpec.describe Trip, type: :model do
             start_date: DateTime.new(2025,1,10),
             end_date: DateTime.new(2024,1,10),
             total_budget: 10000,
-            user_id: 1  
+            user_id: 1
          })
 
          expect(trip).to_not be_valid
          expect(trip.errors[:end_date]).to include("must be greater than #{trip.start_date}")
       end
    end
-   
+
    describe 'relationships' do
-      it { should have_many(:activities) }
-      it { should have_many(:accomodations) }
+      it { should have_many :daily_itineraries }
+      it { should have_many(:activities).through(:daily_itineraries) }
+      it { should have_many(:accommodations) }
    end
 
    describe "itinerary_per_day" do
