@@ -2,7 +2,6 @@ require 'swagger_helper'
 
 RSpec.describe 'Trips API', type: :request do
   path "/api/v1/trips" do
-
     get "Finds all trips for a User" do
       tags "Trips"
       consumes 'application/json'

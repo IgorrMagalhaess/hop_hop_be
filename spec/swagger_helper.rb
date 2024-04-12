@@ -31,8 +31,6 @@ RSpec.configure do |config|
             }
           },
           trip: {
-            type: 'array',
-            items: {
               type: "object",
               properties: {
                 name: {
@@ -64,8 +62,7 @@ RSpec.configure do |config|
                   example: 1
                 }
               }
-            },
-            required: ["user_id"]
+            }
           },
           accommodations: {
             type: "object",
