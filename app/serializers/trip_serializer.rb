@@ -6,7 +6,7 @@ class TripSerializer
     object.activities.sum(&:expenses) || 0
   end
 
-  attribute :daily_itineraries do |object|
+  attribute :daily_itineraries, if: Proc.new {|object, params| params[:show] == true} do |object|
     object.daily_itineraries.each_with_object({}) do |day, daily_itineraries|
       daily_itineraries[day.date] = day.activities
     end

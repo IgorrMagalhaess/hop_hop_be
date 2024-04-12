@@ -349,5 +349,76 @@ RSpec.describe 'Trips API', type: :request do
         end
       end
     end
+
+    it "does not render :daily_itineraries for trip#index" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      get "/api/v1/trips", headers: @headers, params: { user_id: 1 }
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      trips = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      trips.each do |trip|
+        expect(trip[:attributes][:daily_itineraries]).to_not be_present
+      end
+    end
+
+    it "does not render :daily_itineraries for trip#update" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      previous_name = Trip.last.name
+      trip_params = { name: 'Different Name' }
+
+      patch "/api/v1/trips/#{trip.id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
+
+      updated_trip = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      expect(updated_trip[:data][:attributes][:daily_itineraries]).to_not be_present
+    end
+
+    it "does not render :daily_itineraries for trip#create" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      trip_params = {
+        name: "Visiting Family",
+        location: "Brazil",
+        start_date: DateTime.new(2024,12,10),
+        end_date: DateTime.new(2025,1,10),
+        total_budget: 10000,
+        user_id: 1
+      }
+
+      post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
+
+      created_trip = Trip.last
+
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
+      trip = JSON.parse(response.body, symbolize_names: true)
+
+      expect(trip[:data][:attributes][:daily_itineraries]).to_not be_present
+    end
   end
 end
