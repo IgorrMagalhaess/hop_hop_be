@@ -4,21 +4,21 @@ class Api::V1::TripsController < ApplicationController
    before_action :filter_user_trips, only: [:index]
 
    def index
-      render json: TripSerializer.new(@trips, { params: {show: false}})
+      render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
    end
 
    def show
-      render json: TripSerializer.new(@trip, { params: {show: true}})
+      render json: TripSerializer.new(@trip, { params: {show: true, index: false}})
    end
 
    def update
       @trip.update!(trip_params)
-      render json: TripSerializer.new(@trip, { params: {show: false}})
+      render json: TripSerializer.new(@trip, { params: {show: false, index: false}})
    end
 
    def create
       trip = Trip.create!(trip_params)
-      render json: TripSerializer.new(trip, { params: {show: false}}), status: :created
+      render json: TripSerializer.new(trip, { params: {show: false, index: false}}), status: :created
    end
 
    def destroy

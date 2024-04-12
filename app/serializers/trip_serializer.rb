@@ -1,8 +1,10 @@
 class TripSerializer
   include JSONAPI::Serializer
-  attributes :name, :location, :start_date, :end_date, :status, :total_budget
+  attributes :name, :location
 
-  attribute :total_expenses do |object|
+  attributes :start_date, :end_date, :status, :total_budget, if: Proc.new {|object, params| params[:index] == false }
+
+  attribute :total_expenses, if: Proc.new {|object, params| params[:index] == false } do |object|
     object.activities.sum(&:expenses) || 0
   end
 
