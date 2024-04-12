@@ -5,7 +5,6 @@ RSpec.describe 'Trips API', type: :request do
     @headers = { "Content-Type" => "application/json", accept => 'application/json' }
   end
 
-
   describe 'GET /api/v1/trips' do
     it 'returns a list of trips' do
       trips = create_list(:trip, 5, user_id: 1)
@@ -48,40 +47,43 @@ RSpec.describe 'Trips API', type: :request do
       expect(trip[:attributes]).to have_key(:status)
       expect(trip[:attributes][:status]).to be_a(String)
 
-       expect(trip[:attributes]).to have_key(:total_budget)
-       expect(trip[:attributes][:total_budget]).to be_a(Integer)
+      expect(trip[:attributes]).to have_key(:total_budget)
+      expect(trip[:attributes][:total_budget]).to be_a(Integer)
+
+      expect(trip[:attributes]).to have_key(:total_expenses)
+      expect(trip[:attributes][:total_expenses]).to be_a(Integer)
     end
 
-      it 'returns only a list of trips for the user passed on the parameters' do
-         trips_user_1 = create_list(:trip, 5, user_id: 1)
-         trips_user_2 = create_list(:trip, 5, user_id: 2)
+    it 'returns only a list of trips for the user passed on the parameters' do
+      trips_user_1 = create_list(:trip, 5, user_id: 1)
+      trips_user_2 = create_list(:trip, 5, user_id: 2)
 
-         get '/api/v1/trips', headers: @headers, params: { user_id: 1 }
+      get '/api/v1/trips', headers: @headers, params: { user_id: 1 }
 
-         trips_response = JSON.parse(response.body, symbolize_names: true)
+      trips_response = JSON.parse(response.body, symbolize_names: true)
 
-         expect(response).to be_successful
-         expect(response.status).to eq(200)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
 
-         trips = trips_response[:data]
+      trips = trips_response[:data]
 
-         expect(trips.count).to eq(5)
-         expect(trips).to be_a(Array)
+      expect(trips.count).to eq(5)
+      expect(trips).to be_a(Array)
 
-         trip_id = trips.first[:id]
-         trip_1 = Trip.find(trip_id)
+      trip_id = trips.first[:id]
+      trip_1 = Trip.find(trip_id)
 
-         expect(trip_1.user_id).to eq(1)
+      expect(trip_1.user_id).to eq(1)
 
-         other_trip_id = trips.last[:id]
-         other_trip = Trip.find(other_trip_id)
+      other_trip_id = trips.last[:id]
+      other_trip = Trip.find(other_trip_id)
 
-         expect(other_trip.user_id).to_not eq(2)
-      end
-   end
+      expect(other_trip.user_id).to_not eq(2)
+    end
+  end
 
-describe 'GET /api/v1/trips/:id' do
-  it 'returns a trip detail' do
+  describe 'GET /api/v1/trips/:id' do
+    it 'returns a trip detail' do
       trip = create(:trip, user_id: 1)
 
       get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 1 }
@@ -120,23 +122,26 @@ describe 'GET /api/v1/trips/:id' do
       expect(trip[:attributes]).to have_key(:status)
       expect(trip[:attributes][:status]).to be_a(String)
     
-     expect(trip[:attributes]).to have_key(:total_budget)
+      expect(trip[:attributes]).to have_key(:total_budget)
       expect(trip[:attributes][:total_budget]).to be_a(Integer)
-  end
 
-      it 'returns a trip detail only if user passed in parameters is the user_id in the trip' do
-         trip = create(:trip, user_id: 1) 
-         
-         get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 2 }
+      expect(trip[:attributes]).to have_key(:total_expenses)
+      expect(trip[:attributes][:total_expenses]).to be_a(Integer)
+    end
 
-         trip_response = JSON.parse(response.body, symbolize_names: true)
+    it 'returns a trip detail only if user passed in parameters is the user_id in the trip' do
+      trip = create(:trip, user_id: 1) 
+      
+      get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 2 }
 
-         expect(response).to_not be_successful
-         expect(response.status).to eq(400)
+      trip_response = JSON.parse(response.body, symbolize_names: true)
 
-         expect(trip_response).to have_key(:errors)
-         expect(trip_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
-      end
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      expect(trip_response).to have_key(:errors)
+      expect(trip_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
+    end
 
     it 'will return 404 if the trip id is not found' do
       get "/api/v1/trips/123123123", headers: @headers, params: { user_id: 1 }
@@ -163,16 +168,18 @@ describe 'GET /api/v1/trips/:id' do
       expect(response).to be_successful
       expect(response.status).to eq(200)
 
+      trip = Trip.last
+
       expect(trip.name).to eq('Different Name')
       expect(trip.name).to_not eq(previous_name)
     end
 
-   it 'will raise error if trip ID is not found' do
+    it 'will raise error if trip ID is not found' do
       trip_params = { name: 'Different Name' }
       patch "/api/v1/trips/12323232", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
       update_response = JSON.parse(response.body, symbolize_names: true)
-     
+
       expect(response.status).to eq(404)
       expect(response).to_not be_successful
       expect(update_response[:errors]).to be_a(Array)
@@ -180,36 +187,36 @@ describe 'GET /api/v1/trips/:id' do
     end
     
     it 'will raise an error if params are blank' do
-        trip_id = create(:trip, user_id: 1).id
-        trip_params = { name: "" }
-        patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params })
+      trip_id = create(:trip, user_id: 1).id
+      trip_params = { name: "" }
+      patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
-        update_response = JSON.parse(response.body, symbolize_names: true)
+      update_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(response.status).to eq(400)
-        expect(response).to_not be_successful
-        expect(update_response[:errors]).to be_a(Array)
-        expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
-     end
+      expect(response.status).to eq(400)
+      expect(response).to_not be_successful
+      expect(update_response[:errors]).to be_a(Array)
+      expect(update_response[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
+    end
 
-      it 'will raise an error if user_id is not the same as the trip user_id' do
-         trip = create(:trip, user_id: 1) 
-         
-         trip_id = create(:trip, user_id: 1).id
-         previous_name = Trip.last.name
-         trip_params = { name: 'Different Name' }
+    it 'will raise an error if user_id is not the same as the trip user_id' do
+      trip = create(:trip, user_id: 1) 
+        
+      trip_id = create(:trip, user_id: 1).id
+      previous_name = Trip.last.name
+      trip_params = { name: 'Different Name' }
 
-         patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 2 })
+      patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 2 })
 
-         update_response = JSON.parse(response.body, symbolize_names: true)
+      update_response = JSON.parse(response.body, symbolize_names: true)
 
-         expect(response).to_not be_successful
-         expect(response.status).to eq(400)
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
 
-         expect(update_response).to have_key(:errors)
-         expect(update_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
-      end
-   end
+      expect(update_response).to have_key(:errors)
+      expect(update_response[:errors].first[:detail]).to eq("Validation failed: Invalid User ID provided")
+    end
+  end
 
   describe 'POST /api/v1/trips' do
     it 'will create a new trip' do
