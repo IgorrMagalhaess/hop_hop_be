@@ -1,29 +1,30 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/trips', type: :request do
+RSpec.describe 'Trips API', type: :request do
   path "/api/v1/trips" do
-    get("List trips")
-    require 'pry'; binding.pry
+
+    get "Finds all trips for a User" do
       tags "Trips"
-      consumes "application/json"
-      produces "application/json"
-      description "List all trips for a User"
-
-      response(200, "successful") do
-        schema type: :array, items: { "$ref" => "#/components/schemas/trip" }
-
+      consumes 'application/json'
+      produces 'application/json'
+      description "List all Trips for a User"
+      parameter name: :user_id, in: :query, type: :integer
+      response(200, 'successful') do
+        schema type: :object, properties: {
+                                name: {
+                                  type: :string,
+                                  example: "Disneyland in Tokyo!"
+                                },
+                                location: {
+                                  type: :string,
+                                  example: "Tokyo, Japan"
+                                },
+                              }
         let!(:trip1) { create(:trip, user_id: 1)}
         let!(:trip2) { create(:trip, user_id: 1)}
-
-        after do |trip|
-          require 'pry'; binding.pry
-          trip.metadata[:response][:content] = {
-            "application/json" => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
+        let(:user_id) { trip1.user_id}
         run_test!
+        end
       end
+    end
   end
-end

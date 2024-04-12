@@ -1,0 +1,111 @@
+---
+openapi: 3.0.1
+info:
+  title: Trip API V1
+  version: v1
+paths:
+  "/api/v1/trips":
+    get:
+      summary: Finds all trips for a User
+      tags:
+      - Trips
+      description: List all Trips for a User
+      parameters:
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Disneyland in Tokyo!
+                  location:
+                    type: string
+                    example: Tokyo, Japan
+components:
+  schemas:
+    not_found:
+      type: object
+      properties:
+        message:
+          type: string
+    trip:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            example: Disneyland in Tokyo!
+          location:
+            type: string
+            example: Tokyo, Japan
+          start_date:
+            type: date_time
+            example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+          end_date:
+            type: date_time
+            example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+          status:
+            type: string
+            example: in_progress
+          total_budget:
+            type: integer
+            example: 4676
+          user_id:
+            type: integer
+            example: 1
+      required:
+      - user_id
+    accommodations:
+      type: object
+      required:
+      - trip_id
+      - name
+      - address
+      - lat
+      - lon
+      - type_of_accommodation
+      - check_in
+      - check_out
+      - expenses
+      properties:
+        trip_id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Mariott Monterey Bay
+        address:
+          type: string
+          example: 7836 Haywood Throughway
+        lat:
+          type: float
+          example: 26.885830851487825
+        lon:
+          type: float
+          example: -162.29136075180418
+        type_of_accommodation:
+          type: string
+          example: Hotel
+        check_in:
+          type: datetime
+          example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+        check_out:
+          type: datetime
+          example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+        expenses:
+          type: integer
+          example: 3000
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

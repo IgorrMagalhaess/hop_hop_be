@@ -31,38 +31,41 @@ RSpec.configure do |config|
             }
           },
           trip: {
-            type: 'object',
-            required: [:id, :name, :location, :start_date, :end_date, :status, :total_budget, :user_id],
-            properties: {
-              name: {
-                type: :string,
-                example: "Disneyland in Tokyo!"
-              },
-              location: {
-                type: :string,
-                example: "Tokyo, Japan"
-              },
-              start_date: {
-                type: :date_time,
-                example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-              },
-              end_date: {
-                type: :date_time,
-                example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-              },
-              status: {
-                type: :string,
-                example: "in_progress"
-              },
-              total_budget: {
-                type: :integer,
-                example: 4676
-              },
-              user_id: {
-                type: :integer,
-                example: 1
+            type: 'array',
+            items: {
+              type: "object",
+              properties: {
+                name: {
+                  type: :string,
+                  example: "Disneyland in Tokyo!"
+                },
+                location: {
+                  type: :string,
+                  example: "Tokyo, Japan"
+                },
+                start_date: {
+                  type: :date_time,
+                  example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                },
+                end_date: {
+                  type: :date_time,
+                  example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                },
+                status: {
+                  type: :string,
+                  example: "in_progress"
+                },
+                total_budget: {
+                  type: :integer,
+                  example: 4676
+                },
+                user_id: {
+                  type: :integer,
+                  example: 1
+                }
               }
-            }
+            },
+            required: ["user_id"]
           },
           accommodations: {
             type: "object",
