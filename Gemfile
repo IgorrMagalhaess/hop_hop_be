@@ -35,12 +35,14 @@ gem "faraday"
 
 gem 'jsonapi-serializer'
 
+gem "rswag-api"
+gem "rswag-ui"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
 group :test do
   gem "simplecov"
-  gem "rspec-rails"
   gem "capybara"
   gem "launchy"
   gem "webmock"
@@ -54,6 +56,8 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "shoulda-matchers"
+  gem "rspec-rails"
+  gem "rswag-specs"
 end
 
 group :development do
