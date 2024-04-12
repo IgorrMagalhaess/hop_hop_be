@@ -8,7 +8,6 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def show
-      require 'pry'; binding.pry
       render json: TripSerializer.new(set_trip)
    end
 
