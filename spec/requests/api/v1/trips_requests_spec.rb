@@ -121,7 +121,7 @@ RSpec.describe 'Trips API', type: :request do
 
       expect(trip[:attributes]).to have_key(:status)
       expect(trip[:attributes][:status]).to be_a(String)
-    
+
       expect(trip[:attributes]).to have_key(:total_budget)
       expect(trip[:attributes][:total_budget]).to be_a(Integer)
 
@@ -130,8 +130,8 @@ RSpec.describe 'Trips API', type: :request do
     end
 
     it 'returns a trip detail only if user passed in parameters is the user_id in the trip' do
-      trip = create(:trip, user_id: 1) 
-      
+      trip = create(:trip, user_id: 1)
+
       get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 2 }
 
       trip_response = JSON.parse(response.body, symbolize_names: true)
@@ -185,7 +185,7 @@ RSpec.describe 'Trips API', type: :request do
       expect(update_response[:errors]).to be_a(Array)
       expect(update_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=12323232")
     end
-    
+
     it 'will raise an error if params are blank' do
       trip_id = create(:trip, user_id: 1).id
       trip_params = { name: "" }
@@ -200,8 +200,8 @@ RSpec.describe 'Trips API', type: :request do
     end
 
     it 'will raise an error if user_id is not the same as the trip user_id' do
-      trip = create(:trip, user_id: 1) 
-        
+      trip = create(:trip, user_id: 1)
+
       trip_id = create(:trip, user_id: 1).id
       previous_name = Trip.last.name
       trip_params = { name: 'Different Name' }
@@ -311,6 +311,43 @@ RSpec.describe 'Trips API', type: :request do
 
       expect(delete_response[:errors]).to be_a(Array)
       expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Trip with 'id'=123123123")
+    end
+  end
+
+  describe "daily_itineraries hash for trip#show" do
+    let(:trip) { create(:trip, user_id: 1, start_date: "Thu, 11 Apr 2024", end_date: "Sat, 13 Apr 2024")}
+
+    it "renders a Trip with the daily itinerary date and activities for that date" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      get "/api/v1/trips/#{trip.id}", headers: @headers, params: { user_id: 1 }
+
+      trip_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      expect(trip_response).to have_key(:data)
+      expect(trip_response[:data]).to be_a(Hash)
+
+      trip = trip_response[:data]
+
+      expect(trip[:attributes][:daily_itineraries]).to be_a(Hash)
+
+      trip[:attributes][:daily_itineraries].each do |date , activities|
+        expect(date).to be_a(Symbol)
+        expect(DateTime.parse(date.to_s)).to be_between("Thu, 11 Apr 2024", "Sat, 13 Apr 2024").inclusive
+        expect(activities).to be_an(Array)
+
+        activities.each do |activity|
+          expect(activity).to be_a(Hash)
+        end
+      end
     end
   end
 end
