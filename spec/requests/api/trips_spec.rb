@@ -82,5 +82,20 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
     end
+
+    delete "Deletes a Trip for a User" do
+      tags "Trips"
+      produces 'application/json'
+      consumes 'application/json'
+      description "Updates a User's Trip information"
+
+      response(204, 'trip deleted') do
+        let!(:trip) { create(:trip, user_id: 1)}
+        let(:id) { trip.id }
+        let(:user_id) {trip.user_id}
+
+        run_test!
+      end
+    end
   end
 end
