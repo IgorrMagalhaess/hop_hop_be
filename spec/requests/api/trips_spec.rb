@@ -24,20 +24,6 @@ RSpec.describe 'Trips API', type: :request do
         let!(:trip2) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
 
-        after do |example|
-          content = example.metadata[:response][:content] || {}
-          example_spec = {
-            "application/json"=>{
-              examples: {
-                test_example: {
-                  value: JSON.parse(response.body, symbolize_names: true)
-                }
-              }
-            }
-          }
-          example.metadata[:response][:content] = content.deep_merge(example_spec)
-        end
-
         run_test!
       end
     end
