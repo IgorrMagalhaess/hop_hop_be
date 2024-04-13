@@ -1,4 +1,6 @@
 require "rails_helper"
+require 'swagger_helper'
+
 
 RSpec.describe 'Trips API', type: :request do
   before do

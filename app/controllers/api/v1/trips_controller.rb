@@ -22,8 +22,7 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def destroy
-      trip = Trip.find(params[:id])
-      trip.destroy
+      set_trip.destroy
       head :no_content, status: :no_content
    end
 
