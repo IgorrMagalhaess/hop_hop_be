@@ -76,57 +76,52 @@ RSpec.configure do |config|
           trip: {
             type: :object,
             properties: {
-              trip: {
+              data: {
                 type: :object,
                 properties: {
-                  data: {
+                  id: {
+                    type: :string
+                  },
+                  type: {
+                    type: :string
+                  },
+                  attributes: {
                     type: :object,
                     properties: {
-                      id: {
-                        type: :string
+                      name: {
+                        type: :string,
+                        example: "Disneyland in Tokyo!"
                       },
-                      type: {
-                        type: :string
+                      location: {
+                        type: :string,
+                        example: "Tokyo, Japan"
                       },
-                      attributes: {
-                        type: :object,
-                        properties: {
-                          name: {
-                            type: :string,
-                            example: "Disneyland in Tokyo!"
-                          },
-                          location: {
-                            type: :string,
-                            example: "Tokyo, Japan"
-                          },
-                          start_date: {
-                            type: :string,
-                            example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-                          },
-                          end_date: {
-                            type: :string,
-                            example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-                          },
-                          status: {
-                            type: :string,
-                            example: "in_progress"
-                          },
-                          total_budget: {
-                            type: :integer,
-                            example: 4676
-                          },
-                          user_id: {
-                            type: :integer,
-                            example: 1
-                          },
-                          total_expenses: {
-                            type: :integer,
-                            example: 200
-                          }
-                        },
-                      required: [:name, :location, :start_date, :end_date, :status, :total_budget]
+                      start_date: {
+                        type: :string,
+                        example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                      },
+                      end_date: {
+                        type: :string,
+                        example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                      },
+                      status: {
+                        type: :string,
+                        example: "in_progress"
+                      },
+                      total_budget: {
+                        type: :integer,
+                        example: 4676
+                      },
+                      user_id: {
+                        type: :integer,
+                        example: 1
+                      },
+                      total_expenses: {
+                        type: :integer,
+                        example: 200
                       }
-                    }
+                    },
+                  required: [:name, :location, :start_date, :end_date, :status, :total_budget]
                   }
                 }
               }
