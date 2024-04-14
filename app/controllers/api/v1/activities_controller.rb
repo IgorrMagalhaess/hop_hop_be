@@ -2,7 +2,7 @@ class Api::V1::ActivitiesController < ApplicationController
   before_action :trip
   before_action :daily_itinerary
   def index
-    activities = Activity.all
+    activities = daily_itinerary.activities
     render json: ActivitySerializer.new(activities)
   end
 
