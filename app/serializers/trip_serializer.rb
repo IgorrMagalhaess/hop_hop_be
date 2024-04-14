@@ -4,6 +4,14 @@ class TripSerializer
 
   attributes :start_date, :end_date, :status, :total_budget, if: Proc.new {|object, params| params[:index] == false }
 
+  attribute :start_date_format, if: Proc.new { |object, params| params[:index] == false } do |object|
+    object.start_date.strftime("%m/%d/%Y")
+  end
+
+  attribute :end_date_format, if: Proc.new { |object, params| params[:index] == false } do |object|
+    object.end_date.strftime("%m/%d/%Y")
+  end
+
   attribute :total_expenses, if: Proc.new {|object, params| params[:index] == false } do |object|
     object.activities.sum(&:expenses) || 0
   end
