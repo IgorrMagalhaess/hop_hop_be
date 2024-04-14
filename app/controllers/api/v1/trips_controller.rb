@@ -8,6 +8,7 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def show
+      trip = Trip.find(params[:id]).decorate
       render json: TripSerializer.new(@trip, { params: {show: true, index: false}})
    end
 
