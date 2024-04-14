@@ -11,9 +11,20 @@ class Trip < ApplicationRecord
    validates :total_budget, presence: true
    validates :user_id, presence: true
 
+   after_create_commit :create_daily_itineraries
+   after_update_commit :update_daily_itineraries, if: :dates_changed?
    enum status: [:in_progress, :completed]
 
    def self.trips_by_user_id(user_id)
       where(user_id: user_id)
    end
+
+   private
+   def create_daily_itineraries
+      (start_date.to_date..end_date.to_date).each do |date|
+         daily_itineraries.create!(date: date)
+      end
+   end
+
+
 end

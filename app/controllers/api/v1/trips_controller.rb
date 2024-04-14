@@ -17,8 +17,10 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def create
-      trip = Trip.create!(trip_params)
-      render json: TripSerializer.new(trip, { params: {show: false, index: false}}), status: :created
+      trip = Trip.new(trip_params)
+      if trip.save
+         render json: TripSerializer.new(trip, { params: {show: false, index: false}}), status: :created
+      end
    end
 
    def destroy
@@ -43,4 +45,5 @@ class Api::V1::TripsController < ApplicationController
    def filter_user_trips
       @trips = Trip.trips_by_user_id(params[:user_id])
    end
+
 end
