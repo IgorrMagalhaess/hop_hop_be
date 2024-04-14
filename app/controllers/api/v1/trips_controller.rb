@@ -4,7 +4,11 @@ class Api::V1::TripsController < ApplicationController
    before_action :filter_user_trips, only: [:index]
 
    def index
-      render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
+      if filter_user_trips.empty?
+         invalid_user_id
+      else
+         render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
+      end
    end
 
    def show
@@ -42,5 +46,10 @@ class Api::V1::TripsController < ApplicationController
 
    def filter_user_trips
       @trips = Trip.trips_by_user_id(params[:user_id])
+   end
+
+   def invalid_user_id
+      render json: ErrorSerializer.new(ErrorMessage.new("Couldn't find User with 'id'=#{params[:user_id]}", 404))
+      .serializer_validation, status: :not_found
    end
 end

@@ -10,29 +10,22 @@ RSpec.describe 'Trips API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       description "List all Trips that belong to a user with id, location, and name"
-      parameter name: :user_id, in: :query, type: :integer
+      parameter name: :user_id, in: :query, schema: { "$ref" => "#/components/schemas/all_trips" }
 
       response(200, 'Successful') do
-        schema type: :object,
-          properties: {
-            data: {
-              type: :array,
-              properties: {
-                id: {
-                  type: :number
-                },
-                type: {
-                  type: :string
-                },
-                attributes: {
-                  type: :object
-                }
-              }
-            }
-          }
         let!(:trip1) { create(:trip, user_id: 1)}
         let!(:trip2) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
+
+        run_test!
+      end
+
+      response(404, "Couldn't find User with 'id'=2121") do
+        schema "$ref" => "#/components/schemas/not_found"
+
+        let!(:trip1) { create(:trip, user_id: 1)}
+        let!(:trip2) { create(:trip, user_id: 1)}
+        let(:user_id) { 2121 }
 
         run_test!
       end
@@ -45,10 +38,10 @@ RSpec.describe 'Trips API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       description "Creates a Trip for a User with all Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
+      parameter name: :trip, in: :body
 
       response(201, 'Trip created') do
-        schema "$ref" => "#/components/schemas/Trip"
+        schema "$ref" => "#/components/schemas/trip"
         let!(:trip) {
           {
             name: "Visiting Family",
@@ -92,70 +85,8 @@ RSpec.describe 'Trips API', type: :request do
       description "List a Trip that belongs to a user with all Trip information and Daily Itineraries"
 
       response(200, 'Successful') do
-        schema type: "object",
-        properties: {
-          data: {
-            type: :object,
-            properties: {
-              id: {
-                type: :string
-              },
-              type: {
-                type: :string
-              },
-              attributes: {
-                type: :object,
-                properties: {
-                  name: {
-                    type: :string,
-                    example: "Disneyland in Tokyo!"
-                  },
-                  location: {
-                    type: :string,
-                    example: "Tokyo, Japan"
-                  },
-                  start_date: {
-                    type: :string,
-                    example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-                  },
-                  end_date: {
-                    type: :string,
-                    example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-                  },
-                  status: {
-                    type: :string,
-                    example: "in_progress"
-                  },
-                  total_budget: {
-                    type: :integer,
-                    example: 4676
-                  },
-                  user_id: {
-                    type: :integer,
-                    example: 1
-                  },
-                  total_expenses: {
-                    type: :integer,
-                    example: 200
-                  },
-                  daily_itineraries: {
-                    type: :object,
-                    properties: {
-                      date: {
-                        type: :array,
-                        example: "2024-06-12"
-                      },
-                      activities: {
-                        type: :object
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          required: [:user_id]
-        }
+        schema "$ref" => "#/components/schemas/trip_show"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip1.id) }
 
@@ -168,6 +99,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(404, "Couldn't find Trip with 'id'=2") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
         let(:id) { 2 }
@@ -191,7 +124,7 @@ RSpec.describe 'Trips API', type: :request do
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
+      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/trip" }
 
       response(200, 'Trip updated') do
         let!(:trip1) { create(:trip, user_id: 1)}
@@ -213,6 +146,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(404, "Couldn't find Trip with 'id'=12") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { 12 }
         let(:user_id) {trip1.user_id}
@@ -239,6 +174,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(404, "Couldn't find Trip with 'id'=12") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip) { create(:trip, user_id: 1)}
         let(:id) { 12 }
         let(:user_id) {trip.user_id}

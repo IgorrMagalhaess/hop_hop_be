@@ -30,7 +30,29 @@ RSpec.configure do |config|
               message: { type: :string }
             }
           },
-          Trip: {
+          all_trips: {
+            properties: {
+              data: {
+                type: :array,
+                properties: {
+                  id: {
+                    type: :number
+                  },
+                  type: {
+                    type: :string
+                  },
+                  attributes: {
+                    type: :object,
+                    properties: {
+                      name: :string,
+                      location: :string
+                    }
+                  }
+                }
+              }
+            }
+          },
+          trip: {
             type: "object",
             properties: {
               data: {
@@ -76,6 +98,72 @@ RSpec.configure do |config|
                       total_expenses: {
                         type: :integer,
                         example: 200
+                      }
+                    }
+                  }
+                }
+              },
+              required: [:user_id]
+            }
+          },
+          trip_show: {
+            type: "object",
+            properties: {
+              data: {
+                type: :object,
+                properties: {
+                  id: {
+                    type: :string
+                  },
+                  type: {
+                    type: :string
+                  },
+                  attributes: {
+                    type: :object,
+                    properties: {
+                      name: {
+                        type: :string,
+                        example: "Disneyland in Tokyo!"
+                      },
+                      location: {
+                        type: :string,
+                        example: "Tokyo, Japan"
+                      },
+                      start_date: {
+                        type: :string,
+                        example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                      },
+                      end_date: {
+                        type: :string,
+                        example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                      },
+                      status: {
+                        type: :string,
+                        example: "in_progress"
+                      },
+                      total_budget: {
+                        type: :integer,
+                        example: 4676
+                      },
+                      user_id: {
+                        type: :integer,
+                        example: 1
+                      },
+                      total_expenses: {
+                        type: :integer,
+                        example: 200
+                      },
+                      daily_itineraries: {
+                        type: :object,
+                        properties: {
+                          date: {
+                            type: :array,
+                            example: "2024-06-12"
+                          },
+                          activities: {
+                            type: :object
+                          }
+                        }
                       }
                     }
                   }
