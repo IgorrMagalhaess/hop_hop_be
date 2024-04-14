@@ -27,10 +27,23 @@ RSpec.configure do |config|
           not_found: {
             type: 'object',
             properties: {
-              message: { type: :string }
+              detail: {
+                type: :string,
+                example: "Couldn't find Trip with 'id'=12323232"
+              }
+            }
+          },
+          validation_failed: {
+            type: 'object',
+            properties: {
+              detail: {
+                type: :string,
+                example: "Validation failed: Name can't be blank"
+              }
             }
           },
           all_trips: {
+            type: :object,
             properties: {
               data: {
                 type: :array,
@@ -44,8 +57,14 @@ RSpec.configure do |config|
                   attributes: {
                     type: :object,
                     properties: {
-                      name: :string,
-                      location: :string
+                      name: {
+                        type: :string,
+                        example: "Marriott Hotel"
+                      },
+                      location: {
+                        type: :string,
+                        example: "1234, Marriott Road"
+                      }
                     }
                   }
                 }
@@ -53,61 +72,66 @@ RSpec.configure do |config|
             }
           },
           trip: {
-            type: "object",
+            type: :object,
             properties: {
-              data: {
+              trip: {
                 type: :object,
                 properties: {
-                  id: {
-                    type: :string
-                  },
-                  type: {
-                    type: :string
-                  },
-                  attributes: {
+                  data: {
                     type: :object,
                     properties: {
-                      name: {
-                        type: :string,
-                        example: "Disneyland in Tokyo!"
+                      id: {
+                        type: :string
                       },
-                      location: {
-                        type: :string,
-                        example: "Tokyo, Japan"
+                      type: {
+                        type: :string
                       },
-                      start_date: {
-                        type: :string,
-                        example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-                      },
-                      end_date: {
-                        type: :string,
-                        example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-                      },
-                      status: {
-                        type: :string,
-                        example: "in_progress"
-                      },
-                      total_budget: {
-                        type: :integer,
-                        example: 4676
-                      },
-                      user_id: {
-                        type: :integer,
-                        example: 1
-                      },
-                      total_expenses: {
-                        type: :integer,
-                        example: 200
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          name: {
+                            type: :string,
+                            example: "Disneyland in Tokyo!"
+                          },
+                          location: {
+                            type: :string,
+                            example: "Tokyo, Japan"
+                          },
+                          start_date: {
+                            type: :string,
+                            example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                          },
+                          end_date: {
+                            type: :string,
+                            example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                          },
+                          status: {
+                            type: :string,
+                            example: "in_progress"
+                          },
+                          total_budget: {
+                            type: :integer,
+                            example: 4676
+                          },
+                          user_id: {
+                            type: :integer,
+                            example: 1
+                          },
+                          total_expenses: {
+                            type: :integer,
+                            example: 200
+                          }
+                        },
+                      required: [:name, :location, :start_date, :end_date, :status, :total_budget]
                       }
                     }
                   }
                 }
-              },
-              required: [:user_id]
+              }
             }
           },
           trip_show: {
-            type: "object",
+            type: :object,
             properties: {
               data: {
                 type: :object,
@@ -168,8 +192,7 @@ RSpec.configure do |config|
                     }
                   }
                 }
-              },
-              required: [:user_id]
+              }
             }
           },
           accommodations: {

@@ -16,10 +16,20 @@ paths:
       - name: user_id
         in: query
         schema:
-          "$ref": "#/components/schemas/all_trips"
+          type: integer
       responses:
         '200':
           description: Successful
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/all_trips"
+        '404':
+          description: Couldn't find User with 'id'=2121
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/not_found"
     post:
       summary: Creates a Trip for a User
       tags:
@@ -37,6 +47,38 @@ paths:
                 "$ref": "#/components/schemas/trip"
         '400':
           description: Validation failed
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                status:
+                  type: string
+                total_budget:
+                  type: integer
+                user_id:
+                  type: integer
+              required:
+              - name
+              - location
+              - start_date
+              - end_date
+              - status
+              - total_budget
+              - user_id
   "/api/v1/trips/{id}":
     parameters:
     - name: id
@@ -71,6 +113,10 @@ paths:
                 "$ref": "#/components/schemas/not_found"
         '400':
           description: 'Validation failed: Invalid User ID provided'
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
     patch:
       summary: Updates a Trip for a User
       tags:
@@ -82,8 +128,16 @@ paths:
       responses:
         '200':
           description: Trip updated
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/trip"
         '400':
           description: 'Validation failed: Name can''t be blank'
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
         '404':
           description: Couldn't find Trip with 'id'=12
           content:
@@ -94,7 +148,27 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/trip"
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                status:
+                  type: string
+                total_budget:
+                  type: integer
+              required:
+              - name
+              - location
+              - start_date
+              - end_date
+              - status
+              - total_budget
     delete:
       summary: Deletes a Trip for a User
       operationId: deleteTrip
@@ -116,9 +190,17 @@ components:
     not_found:
       type: object
       properties:
-        message:
+        detail:
           type: string
+          example: Couldn't find Trip with 'id'=12323232
+    validation_failed:
+      type: object
+      properties:
+        detail:
+          type: string
+          example: 'Validation failed: Name can''t be blank'
     all_trips:
+      type: object
       properties:
         data:
           type: array
@@ -129,45 +211,60 @@ components:
               type: string
             attributes:
               type: object
-    trip:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-            type:
-              type: string
-            attributes:
-              type: object
               properties:
                 name:
                   type: string
-                  example: Disneyland in Tokyo!
+                  example: Marriott Hotel
                 location:
                   type: string
-                  example: Tokyo, Japan
-                start_date:
+                  example: 1234, Marriott Road
+    trip:
+      type: object
+      properties:
+        trip:
+          type: object
+          properties:
+            data:
+              type: object
+              properties:
+                id:
                   type: string
-                  example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
-                end_date:
+                type:
                   type: string
-                  example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
-                status:
-                  type: string
-                  example: in_progress
-                total_budget:
-                  type: integer
-                  example: 4676
-                user_id:
-                  type: integer
-                  example: 1
-                total_expenses:
-                  type: integer
-                  example: 200
-        required:
-        - user_id
+                attributes:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Disneyland in Tokyo!
+                    location:
+                      type: string
+                      example: Tokyo, Japan
+                    start_date:
+                      type: string
+                      example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+                    end_date:
+                      type: string
+                      example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+                    status:
+                      type: string
+                      example: in_progress
+                    total_budget:
+                      type: integer
+                      example: 4676
+                    user_id:
+                      type: integer
+                      example: 1
+                    total_expenses:
+                      type: integer
+                      example: 200
+                  required:
+                  - name
+                  - location
+                  - start_date
+                  - end_date
+                  - status
+                  - total_budget
     trip_show:
       type: object
       properties:
@@ -213,8 +310,6 @@ components:
                       example: '2024-06-12'
                     activities:
                       type: object
-        required:
-        - user_id
     accommodations:
       type: object
       required:

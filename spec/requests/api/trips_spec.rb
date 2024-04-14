@@ -10,9 +10,10 @@ RSpec.describe 'Trips API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       description "List all Trips that belong to a user with id, location, and name"
-      parameter name: :user_id, in: :query, schema: { "$ref" => "#/components/schemas/all_trips" }
+      parameter name: :user_id, in: :query, type: :integer
 
       response(200, 'Successful') do
+        schema "$ref" => "#/components/schemas/all_trips"
         let!(:trip1) { create(:trip, user_id: 1)}
         let!(:trip2) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
@@ -38,25 +39,40 @@ RSpec.describe 'Trips API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       description "Creates a Trip for a User with all Trip information"
-      parameter name: :trip, in: :body
+      parameter name: :trip, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          location: { type: :string },
+          start_date: { type: :string },
+          end_date: { type: :string },
+          status: { type: :string },
+          total_budget: { type: :integer },
+          user_id: { type: :integer }
+        },
+        required: [ :name, :location, :start_date, :end_date, :status, :total_budget, :user_id ]
+      }
 
       response(201, 'Trip created') do
         schema "$ref" => "#/components/schemas/trip"
-        let!(:trip) {
+        let!(:trip) { {trip:
           {
             name: "Visiting Family",
             location: "Brazil",
-            start_date: DateTime.new(2024,12,10),
-            end_date: DateTime.new(2025,1,10),
+            start_date: "2024-12-10T00:00:00.000Z",
+            end_date: "2025-01-10T00:00:00.000Z",
+            status: "in_progress",
             total_budget: 10000,
             user_id: 1
           }
-        }
+        }}
 
         run_test!
       end
 
       response(400, "Validation failed") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let(:trip) {
           {
             location: "Brazil",
@@ -89,7 +105,6 @@ RSpec.describe 'Trips API', type: :request do
 
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip1.id) }
-
         let(:user_id) { trip1.user_id}
         let(:id) { trip1.id }
         before do
@@ -109,6 +124,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(400, "Validation failed: Invalid User ID provided") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:user_id) { 2 }
         let(:id) { trip1.id }
@@ -124,9 +141,22 @@ RSpec.describe 'Trips API', type: :request do
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/trip" }
+      parameter name: :trip, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          location: { type: :string },
+          start_date: { type: :string },
+          end_date: { type: :string },
+          status: { type: :string },
+          total_budget: { type: :integer }
+        },
+        required: [ :name, :location, :start_date, :end_date, :status, :total_budget]
+      }
 
       response(200, 'Trip updated') do
+        schema "$ref" => "#/components/schemas/trip"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { trip1.id }
         let(:user_id) {trip1.user_id}
@@ -137,6 +167,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(400, "Validation failed: Name can't be blank") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { trip1.id }
         let(:user_id) {trip1.user_id}
