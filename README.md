@@ -1,24 +1,8 @@
-# README
+# Deployment Instructions
+- Fork or clone the repo
+- Run `bundle install`
+- Run `rails db:{create, migrate, seed}`
+- Run `rails s`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Open API Doc
+Visit [localhost:5000](http://localhost:5000/api-docs/index.html)
