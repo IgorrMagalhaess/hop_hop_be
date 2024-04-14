@@ -9,6 +9,8 @@ paths:
       summary: Finds all trips for a User
       tags:
       - Trips
+      security: []
+      operationId: findAllTrips
       description: List all Trips that belong to a user with id, location, and name
       parameters:
       - name: user_id
@@ -23,21 +25,30 @@ paths:
               schema:
                 type: object
                 properties:
-                  name:
-                    type: string
-                    example: Disneyland in Tokyo!
-                  location:
-                    type: string
-                    example: Tokyo, Japan
+                  data:
+                    type: array
+                    properties:
+                      id:
+                        type: number
+                      type:
+                        type: string
+                      attributes:
+                        type: object
     post:
       summary: Creates a Trip for a User
       tags:
       - Trips
+      security: []
+      operationId: createTrip
       description: Creates a Trip for a User with all Trip information
       parameters: []
       responses:
         '201':
           description: Trip created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Trip"
         '400':
           description: Validation failed
       requestBody:
@@ -60,11 +71,61 @@ paths:
       summary: Finds one trip
       tags:
       - Trips
+      security: []
+      operationId: findOneTrip
       description: List a Trip that belongs to a user with all Trip information and
         Daily Itineraries
       responses:
         '200':
           description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Disneyland in Tokyo!
+                          location:
+                            type: string
+                            example: Tokyo, Japan
+                          start_date:
+                            type: string
+                            example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+                          end_date:
+                            type: string
+                            example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+                          status:
+                            type: string
+                            example: in_progress
+                          total_budget:
+                            type: integer
+                            example: 4676
+                          user_id:
+                            type: integer
+                            example: 1
+                          total_expenses:
+                            type: integer
+                            example: 200
+                          daily_itineraries:
+                            type: object
+                            properties:
+                              date:
+                                type: array
+                              activities:
+                                type: object
+                  required:
+                  - user_id
         '404':
           description: Couldn't find Trip with 'id'=2
         '400':
@@ -73,6 +134,8 @@ paths:
       summary: Updates a Trip for a User
       tags:
       - Trips
+      security: []
+      operationId: updateTrip
       description: Updates a User's Trip information
       parameters: []
       responses:
@@ -89,8 +152,10 @@ paths:
               "$ref": "#/components/schemas/Trip"
     delete:
       summary: Deletes a Trip for a User
+      operationId: deleteTrip
       tags:
       - Trips
+      security: []
       description: Updates a User's Trip information
       responses:
         '204':
@@ -107,30 +172,40 @@ components:
     Trip:
       type: object
       properties:
-        name:
-          type: string
-          example: Disneyland in Tokyo!
-        location:
-          type: string
-          example: Tokyo, Japan
-        start_date:
-          type: date_time
-          example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
-        end_date:
-          type: date_time
-          example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
-        status:
-          type: string
-          example: in_progress
-        total_budget:
-          type: integer
-          example: 4676
-        user_id:
-          type: integer
-          example: 1
-        total_expenses:
-          type: integer
-          example: 200
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Disneyland in Tokyo!
+                location:
+                  type: string
+                  example: Tokyo, Japan
+                start_date:
+                  type: string
+                  example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+                end_date:
+                  type: string
+                  example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+                status:
+                  type: string
+                  example: in_progress
+                total_budget:
+                  type: integer
+                  example: 4676
+                user_id:
+                  type: integer
+                  example: 1
+                total_expenses:
+                  type: integer
+                  example: 200
         required:
         - user_id
     accommodations:
@@ -156,25 +231,23 @@ components:
           type: string
           example: 7836 Haywood Throughway
         lat:
-          type: float
+          type: number
           example: 26.885830851487825
         lon:
-          type: float
+          type: number
           example: -162.29136075180418
         type_of_accommodation:
           type: string
           example: Hotel
         check_in:
-          type: datetime
+          type: string
           example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
         check_out:
-          type: datetime
+          type: string
           example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
         expenses:
           type: integer
           example: 3000
+  securitySchemes: {}
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+- url: http://localhost:5000

@@ -1,25 +1,35 @@
 require 'swagger_helper'
 
 RSpec.describe 'Trips API', type: :request do
+
   path "/api/v1/trips" do
     get "Finds all trips for a User" do
       tags "Trips"
+      security []
+      operationId "findAllTrips"
       consumes 'application/json'
       produces 'application/json'
       description "List all Trips that belong to a user with id, location, and name"
       parameter name: :user_id, in: :query, type: :integer
 
       response(200, 'Successful') do
-        schema type: :object, properties: {
-                                name: {
-                                  type: :string,
-                                  example: "Disneyland in Tokyo!"
-                                },
-                                location: {
-                                  type: :string,
-                                  example: "Tokyo, Japan"
-                                },
-                              }
+        schema type: :object,
+          properties: {
+            data: {
+              type: :array,
+              properties: {
+                id: {
+                  type: :number
+                },
+                type: {
+                  type: :string
+                },
+                attributes: {
+                  type: :object
+                }
+              }
+            }
+          }
         let!(:trip1) { create(:trip, user_id: 1)}
         let!(:trip2) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
@@ -30,12 +40,15 @@ RSpec.describe 'Trips API', type: :request do
 
     post "Creates a Trip for a User" do
       tags "Trips"
+      security []
+      operationId "createTrip"
       consumes 'application/json'
       produces 'application/json'
       description "Creates a Trip for a User with all Trip information"
       parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
 
       response(201, 'Trip created') do
+        schema "$ref" => "#/components/schemas/Trip"
         let!(:trip) {
           {
             name: "Visiting Family",
@@ -72,15 +85,85 @@ RSpec.describe 'Trips API', type: :request do
 
     get "Finds one trip" do
       tags "Trips"
+      security []
+      operationId "findOneTrip"
       consumes 'application/json'
       produces 'application/json'
       description "List a Trip that belongs to a user with all Trip information and Daily Itineraries"
 
       response(200, 'Successful') do
+        schema type: "object",
+        properties: {
+          data: {
+            type: :object,
+            properties: {
+              id: {
+                type: :string
+              },
+              type: {
+                type: :string
+              },
+              attributes: {
+                type: :object,
+                properties: {
+                  name: {
+                    type: :string,
+                    example: "Disneyland in Tokyo!"
+                  },
+                  location: {
+                    type: :string,
+                    example: "Tokyo, Japan"
+                  },
+                  start_date: {
+                    type: :string,
+                    example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                  },
+                  end_date: {
+                    type: :string,
+                    example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                  },
+                  status: {
+                    type: :string,
+                    example: "in_progress"
+                  },
+                  total_budget: {
+                    type: :integer,
+                    example: 4676
+                  },
+                  user_id: {
+                    type: :integer,
+                    example: 1
+                  },
+                  total_expenses: {
+                    type: :integer,
+                    example: 200
+                  },
+                  daily_itineraries: {
+                    type: :object,
+                    properties: {
+                      date: {
+                        type: :array,
+                        example: "2024-06-12"
+                      },
+                      activities: {
+                        type: :object
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          required: [:user_id]
+        }
         let!(:trip1) { create(:trip, user_id: 1)}
+        let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip1.id) }
+
         let(:user_id) { trip1.user_id}
         let(:id) { trip1.id }
-
+        before do
+          create_list(:activity, 5, daily_itinerary_id: daily_itinerary.id)
+        end
         run_test!
       end
 
@@ -103,6 +186,8 @@ RSpec.describe 'Trips API', type: :request do
 
     patch "Updates a Trip for a User" do
       tags "Trips"
+      security []
+      operationId "updateTrip"
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
@@ -138,7 +223,9 @@ RSpec.describe 'Trips API', type: :request do
     end
 
     delete "Deletes a Trip for a User" do
+      operationId "deleteTrip"
       tags "Trips"
+      security []
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
