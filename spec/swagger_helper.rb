@@ -176,15 +176,6 @@ RSpec.configure do |config|
                       },
                       daily_itineraries: {
                         type: :object,
-                        properties: {
-                          date: {
-                            type: :array,
-                            example: "2024-06-12"
-                          },
-                          activities: {
-                            type: :object
-                          }
-                        }
                       }
                     }
                   }
