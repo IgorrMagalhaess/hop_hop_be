@@ -21,7 +21,7 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find User with 'id'=2121") do
+      response(404, "Couldn't find User with 'id'=12323232") do
         schema "$ref" => "#/components/schemas/not_found"
 
         let!(:trip1) { create(:trip, user_id: 1)}
@@ -113,7 +113,7 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=2") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
         schema "$ref" => "#/components/schemas/not_found"
 
         let!(:trip1) { create(:trip, user_id: 1)}
@@ -177,7 +177,7 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=12") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
         schema "$ref" => "#/components/schemas/not_found"
 
         let!(:trip1) { create(:trip, user_id: 1)}
@@ -205,7 +205,7 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=12") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
         schema "$ref" => "#/components/schemas/not_found"
 
         let!(:trip) { create(:trip, user_id: 1)}

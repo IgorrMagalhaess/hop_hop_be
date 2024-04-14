@@ -49,10 +49,12 @@ RSpec.configure do |config|
                 type: :array,
                 properties: {
                   id: {
-                    type: :number
+                    type: :number,
+                    example: 1
                   },
                   type: {
-                    type: :string
+                    type: :string,
+                    example: "trips"
                   },
                   attributes: {
                     type: :object,
