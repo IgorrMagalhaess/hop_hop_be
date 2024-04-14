@@ -17,10 +17,8 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def create
-      trip = Trip.new(trip_params)
-      if trip.save
-         render json: TripSerializer.new(trip, { params: {show: false, index: false}}), status: :created
-      end
+      trip = Trip.create!(trip_params)
+      render json: TripSerializer.new(trip, { params: {show: false, index: false}}), status: :created
    end
 
    def destroy
