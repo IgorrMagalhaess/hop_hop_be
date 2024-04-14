@@ -116,7 +116,7 @@ RSpec.describe 'Accommodations API', type: :request do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=2")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=2 [WHERE \"accommodations\".\"trip_id\" = $1]")
     end
 
     it "renders 404 if trip id doesn't exist" do
@@ -260,7 +260,7 @@ RSpec.describe 'Accommodations API', type: :request do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=5")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=5 [WHERE \"accommodations\".\"trip_id\" = $1]")
     end
   end
 
@@ -300,7 +300,7 @@ RSpec.describe 'Accommodations API', type: :request do
       delete_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(delete_response[:errors]).to be_a(Array)
-      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=55")
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=55 [WHERE \"accommodations\".\"trip_id\" = $1]")
     end
   end
 end
