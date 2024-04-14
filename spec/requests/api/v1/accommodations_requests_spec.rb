@@ -303,4 +303,17 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Accommodation with 'id'=55")
     end
   end
+
+  describe 'POST /api/v1/trips/:trip_id/accommodations' do
+    it 'creates a new accommodation' do
+      post api_v1_trip_accommodations_path(trip_id: @trip.id), 
+           params: @accommodation_params.to_json, 
+           headers: @headers
+  
+      expect(response).to have_http_status(:created)
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      expect(json_response.dig(:data, :attributes, :name)).to eq("Mariott")
+      expect(json_response.dig(:data, :attributes, :address_format)).to eq("123 Main Street, Phuket, Thailand")
+    end
+  end
 end
