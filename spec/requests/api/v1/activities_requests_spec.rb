@@ -312,4 +312,25 @@ RSpec.describe "Activities API", type: :request do
       expect(delete_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=55 [WHERE \"daily_itineraries\".\"trip_id\" = $1]")
     end
   end
+
+  describe 'GET daily itinerary formatted date' do
+    let(:trip) { create(:trip, user_id: 1) }
+    let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip.id, date: Date.today) }
+    let!(:activities) do
+      create_list(:activity, 2, daily_itinerary_id: daily_itinerary.id)
+    end
+
+    it "returns formatted date for daily itinerary" do
+      get "/api/v1/trips/#{trip.id}/daily_itineraries/#{daily_itinerary.id}/activities/", headers: @headers
+      
+      expect(response).to have_http_status(:ok)
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(json_response[:data]).to be_an(Array)
+      expect(json_response[:data].first[:attributes][:name]).to eq(activities.first.name)
+
+      formatted_date = daily_itinerary.date.strftime("%m/%d/%Y")
+      expect(json_response[:data].first[:attributes][:daily_itinerary_date_format]).to eq(formatted_date)
+    end
+  end
 end
