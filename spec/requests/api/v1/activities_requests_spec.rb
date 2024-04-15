@@ -178,7 +178,7 @@ RSpec.describe "Activities API", type: :request do
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
 
-      expect(activity_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=3")
+      expect(activity_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=3 [WHERE \"daily_itineraries\".\"trip_id\" = $1]")
     end
   end
 
@@ -213,7 +213,7 @@ RSpec.describe "Activities API", type: :request do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=100")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=100 [WHERE \"daily_itineraries\".\"trip_id\" = $1]")
     end
 
     it "renders 404 when trip id doesn't exist" do
@@ -243,7 +243,7 @@ RSpec.describe "Activities API", type: :request do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=100")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=100 [WHERE \"activities\".\"daily_itinerary_id\" = $1]")
     end
 
     it "renders 400 when name is blank" do
@@ -297,7 +297,7 @@ RSpec.describe "Activities API", type: :request do
       delete_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(delete_response[:errors]).to be_a(Array)
-      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=55")
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find Activity with 'id'=55 [WHERE \"activities\".\"daily_itinerary_id\" = $1]")
     end
 
     it "renders 404 if daily_itinerary id is invalid" do
@@ -309,7 +309,7 @@ RSpec.describe "Activities API", type: :request do
       delete_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(delete_response[:errors]).to be_a(Array)
-      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=55")
+      expect(delete_response[:errors].first[:detail]).to eq("Couldn't find DailyItinerary with 'id'=55 [WHERE \"daily_itineraries\".\"trip_id\" = $1]")
     end
   end
 end
