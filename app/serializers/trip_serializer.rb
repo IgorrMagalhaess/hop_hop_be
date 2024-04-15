@@ -1,5 +1,7 @@
 class TripSerializer
   include JSONAPI::Serializer
+  has_many :daily_itineraries
+
   attributes :name, :location
 
   attributes :start_date, :end_date, :status, :total_budget, if: Proc.new {|object, params| params[:index] == false }
