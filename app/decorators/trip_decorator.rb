@@ -10,11 +10,11 @@ class TripDecorator < Draper::Decorator
   #     end
   #   end
 
-  def start_date_format
-    object.start_date.strftime("%B %d, %Y")
-  end
+  # def start_date_format
+  #   object.start_date.strftime("%B %d, %Y")
+  # end
 
-  def end_date_format
-    object.end_date.strftime("%B %d, %Y")
-  end
+  # def end_date_format
+  #   object.end_date.strftime("%B %d, %Y")
+  # end
 end
