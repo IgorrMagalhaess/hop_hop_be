@@ -1,4 +1,6 @@
 require "rails_helper"
+require 'swagger_helper'
+
 
 RSpec.describe 'Trips API', type: :request do
   before do
@@ -38,20 +40,11 @@ RSpec.describe 'Trips API', type: :request do
       expect(trip[:attributes]).to have_key(:location)
       expect(trip[:attributes][:location]).to be_a(String)
 
-      expect(trip[:attributes]).to have_key(:start_date)
-      expect(trip[:attributes][:start_date]).to be_a(String)
-
-      expect(trip[:attributes]).to have_key(:end_date)
-      expect(trip[:attributes][:end_date]).to be_a(String)
-
-      expect(trip[:attributes]).to have_key(:status)
-      expect(trip[:attributes][:status]).to be_a(String)
-
-      expect(trip[:attributes]).to have_key(:total_budget)
-      expect(trip[:attributes][:total_budget]).to be_a(Integer)
-
-      expect(trip[:attributes]).to have_key(:total_expenses)
-      expect(trip[:attributes][:total_expenses]).to be_a(Integer)
+      expect(trip[:attributes]).to_not have_key(:start_date)
+      expect(trip[:attributes]).to_not have_key(:end_date)
+      expect(trip[:attributes]).to_not have_key(:status)
+      expect(trip[:attributes]).to_not have_key(:total_budget)
+      expect(trip[:attributes]).to_not have_key(:total_expenses)
     end
 
     it 'returns only a list of trips for the user passed on the parameters' do
@@ -163,10 +156,40 @@ RSpec.describe 'Trips API', type: :request do
 
       patch "/api/v1/trips/#{trip_id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
 
-      update_response = JSON.parse(response.body, symbolize_names: true)
+      updated_trip = JSON.parse(response.body, symbolize_names: true)[:data]
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
+
+      expect(updated_trip).to have_key(:id)
+      expect(updated_trip[:id]).to be_a(String)
+
+      expect(updated_trip).to have_key(:type)
+      expect(updated_trip[:type]).to eq("trip")
+
+      expect(updated_trip).to have_key(:attributes)
+      expect(updated_trip[:attributes]).to be_a(Hash)
+
+      expect(updated_trip[:attributes]).to have_key(:name)
+      expect(updated_trip[:attributes][:name]).to be_a(String)
+
+      expect(updated_trip[:attributes]).to have_key(:location)
+      expect(updated_trip[:attributes][:location]).to be_a(String)
+
+      expect(updated_trip[:attributes]).to have_key(:start_date)
+      expect(updated_trip[:attributes][:start_date]).to be_a(String)
+
+      expect(updated_trip[:attributes]).to have_key(:end_date)
+      expect(updated_trip[:attributes][:end_date]).to be_a(String)
+
+      expect(updated_trip[:attributes]).to have_key(:status)
+      expect(updated_trip[:attributes][:status]).to be_a(String)
+
+      expect(updated_trip[:attributes]).to have_key(:total_budget)
+      expect(updated_trip[:attributes][:total_budget]).to be_a(Integer)
+
+      expect(updated_trip[:attributes]).to have_key(:total_expenses)
+      expect(updated_trip[:attributes][:total_expenses]).to be_a(Integer)
 
       trip = Trip.last
 
@@ -235,6 +258,38 @@ RSpec.describe 'Trips API', type: :request do
 
       expect(response).to be_successful
       expect(response.status).to eq(201)
+
+      created_trip_data = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(created_trip_data).to have_key(:id)
+      expect(created_trip_data[:id]).to be_a(String)
+
+      expect(created_trip_data).to have_key(:type)
+      expect(created_trip_data[:type]).to eq("trip")
+
+      expect(created_trip_data).to have_key(:attributes)
+      expect(created_trip_data[:attributes]).to be_a(Hash)
+
+      expect(created_trip_data[:attributes]).to have_key(:name)
+      expect(created_trip_data[:attributes][:name]).to be_a(String)
+
+      expect(created_trip_data[:attributes]).to have_key(:location)
+      expect(created_trip_data[:attributes][:location]).to be_a(String)
+
+      expect(created_trip_data[:attributes]).to have_key(:start_date)
+      expect(created_trip_data[:attributes][:start_date]).to be_a(String)
+
+      expect(created_trip_data[:attributes]).to have_key(:end_date)
+      expect(created_trip_data[:attributes][:end_date]).to be_a(String)
+
+      expect(created_trip_data[:attributes]).to have_key(:status)
+      expect(created_trip_data[:attributes][:status]).to be_a(String)
+
+      expect(created_trip_data[:attributes]).to have_key(:total_budget)
+      expect(created_trip_data[:attributes][:total_budget]).to be_a(Integer)
+
+      expect(created_trip_data[:attributes]).to have_key(:total_expenses)
+      expect(created_trip_data[:attributes][:total_expenses]).to be_a(Integer)
 
       expect(created_trip.name).to eq(trip_params[:name])
       expect(created_trip.location).to eq(trip_params[:location])
@@ -348,6 +403,77 @@ RSpec.describe 'Trips API', type: :request do
           expect(activity).to be_a(Hash)
         end
       end
+    end
+
+    it "does NOT render :daily_itineraries for trip#index" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      get "/api/v1/trips", headers: @headers, params: { user_id: 1 }
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      trips = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      trips.each do |trip|
+        expect(trip[:attributes][:daily_itineraries]).to_not be_present
+      end
+    end
+
+    it "does NOT render :daily_itineraries for trip#update" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      previous_name = Trip.last.name
+      trip_params = { name: 'Different Name' }
+
+      patch "/api/v1/trips/#{trip.id}", headers: @headers, params: JSON.generate({trip: trip_params, user_id: 1 })
+
+      updated_trip = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      expect(updated_trip[:data][:attributes][:daily_itineraries]).to_not be_present
+    end
+
+    it "does NOT render :daily_itineraries for trip#create" do
+      DailyItinerary.create!(trip_id: trip.id, date: "Thu, 11 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Fri, 12 Apr 2024")
+      DailyItinerary.create!(trip_id: trip.id, date: "Sat, 13 Apr 2024")
+      create_list(:activity, 3, daily_itinerary_id: DailyItinerary.first.id)
+      create_list(:activity, 4, daily_itinerary_id: DailyItinerary.second.id)
+      create_list(:activity, 6, daily_itinerary_id: DailyItinerary.last.id )
+
+      trip_params = {
+        name: "Visiting Family",
+        location: "Brazil",
+        start_date: DateTime.new(2024,12,10),
+        end_date: DateTime.new(2025,1,10),
+        total_budget: 10000,
+        user_id: 1
+      }
+
+      post '/api/v1/trips', headers: @headers, params: JSON.generate(trip: trip_params)
+
+      created_trip = Trip.last
+
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
+      trip = JSON.parse(response.body, symbolize_names: true)
+
+      expect(trip[:data][:attributes][:daily_itineraries]).to_not be_present
     end
   end
 end

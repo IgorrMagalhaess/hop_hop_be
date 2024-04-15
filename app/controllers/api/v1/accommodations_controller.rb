@@ -1,24 +1,28 @@
 class Api::V1::AccommodationsController < ApplicationController
   before_action :validate_trip
+  def index
+    accommodations = @trip.accommodations
+    render json: AccommodationSerializer.new(accommodations)
+  end
 
   def show
-    accommodation = Accommodation.find(params[:id])
+    accommodation = @trip.accommodations.find(params[:id])
     render json: AccommodationSerializer.new(accommodation)
   end
 
   def create
-    accommodation = Accommodation.create!(accommodation_params)
+    accommodation = @trip.accommodations.create!(accommodation_params)
     render json: AccommodationSerializer.new(accommodation), status: :created
   end
 
   def update
-    accommodation = Accommodation.find(params[:id])
+    accommodation = @trip.accommodations.find(params[:id])
     accommodation.update!(accommodation_params)
     render json: AccommodationSerializer.new(accommodation)
   end
 
   def destroy
-    accommodation = Accommodation.find(params[:id])
+    accommodation = @trip.accommodations.find(params[:id])
     accommodation.destroy
     head :no_content, status: :no_content
   end
@@ -30,6 +34,6 @@ class Api::V1::AccommodationsController < ApplicationController
   end
 
   def validate_trip
-    Trip.find(params[:trip_id])
+    @trip = Trip.find(params[:trip_id])
   end
 end

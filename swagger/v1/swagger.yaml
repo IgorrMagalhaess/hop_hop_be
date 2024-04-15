@@ -1,0 +1,180 @@
+---
+openapi: 3.0.1
+info:
+  title: Trip API V1
+  version: v1
+paths:
+  "/api/v1/trips":
+    get:
+      summary: Finds all trips for a User
+      tags:
+      - Trips
+      description: List all Trips that belong to a user with id, location, and name
+      parameters:
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Disneyland in Tokyo!
+                  location:
+                    type: string
+                    example: Tokyo, Japan
+    post:
+      summary: Creates a Trip for a User
+      tags:
+      - Trips
+      description: Creates a Trip for a User with all Trip information
+      parameters: []
+      responses:
+        '201':
+          description: Trip created
+        '400':
+          description: Validation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Trip"
+  "/api/v1/trips/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    - name: user_id
+      in: query
+      schema:
+        type: integer
+    get:
+      summary: Finds one trip
+      tags:
+      - Trips
+      description: List a Trip that belongs to a user with all Trip information and
+        Daily Itineraries
+      responses:
+        '200':
+          description: Successful
+        '404':
+          description: Couldn't find Trip with 'id'=2
+        '400':
+          description: 'Validation failed: Invalid User ID provided'
+    patch:
+      summary: Updates a Trip for a User
+      tags:
+      - Trips
+      description: Updates a User's Trip information
+      parameters: []
+      responses:
+        '200':
+          description: Trip updated
+        '400':
+          description: 'Validation failed: Name can''t be blank'
+        '404':
+          description: Couldn't find Trip with 'id'=12
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Trip"
+    delete:
+      summary: Deletes a Trip for a User
+      tags:
+      - Trips
+      description: Updates a User's Trip information
+      responses:
+        '204':
+          description: trip deleted
+        '404':
+          description: Couldn't find Trip with 'id'=12
+components:
+  schemas:
+    not_found:
+      type: object
+      properties:
+        message:
+          type: string
+    Trip:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Disneyland in Tokyo!
+        location:
+          type: string
+          example: Tokyo, Japan
+        start_date:
+          type: date_time
+          example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+        end_date:
+          type: date_time
+          example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+        status:
+          type: string
+          example: in_progress
+        total_budget:
+          type: integer
+          example: 4676
+        user_id:
+          type: integer
+          example: 1
+        total_expenses:
+          type: integer
+          example: 200
+        required:
+        - user_id
+    accommodations:
+      type: object
+      required:
+      - trip_id
+      - name
+      - address
+      - lat
+      - lon
+      - type_of_accommodation
+      - check_in
+      - check_out
+      - expenses
+      properties:
+        trip_id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Mariott Monterey Bay
+        address:
+          type: string
+          example: 7836 Haywood Throughway
+        lat:
+          type: float
+          example: 26.885830851487825
+        lon:
+          type: float
+          example: -162.29136075180418
+        type_of_accommodation:
+          type: string
+          example: Hotel
+        check_in:
+          type: datetime
+          example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+        check_out:
+          type: datetime
+          example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+        expenses:
+          type: integer
+          example: 3000
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
