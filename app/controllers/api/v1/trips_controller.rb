@@ -43,4 +43,5 @@ class Api::V1::TripsController < ApplicationController
    def filter_user_trips
       @trips = Trip.trips_by_user_id(params[:user_id])
    end
+
 end
