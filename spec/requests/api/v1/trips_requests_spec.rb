@@ -491,11 +491,8 @@ RSpec.describe 'Trips API', type: :request do
       expect(trip_response).to have_key(:data)
       expect(trip_response[:data]).to be_a(Hash)
 
-      formatted_start_date = trip.start_date.strftime("%m/%d/%Y") 
-      formatted_end_date = trip.end_date.strftime("%m/%d/%Y")  
-    
-      expect(trip_response[:data][:attributes][:start_date]).to eq(formatted_start_date)
-      expect(trip_response[:data][:attributes][:end_date]).to eq(formatted_end_date)
+      expect(trip_response[:data][:attributes][:start_date]).to eq(trip.start_date)
+      expect(trip_response[:data][:attributes][:end_date]).to eq(trip.end_date)
     end
   end
 end
