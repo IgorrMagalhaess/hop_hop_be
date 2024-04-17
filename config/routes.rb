@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :trips do
         resources :daily_itineraries, only: [:index] do
-          resources :activities, only: [:index, :create, :update, :destroy]
+          resources :activities, only: [:index, :create, :update, :destroy, :show]
         end
         resources :accommodations, only: [:index, :create, :update, :show, :destroy]
       end
