@@ -6,6 +6,11 @@ class Api::V1::ActivitiesController < ApplicationController
     render json: ActivitySerializer.new(activities)
   end
 
+  def show
+    activity = @daily_itinerary.activities.find(params[:id])
+    render json: ActivitySerializer.new(activity)
+  end
+
   def create
     activity = @daily_itinerary.activities.new(activity_params)
     activity.save!

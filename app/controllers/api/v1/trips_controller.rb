@@ -4,7 +4,7 @@ class Api::V1::TripsController < ApplicationController
    before_action :filter_user_trips, only: [:index]
 
    def index
-      render json: TripSerializer.new(@trips, { include: [:daily_itineraries], params: {show: false, index: true}})
+      render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
    end
 
    def show
@@ -41,7 +41,11 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def filter_user_trips
-      @trips = Trip.trips_by_user_id(params[:user_id])
+      if params[:user_id].present?
+         @trips = Trip.trips_by_user_id(params[:user_id])
+      else
+         @trips = []
+      end
    end
 
 end

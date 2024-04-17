@@ -32,12 +32,12 @@ Trip.all.each do |trip|
     type_of_accommodation: Faker::Name.name,
     expenses: Faker::Number.between(from: 500, to: 5000),
   })
-  Faker::Number.between(from: 3, to: 10).times do
-    trip.daily_itineraries.create!({
-      trip_id: trip.id,
-      date: Faker::Time.between(from: trip.start_date, to: trip.end_date)
-  })
-  end
+  # Faker::Number.between(from: 3, to: 10).times do
+  #   trip.daily_itineraries.create!({
+  #     trip_id: trip.id,
+  #     date: Faker::Time.between(from: trip.start_date, to: trip.end_date)
+  # })
+  # end
 end
 
 puts "Created Accommodations"
