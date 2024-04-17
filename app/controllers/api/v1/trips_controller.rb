@@ -33,7 +33,7 @@ class Api::V1::TripsController < ApplicationController
    end
 
    def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Trip.find(params[:id]).decorate
    end
 
    def confirm_user

@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-10.times do
+30.times do
   Trip.create!({
     name: Faker::Name.name,
     location: Faker::Address.country,
@@ -15,7 +15,7 @@
     end_date: Faker::Time.between(from: DateTime.now + 51, to: DateTime.now + 75),
     status: Faker::Number.between(from: 0, to: 1),
     total_budget: Faker::Number.between(from: 500, to: 10000),
-    user_id: Faker::Number.between(from: 1, to: 5)
+    user_id: Faker::Number.between(from: 1000, to: 1005)
   })
 end
 puts "Created Trips"

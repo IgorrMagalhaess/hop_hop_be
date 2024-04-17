@@ -38,6 +38,7 @@ gem 'jsonapi-serializer'
 gem "rswag-api"
 gem "rswag-ui"
 
+gem 'draper'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
