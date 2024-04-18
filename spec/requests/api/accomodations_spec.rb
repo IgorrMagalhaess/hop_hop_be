@@ -82,11 +82,11 @@ RSpec.describe "api/accommodations", type: :request do
     parameter name: :accommodation_id, in: :path, type: :integer
     parameter name: :user_id, in: :query, type: :integer
 
-    get "Finds one accomodation" do
-      tags "Accomodations"
+    get "Finds one accommodation" do
+      tags "Accommodations"
       consumes "application/json"
       produces "application/json"
-      description "Returns all accomodation details for a given trip and user"
+      description "Returns all accommodation details for a given trip and user"
 
       response(200, "Sucessful") do
         let!(:trip1) { create(:trip, user_id: 1) }
@@ -124,7 +124,7 @@ RSpec.describe "api/accommodations", type: :request do
       produces "application/json"
       consumes "application/json"
       description "Updates a User's Trip Accommodation"
-      parameter name: :accomodation, in: :body, schema: { "$ref" => "#/components/schemas/accomodation" }
+      parameter name: :accommodation, in: :body, schema: { "$ref" => "#/components/schemas/accommodation" }
 
       response(200, "Accommodation updated") do
         let!(:trip1) { create(:trip, user_id: 1) }
@@ -133,7 +133,7 @@ RSpec.describe "api/accommodations", type: :request do
         let!(:user_id) { trip1.user_id }
         let!(:accommodation_id) { accommodation1.id }
 
-        let!(:accomodation) {{name: "Hilton Hotel"}}
+        let!(:accommodation) {{name: "Hilton Hotel"}}
 
         run_test!
       end
@@ -145,7 +145,7 @@ RSpec.describe "api/accommodations", type: :request do
         let!(:user_id) { trip1.user_id }
         let!(:accommodation_id) { accommodation1.id }
 
-        let!(:accomodation) {{name: ""}}
+        let!(:accommodation) {{name: ""}}
 
         run_test!
       end
@@ -157,7 +157,7 @@ RSpec.describe "api/accommodations", type: :request do
         let!(:user_id) { trip1.user_id }
         let!(:accommodation_id) { accommodation1.id }
 
-        let!(:accomodation) {{name: "Paris 2024 Olympics"}}
+        let!(:accommodation) {{name: "Paris 2024 Olympics"}}
 
         run_test!
       end
@@ -169,7 +169,7 @@ RSpec.describe "api/accommodations", type: :request do
         let!(:user_id) { trip1.user_id }
         let!(:accommodation_id) { 123123123 }
 
-        let!(:accomodation) {{name: "Paris 2024 Olympics"}}
+        let!(:accommodation) {{name: "Paris 2024 Olympics"}}
 
         run_test!
       end
