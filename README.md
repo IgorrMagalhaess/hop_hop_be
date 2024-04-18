@@ -111,3 +111,19 @@ Contributions are welcome! Feel free to open issues or pull requests.
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
+## Colaborators
+- Hoa Dam
+  - [LinkedIn](https://www.linkedin.com/in/hoa-dam-0ba4a716b/)
+  - [GitHub](https://github.com/hoadam)
+- Igor Magalhaes
+  - [LinkedIn](https://www.linkedin.com/in/igorrmagalhaess/)
+  - [GitHub](https://github.com/IgorrMagalhaess)
+- Selena Hawamdeh
+  - [LinkedIn](https://www.linkedin.com/in/selena-hawamdeh/)
+  - [GitHub](https://github.com/Selena730)
+- Yain Porter
+  - [LinkedIn](https://www.linkedin.com/in/yainporter/)
+  - [GitHub](https://github.com/yainporter)
+
+
+
