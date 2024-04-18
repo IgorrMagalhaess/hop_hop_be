@@ -109,5 +109,5 @@ The API follows a standard error response format for 400-series error codes. For
 Contributions are welcome! Feel free to open issues or pull requests.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
