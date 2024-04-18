@@ -9,6 +9,8 @@ paths:
       summary: Finds all trips for a User
       tags:
       - Trips
+      security: []
+      operationId: findAllTrips
       description: List all Trips that belong to a user with id, location, and name
       parameters:
       - name: user_id
@@ -21,30 +23,62 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    example: Disneyland in Tokyo!
-                  location:
-                    type: string
-                    example: Tokyo, Japan
+                "$ref": "#/components/schemas/all_trips"
+        '404':
+          description: Couldn't find User with 'id'=12323232
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/not_found"
     post:
       summary: Creates a Trip for a User
       tags:
       - Trips
+      security: []
+      operationId: createTrip
       description: Creates a Trip for a User with all Trip information
       parameters: []
       responses:
         '201':
           description: Trip created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/trip"
         '400':
           description: Validation failed
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/Trip"
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                status:
+                  type: string
+                total_budget:
+                  type: integer
+                user_id:
+                  type: integer
+              required:
+              - name
+              - location
+              - start_date
+              - end_date
+              - status
+              - total_budget
+              - user_id
   "/api/v1/trips/{id}":
     parameters:
     - name: id
@@ -60,79 +94,215 @@ paths:
       summary: Finds one trip
       tags:
       - Trips
+      security: []
+      operationId: findOneTrip
       description: List a Trip that belongs to a user with all Trip information and
         Daily Itineraries
       responses:
         '200':
           description: Successful
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/trip_show"
         '404':
-          description: Couldn't find Trip with 'id'=2
+          description: Couldn't find Trip with 'id'=12323232
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/not_found"
         '400':
           description: 'Validation failed: Invalid User ID provided'
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
     patch:
       summary: Updates a Trip for a User
       tags:
       - Trips
+      security: []
+      operationId: updateTrip
       description: Updates a User's Trip information
       parameters: []
       responses:
         '200':
           description: Trip updated
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/trip"
         '400':
           description: 'Validation failed: Name can''t be blank'
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/validation_failed"
         '404':
-          description: Couldn't find Trip with 'id'=12
+          description: Couldn't find Trip with 'id'=12323232
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/not_found"
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/Trip"
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                status:
+                  type: string
+                total_budget:
+                  type: integer
+              required:
+              - name
+              - location
+              - start_date
+              - end_date
+              - status
+              - total_budget
     delete:
       summary: Deletes a Trip for a User
+      operationId: deleteTrip
       tags:
       - Trips
+      security: []
       description: Updates a User's Trip information
       responses:
         '204':
           description: trip deleted
         '404':
-          description: Couldn't find Trip with 'id'=12
+          description: Couldn't find Trip with 'id'=12323232
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/not_found"
 components:
   schemas:
     not_found:
       type: object
       properties:
-        message:
+        detail:
           type: string
-    Trip:
+          example: Couldn't find Trip with 'id'=12323232
+    validation_failed:
       type: object
       properties:
-        name:
+        detail:
           type: string
-          example: Disneyland in Tokyo!
-        location:
-          type: string
-          example: Tokyo, Japan
-        start_date:
-          type: date_time
-          example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
-        end_date:
-          type: date_time
-          example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
-        status:
-          type: string
-          example: in_progress
-        total_budget:
-          type: integer
-          example: 4676
-        user_id:
-          type: integer
-          example: 1
-        total_expenses:
-          type: integer
-          example: 200
-        required:
-        - user_id
+          example: 'Validation failed: Name can''t be blank'
+    all_trips:
+      type: object
+      properties:
+        data:
+          type: array
+          properties:
+            id:
+              type: number
+              example: 1
+            type:
+              type: string
+              example: trips
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Marriott Hotel
+                location:
+                  type: string
+                  example: 1234, Marriott Road
+    trip:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Disneyland in Tokyo!
+                location:
+                  type: string
+                  example: Tokyo, Japan
+                start_date:
+                  type: string
+                  example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+                end_date:
+                  type: string
+                  example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+                status:
+                  type: string
+                  example: in_progress
+                total_budget:
+                  type: integer
+                  example: 4676
+                user_id:
+                  type: integer
+                  example: 1
+                total_expenses:
+                  type: integer
+                  example: 200
+              required:
+              - name
+              - location
+              - start_date
+              - end_date
+              - status
+              - total_budget
+    trip_show:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Disneyland in Tokyo!
+                location:
+                  type: string
+                  example: Tokyo, Japan
+                start_date:
+                  type: string
+                  example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
+                end_date:
+                  type: string
+                  example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
+                status:
+                  type: string
+                  example: in_progress
+                total_budget:
+                  type: integer
+                  example: 4676
+                user_id:
+                  type: integer
+                  example: 1
+                total_expenses:
+                  type: integer
+                  example: 200
+                daily_itineraries:
+                  type: object
     accommodations:
       type: object
       required:
@@ -156,25 +326,23 @@ components:
           type: string
           example: 7836 Haywood Throughway
         lat:
-          type: float
+          type: number
           example: 26.885830851487825
         lon:
-          type: float
+          type: number
           example: -162.29136075180418
         type_of_accommodation:
           type: string
           example: Hotel
         check_in:
-          type: datetime
+          type: string
           example: Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00
         check_out:
-          type: datetime
+          type: string
           example: Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00
         expenses:
           type: integer
           example: 3000
+  securitySchemes: {}
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+- url: http://localhost:5000

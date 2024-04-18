@@ -1,28 +1,32 @@
 require 'swagger_helper'
 
 RSpec.describe 'Trips API', type: :request do
+
   path "/api/v1/trips" do
     get "Finds all trips for a User" do
       tags "Trips"
+      security []
+      operationId "findAllTrips"
       consumes 'application/json'
       produces 'application/json'
       description "List all Trips that belong to a user with id, location, and name"
       parameter name: :user_id, in: :query, type: :integer
 
       response(200, 'Successful') do
-        schema type: :object, properties: {
-                                name: {
-                                  type: :string,
-                                  example: "Disneyland in Tokyo!"
-                                },
-                                location: {
-                                  type: :string,
-                                  example: "Tokyo, Japan"
-                                },
-                              }
+        schema "$ref" => "#/components/schemas/all_trips"
         let!(:trip1) { create(:trip, user_id: 1)}
         let!(:trip2) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
+
+        run_test!
+      end
+
+      response(404, "Couldn't find User with 'id'=12323232") do
+        schema "$ref" => "#/components/schemas/not_found"
+
+        let!(:trip1) { create(:trip, user_id: 1)}
+        let!(:trip2) { create(:trip, user_id: 1)}
+        let(:user_id) { 2121 }
 
         run_test!
       end
@@ -30,27 +34,45 @@ RSpec.describe 'Trips API', type: :request do
 
     post "Creates a Trip for a User" do
       tags "Trips"
+      security []
+      operationId "createTrip"
       consumes 'application/json'
       produces 'application/json'
       description "Creates a Trip for a User with all Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
+      parameter name: :trip, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          location: { type: :string },
+          start_date: { type: :string },
+          end_date: { type: :string },
+          status: { type: :string },
+          total_budget: { type: :integer },
+          user_id: { type: :integer }
+        },
+        required: [ :name, :location, :start_date, :end_date, :status, :total_budget, :user_id ]
+      }
 
       response(201, 'Trip created') do
-        let!(:trip) {
+        schema "$ref" => "#/components/schemas/trip"
+        let!(:trip) { {trip:
           {
             name: "Visiting Family",
             location: "Brazil",
-            start_date: DateTime.new(2024,12,10),
-            end_date: DateTime.new(2025,1,10),
+            start_date: "2024-12-10T00:00:00.000Z",
+            end_date: "2025-01-10T00:00:00.000Z",
+            status: "in_progress",
             total_budget: 10000,
             user_id: 1
           }
-        }
+        }}
 
         run_test!
       end
 
       response(400, "Validation failed") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let(:trip) {
           {
             location: "Brazil",
@@ -72,19 +94,28 @@ RSpec.describe 'Trips API', type: :request do
 
     get "Finds one trip" do
       tags "Trips"
+      security []
+      operationId "findOneTrip"
       consumes 'application/json'
       produces 'application/json'
       description "List a Trip that belongs to a user with all Trip information and Daily Itineraries"
 
       response(200, 'Successful') do
+        schema "$ref" => "#/components/schemas/trip_show"
+
         let!(:trip1) { create(:trip, user_id: 1)}
+        let(:daily_itinerary) { DailyItinerary.create!(trip_id: trip1.id) }
         let(:user_id) { trip1.user_id}
         let(:id) { trip1.id }
-
+        before do
+          create_list(:activity, 5, daily_itinerary_id: daily_itinerary.id)
+        end
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=2") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
         let(:id) { 2 }
@@ -93,6 +124,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(400, "Validation failed: Invalid User ID provided") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:user_id) { 2 }
         let(:id) { trip1.id }
@@ -103,12 +136,27 @@ RSpec.describe 'Trips API', type: :request do
 
     patch "Updates a Trip for a User" do
       tags "Trips"
+      security []
+      operationId "updateTrip"
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
+      parameter name: :trip, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          location: { type: :string },
+          start_date: { type: :string },
+          end_date: { type: :string },
+          status: { type: :string },
+          total_budget: { type: :integer }
+        },
+        required: [ :name, :location, :start_date, :end_date, :status, :total_budget]
+      }
 
       response(200, 'Trip updated') do
+        schema "$ref" => "#/components/schemas/trip"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { trip1.id }
         let(:user_id) {trip1.user_id}
@@ -119,6 +167,8 @@ RSpec.describe 'Trips API', type: :request do
       end
 
       response(400, "Validation failed: Name can't be blank") do
+        schema "$ref" => "#/components/schemas/validation_failed"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { trip1.id }
         let(:user_id) {trip1.user_id}
@@ -127,7 +177,9 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=12") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:id) { 12 }
         let(:user_id) {trip1.user_id}
@@ -138,7 +190,9 @@ RSpec.describe 'Trips API', type: :request do
     end
 
     delete "Deletes a Trip for a User" do
+      operationId "deleteTrip"
       tags "Trips"
+      security []
       produces 'application/json'
       consumes 'application/json'
       description "Updates a User's Trip information"
@@ -151,7 +205,9 @@ RSpec.describe 'Trips API', type: :request do
         run_test!
       end
 
-      response(404, "Couldn't find Trip with 'id'=12") do
+      response(404, "Couldn't find Trip with 'id'=12323232") do
+        schema "$ref" => "#/components/schemas/not_found"
+
         let!(:trip) { create(:trip, user_id: 1)}
         let(:id) { 12 }
         let(:user_id) {trip.user_id}
