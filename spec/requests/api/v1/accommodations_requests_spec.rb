@@ -313,7 +313,7 @@ RSpec.describe 'Accommodations API', type: :request do
       expect(response).to have_http_status(:created)
       json_response = JSON.parse(response.body, symbolize_names: true)
       expect(json_response.dig(:data, :attributes, :name)).to eq("Mariott")
-      expect(json_response.dig(:data, :attributes, :address_format)).to eq("123 Main Street, Phuket, Thailand")
+      expect(json_response.dig(:data, :attributes, :address)).to eq("123 Main Street, Phuket, Thailand")
     end
   end
 end

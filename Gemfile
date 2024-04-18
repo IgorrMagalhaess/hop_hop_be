@@ -40,7 +40,7 @@ gem "rswag-ui"
 
 gem 'draper'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
 group :test do
   gem "simplecov"
@@ -56,7 +56,7 @@ group :development, :test do
   gem "pry"
   gem "factory_bot_rails"
   gem "faker"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers" 
   gem "rspec-rails"
   gem "rswag-specs"
 end

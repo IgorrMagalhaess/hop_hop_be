@@ -33,7 +33,7 @@ RSpec.describe 'Trips API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       description "Creates a Trip for a User with all Trip information"
-      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/Trip" }
+      parameter name: :trip, in: :body, schema: { "$ref" => "#/components/schemas/trip" }
 
       response(201, 'Trip created') do
         let!(:trip) {
