@@ -1,6 +1,6 @@
-require 'swagger_helper'
+require "swagger_helper"
 
-RSpec.describe 'api/accommodations', type: :request do
+RSpec.describe "api/accommodations", type: :request do
   path "/api/v1/trips/{id}/accommodations" do
     parameter name: :id, in: :path, type: :integer
     parameter name: :user_id, in: :query, type: :integer
@@ -12,7 +12,7 @@ RSpec.describe 'api/accommodations', type: :request do
       description "Create a new accommodation for a trip with all Accommodation information"
       parameter name: :accommodation, in: :body, schema: { "$ref" => "#/components/schemas/accommodations" }
 
-      response(201, 'Accommodation Created') do
+      response(201, "Accommodation Created") do
         let!(:trip1) { create(:trip, user_id: 1)}
         let(:user_id) { trip1.user_id}
         let(:id) { trip1.id }
