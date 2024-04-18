@@ -123,7 +123,7 @@ RSpec.configure do |config|
           url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'https://api-hophop-9875038f278b.herokuapp.com'
             }
           }
         }

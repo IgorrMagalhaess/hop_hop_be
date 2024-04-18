@@ -174,7 +174,7 @@ components:
           type: integer
           example: 3000
 servers:
-- url: https://{defaultHost}
+- url: https://api-hophop-9875038f278b.herokuapp.com
   variables:
     defaultHost:
       default: www.example.com
