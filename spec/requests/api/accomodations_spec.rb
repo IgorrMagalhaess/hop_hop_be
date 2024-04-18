@@ -14,8 +14,8 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(201, "Accommodation Created") do
         let!(:trip1) { create(:trip, user_id: 1)}
-        let(:user_id) { trip1.user_id}
-        let(:id) { trip1.id }
+        let!(:user_id) { trip1.user_id}
+        let!(:id) { trip1.id }
 
         let!(:accommodation){
           {  trip_id: 1,
@@ -35,8 +35,8 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(400, "Validation failed") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:user_id) { trip1.user_id }
-        let(:id) { trip1.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:id) { trip1.id }
 
         let!(:accommodation) {
           {
@@ -56,8 +56,8 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(404, "Couldn't find Trip with 'id'=123123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:user_id) { trip1.user_id }
-        let(:id) { 123123123 }
+        let!(:user_id) { trip1.user_id }
+        let!(:id) { 123123123 }
 
         let!(:accommodation) {
           {
@@ -90,30 +90,30 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(200, "Sucessful") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation.id }
 
         run_test!
       end
 
       response(404, "Couldn't find Accommodation with 'id'=123123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { 123123123 }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { 123123123 }
 
         run_test!
       end
 
       response(404, "Couldn't find Trip with 'id'=123123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { 123123123 }
+        let!(:trip_id) { 123123123 }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation.id }
 
         run_test!
       end
@@ -128,48 +128,48 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(200, "Accommodation updated") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation1) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation1.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation1.id }
 
-        let(:accomodation) {{name: "Hilton Hotel"}}
+        let!(:accomodation) {{name: "Hilton Hotel"}}
 
         run_test!
       end
 
       response(400, "Validation failed: Name can't be blank") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation1) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation1.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation1.id }
 
-        let(:accomodation) {{name: ""}}
+        let!(:accomodation) {{name: ""}}
 
         run_test!
       end
 
       response(404, "Couldn't find Trip with 'id'=123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { 123123 }
+        let!(:trip_id) { 123123 }
         let!(:accommodation1) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation1.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation1.id }
 
-        let(:accomodation) {{name: "Paris 2024 Olympics"}}
+        let!(:accomodation) {{name: "Paris 2024 Olympics"}}
 
         run_test!
       end
 
       response(404, "Couldn't find Accommodation with 'id'=123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id } 
+        let!(:trip_id) { trip1.id } 
         let!(:accommodation1) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { 123123123 }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { 123123123 }
 
-        let(:accomodation) {{name: "Paris 2024 Olympics"}}
+        let!(:accomodation) {{name: "Paris 2024 Olympics"}}
 
         run_test!
       end
@@ -183,30 +183,30 @@ RSpec.describe "api/accommodations", type: :request do
 
       response(204, "Accommodation deleted") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation.id }
 
         run_test!
       end
 
       response(404, "Couldn't find Trip with 'id'=123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { 123123 }
+        let!(:trip_id) { 123123 }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { accommodation.id }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { accommodation.id }
 
         run_test!
       end
 
       response(404, "Couldn't find Accommodation with 'id'=123123") do
         let!(:trip1) { create(:trip, user_id: 1) }
-        let(:trip_id) { trip1.id }
+        let!(:trip_id) { trip1.id }
         let!(:accommodation) { create(:accommodation, trip_id: trip1.id) }
-        let(:user_id) { trip1.user_id }
-        let(:accommodation_id) { 123123 }
+        let!(:user_id) { trip1.user_id }
+        let!(:accommodation_id) { 123123 }
 
         run_test!
       end
