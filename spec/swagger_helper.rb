@@ -24,213 +24,379 @@ RSpec.configure do |config|
       paths: {},
       components: {
         schemas: {
-          not_found: {
-            type: 'object',
-            properties: {
-              detail: {
-                type: :string,
-                example: "Couldn't find Trip with 'id'=12323232"
-              }
-            }
-          },
-          validation_failed: {
-            type: 'object',
-            properties: {
-              detail: {
-                type: :string,
-                example: "Validation failed: Name can't be blank"
-              }
-            }
-          },
-          all_trips: {
-            type: :object,
-            properties: {
-              data: {
-                type: :array,
+              not_found: {
+                type: 'object',
                 properties: {
-                  id: {
-                    type: :number,
-                    example: 1
-                  },
-                  type: {
+                  detail: {
                     type: :string,
-                    example: "trips"
-                  },
-                  attributes: {
-                    type: :object,
-                    properties: {
-                      name: {
-                        type: :string,
-                        example: "Marriott Hotel"
-                      },
-                      location: {
-                        type: :string,
-                        example: "1234, Marriott Road"
-                      }
-                    }
+                    example: "Couldn't find Trip with 'id'=12323232"
                   }
                 }
-              }
-            }
-          },
-          trip: {
-            type: :object,
-            properties: {
-              data: {
-                type: :object,
+              },
+              validation_failed: {
+                type: 'object',
                 properties: {
-                  id: {
-                    type: :string
-                  },
-                  type: {
-                    type: :string
-                  },
-                  attributes: {
-                    type: :object,
-                    properties: {
-                      name: {
-                        type: :string,
-                        example: "Disneyland in Tokyo!"
-                      },
-                      location: {
-                        type: :string,
-                        example: "Tokyo, Japan"
-                      },
-                      start_date: {
-                        type: :string,
-                        example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-                      },
-                      end_date: {
-                        type: :string,
-                        example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-                      },
-                      status: {
-                        type: :string,
-                        example: "in_progress"
-                      },
-                      total_budget: {
-                        type: :integer,
-                        example: 4676
-                      },
-                      user_id: {
-                        type: :integer,
-                        example: 1
-                      },
-                      total_expenses: {
-                        type: :integer,
-                        example: 200
-                      }
-                    },
-                  required: [:name, :location, :start_date, :end_date, :status, :total_budget]
+                  detail: {
+                    type: :string,
+                    example: "Validation failed: Name can't be blank"
                   }
                 }
-              }
-            }
-          },
-          trip_show: {
-            type: :object,
-            properties: {
-              data: {
+              },
+              all_trips: {
                 type: :object,
                 properties: {
-                  id: {
-                    type: :string
-                  },
-                  type: {
-                    type: :string
-                  },
-                  attributes: {
-                    type: :object,
+                  data: {
+                    type: :array,
                     properties: {
-                      name: {
-                        type: :string,
-                        example: "Disneyland in Tokyo!"
-                      },
-                      location: {
-                        type: :string,
-                        example: "Tokyo, Japan"
-                      },
-                      start_date: {
-                        type: :string,
-                        example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-                      },
-                      end_date: {
-                        type: :string,
-                        example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
-                      },
-                      status: {
-                        type: :string,
-                        example: "in_progress"
-                      },
-                      total_budget: {
-                        type: :integer,
-                        example: 4676
-                      },
-                      user_id: {
-                        type: :integer,
+                      id: {
+                        type: :number,
                         example: 1
                       },
-                      total_expenses: {
-                        type: :integer,
-                        example: 200
+                      type: {
+                        type: :string,
+                        example: "trips"
                       },
-                      daily_itineraries: {
+                      attributes: {
                         type: :object,
+                        properties: {
+                          name: {
+                            type: :string,
+                            example: "Marriott Hotel"
+                          },
+                          location: {
+                            type: :string,
+                            example: "1234, Marriott Road"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              trip: {
+                type: :object,
+                properties: {
+                  data: {
+                    type: :object,
+                    properties: {
+                      id: {
+                        type: :string
+                      },
+                      type: {
+                        type: :string
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          name: {
+                            type: :string,
+                            example: "Disneyland in Tokyo!"
+                          },
+                          location: {
+                            type: :string,
+                            example: "Tokyo, Japan"
+                          },
+                          start_date: {
+                            type: :string,
+                            example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                          },
+                          end_date: {
+                            type: :string,
+                            example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                          },
+                          status: {
+                            type: :string,
+                            example: "in_progress"
+                          },
+                          total_budget: {
+                            type: :integer,
+                            example: 4676
+                          },
+                          user_id: {
+                            type: :integer,
+                            example: 1
+                          },
+                          total_expenses: {
+                            type: :integer,
+                            example: 200
+                          }
+                        },
+                      required: [:name, :location, :start_date, :end_date, :status, :total_budget]
+                      }
+                    }
+                  }
+                }
+              },
+              trip_show: {
+                type: :object,
+                properties: {
+                  data: {
+                    type: :object,
+                    properties: {
+                      id: {
+                        type: :string
+                      },
+                      type: {
+                        type: :string
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          name: {
+                            type: :string,
+                            example: "Disneyland in Tokyo!"
+                          },
+                          location: {
+                            type: :string,
+                            example: "Tokyo, Japan"
+                          },
+                          start_date: {
+                            type: :string,
+                            example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                          },
+                          end_date: {
+                            type: :string,
+                            example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00",
+                          },
+                          status: {
+                            type: :string,
+                            example: "in_progress"
+                          },
+                          total_budget: {
+                            type: :integer,
+                            example: 4676
+                          },
+                          user_id: {
+                            type: :integer,
+                            example: 1
+                          },
+                          total_expenses: {
+                            type: :integer,
+                            example: 200
+                          },
+                          daily_itineraries: {
+                            type: :object,
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              accommodation: {
+                type: "object",
+                properties: {
+                  data: {
+                    type: :object,
+                    properties: {
+                      id: {
+                        type: :string,
+                      },
+                      type: {
+                        type: :string,
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          trip_id: {
+                            type: :integer,
+                            example: 1
+                          },
+                          name: {
+                            type: :string,
+                            example: "Mariott Monterey Bay"
+                          },
+                          address: {
+                            type: :string,
+                            example: "7836 Haywood Throughway"
+                          },
+                          lat: {
+                            type: :number,
+                            example: 26.885830851487825
+                          },
+                          lon: {
+                            type: :number,
+                            example: -162.29136075180418
+                          },
+                          type_of_accommodation: {
+                            type: :string,
+                            example: "Hotel"
+                          },
+                          check_in: {
+                            type: :string,
+                            example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
+                          },
+                          check_out: {
+                            type: :string,
+                            example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00"
+                          },
+                          expenses: {
+                            type: :integer,
+                            example: 3000
+                          }
+                        },
+                        required: [:trip_id, :name, :address, :lat, :lon, :type_of_accommodation, :check_in, :check_out, :expenses]
+                      }
+                    }
+                  }
+                }
+              },
+              all_activities: {
+                type: "object",
+                properties: {
+                  data: {
+                    type: :array,
+                    properties: {
+                      id: {
+                        type: :string,
+                        example: "1"
+                      },
+                      type: {
+                        type: :string,
+                        example: "activity"
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          address: {
+                            type: :string,
+                            example: "123 Main Street"
+                          },
+                          description: {
+                            type: :string,
+                            example: "Having fun at disneyworld"
+                          },
+                          lat: {
+                            type: :float,
+                            example: 10.8634985172705
+                          },
+                          lon: {
+                            type: :float,
+                            example: -177.17135026276688
+                          },
+                          expenses: {
+                            type: :integer,
+                            example: 1000
+                          },
+                          rating: {
+                            type: :float,
+                            example: 4.5
+                          },
+                          name: {
+                            type: :string,
+                            example: "Disneyworld"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              activity: {
+                type: :object,
+                properties: {
+                  data: {
+                    type: :object,
+                    properties: {
+                      id: {
+                        type: :string
+                      },
+                      type: {
+                        type: :string
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          address: {
+                            type: :string,
+                            example: "123 Main Street"
+                          },
+                          description: {
+                            type: :string,
+                            example: "Having fun at disneyworld"
+                          },
+                          lat: {
+                            type: :float,
+                            example: 10.8634985172705
+                          },
+                          lon: {
+                            type: :float,
+                            example: -177.17135026276688
+                          },
+                          expenses: {
+                            type: :integer,
+                            example: 1000
+                          },
+                          rating: {
+                            type: :float,
+                            example: 4.5
+                          },
+                          name: {
+                            type: :string,
+                            example: "Disneyworld"
+                          }
+                        },
+                      required: [:name]
+                      }
+                    }
+                  }
+                }
+              },
+              activity_show: {
+                type: :object,
+                properties: {
+                  data: {
+                    type: :object,
+                    properties: {
+                      id: {
+                        type: :string
+                      },
+                      type: {
+                        type: :string
+                      },
+                      attributes: {
+                        type: :object,
+                        properties: {
+                          address: {
+                            type: :string,
+                            example: "123 Main Street"
+                          },
+                          description: {
+                            type: :string,
+                            example: "Having fun at disneyworld"
+                          },
+                          lat: {
+                            type: :float,
+                            example: 10.8634985172705
+                          },
+                          lon: {
+                            type: :float,
+                            example: -177.17135026276688
+                          },
+                          expenses: {
+                            type: :integer,
+                            example: 1000
+                          },
+                          rating: {
+                            type: :float,
+                            example: 4.5
+                          },
+                          name: {
+                            type: :string,
+                            example: "Disneyworld"
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
-            }
-          },
-          accommodations: {
-            type: "object",
-            required: [:trip_id, :name, :address, :lat, :lon, :type_of_accommodation, :check_in, :check_out, :expenses],
-            properties: {
-              trip_id: {
-                type: :integer,
-                example: 1
-              },
-              name: {
-                type: :string,
-                example: "Mariott Monterey Bay"
-              },
-              address: {
-                type: :string,
-                example: "7836 Haywood Throughway"
-              },
-              lat: {
-                type: :number,
-                example: 26.885830851487825
-              },
-              lon: {
-                type: :number,
-                example: -162.29136075180418
-              },
-              type_of_accommodation: {
-                type: :string,
-                example: "Hotel"
-              },
-              check_in: {
-                type: :string,
-                example: "Wed, 24 Apr 2024 06:42:40.385053000 UTC +00:00"
-              },
-              check_out: {
-                type: :string,
-                example: "Mon, 24 Jun 2024 14:15:24.410940000 UTC +00:00"
-              },
-              expenses: {
-                type: :integer,
-                example: 3000
-              }
-            }
-          }
         },
         securitySchemes: {},
       },
       servers: [
         {
-          url: 'http://localhost:5000',
+          url: 'http://localhost:3000',
         }
       ]
     }

@@ -5,4 +5,4 @@
 - Run `rails s`
 
 ## Open API Doc
-Visit [localhost:5000](http://localhost:5000/api-docs/index.html)
+Visit [localhost:3000](http://localhost:3000/api-docs/index.html)
