@@ -558,7 +558,7 @@ components:
                   example: Disneyworld
   securitySchemes: {}
 servers:
-- url: https://{defaultHost}
+- url: {defaultHost}
   variables:
     defaultHost:
       default: https://api-hophop-9875038f278b.herokuapp.com
