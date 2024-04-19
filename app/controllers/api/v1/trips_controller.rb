@@ -4,11 +4,7 @@ class Api::V1::TripsController < ApplicationController
    before_action :filter_user_trips, only: [:index]
 
    def index
-      if filter_user_trips.empty?
-         invalid_user_id
-      else
-         render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
-      end
+      render json: TripSerializer.new(@trips, { params: {show: false, index: true}})
    end
 
    def show
