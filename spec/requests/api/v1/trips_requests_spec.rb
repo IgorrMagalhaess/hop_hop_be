@@ -73,6 +73,20 @@ RSpec.describe 'Trips API', type: :request do
 
       expect(other_trip.user_id).to_not eq(2)
     end
+
+    it 'returns only an empty array if no user passed on the parameters' do
+      trips_user_1 = create_list(:trip, 5, user_id: 1)
+      trips_user_2 = create_list(:trip, 5, user_id: 2)
+
+      get '/api/v1/trips', headers: @headers
+
+      trips_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      expect(trips_response[:data]).to eq([])
+    end
   end
 
   describe 'GET /api/v1/trips/:id' do
