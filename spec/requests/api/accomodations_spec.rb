@@ -10,7 +10,7 @@ RSpec.describe "api/accommodations", type: :request do
       consumes "application/json"
       produces "application/json"
       description "Create a new accommodation for a trip with all Accommodation information"
-      parameter name: :accommodation, in: :body, schema: { "$ref" => "#/components/schemas/accommodations" }
+      parameter name: :accommodation, in: :body, schema: { "$ref" => "#/components/schemas/accommodation" }
 
       response(201, "Accommodation Created") do
         let!(:trip1) { create(:trip, user_id: 1)}
