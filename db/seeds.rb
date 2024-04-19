@@ -1,21 +1,18 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Define some sample names, locations, and types of accommodations
+sample_names = ["Adventure in the Mountains", "Beach Getaway", "Cultural Exploration", "City Escape", "Road Trip Extravaganza"]
+sample_locations = ["Switzerland", "Thailand", "Italy", "Australia", "Canada"]
+sample_accommodation_types = ["Luxury Villa", "Cozy Cabin", "Boutique Hotel", "Beach Resort", "Rustic Lodge"]
+
+# Create 30 trips
 30.times do
   Trip.create!({
-    name: Faker::Name.name,
-    location: Faker::Address.country,
-    start_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 50),
-    end_date: Faker::Time.between(from: DateTime.now + 51, to: DateTime.now + 75),
-    status: Faker::Number.between(from: 0, to: 1),
-    total_budget: Faker::Number.between(from: 500, to: 10000),
-    user_id: Faker::Number.between(from: 1000, to: 1005)
+    name: sample_names.sample,
+    location: sample_locations.sample,
+    start_date: DateTime.now,
+    end_date: DateTime.now + rand(10..50),
+    status: rand(0..1),
+    total_budget: rand(500..10000),
+    user_id: rand(1000..1005)
   })
 end
 puts "Created Trips"
@@ -23,38 +20,32 @@ puts "Created Trips"
 Trip.all.each do |trip|
   trip.accommodations.create!({
     trip_id: trip.id,
-    name: Faker::Name.name,
-    address: Faker::Address.street_address,
-    lat: Faker::Address.latitude,
-    lon: Faker::Address.longitude,
+    name: "#{sample_accommodation_types.sample} in #{trip.location}",
+    address: "#{rand(1..100)} #{["Main", "High", "Oak", "Park"].sample} Street",
+    lat: rand(-90.0..90.0),
+    lon: rand(-180.0..180.0),
     check_in: trip.start_date,
     check_out: trip.end_date,
-    type_of_accommodation: Faker::Name.name,
-    expenses: Faker::Number.between(from: 500, to: 5000),
+    type_of_accommodation: sample_accommodation_types.sample,
+    expenses: rand(500..5000),
   })
-  # Faker::Number.between(from: 3, to: 10).times do
-  #   trip.daily_itineraries.create!({
-  #     trip_id: trip.id,
-  #     date: Faker::Time.between(from: trip.start_date, to: trip.end_date)
-  # })
-  # end
 end
 
 puts "Created Accommodations"
 puts "Created Daily Itineraries"
 
-
+# Generating activities for each daily itinerary
 DailyItinerary.all.each do |daily_itinerary|
-  Faker::Number.between(from: 1, to: 7).times do
+  rand(1..7).times do
     daily_itinerary.activities.create!({
-      name: Faker::Sport.sport(include_ancient: true),
-      address: Faker::Address.street_address,
-      description: Faker::Lorem.paragraph(sentence_count: 2),
-      lat: Faker::Address.latitude,
-      lon: Faker::Address.longitude,
-      expenses: Faker::Number.between(from: 0, to: 500),
-      rating: Faker::Number.between(from: 2.0, to: 5.0),
-      time: Faker::Time.between(from: daily_itinerary.date, to: daily_itinerary.date + 0.5),
+      name: ["Hiking", "Snorkeling", "Museum Visit", "City Tour", "Cooking Class"].sample,
+      address: "#{rand(1..100)} #{["Main", "High", "Oak", "Park"].sample} Street",
+      description: ["Enjoy a day of adventure!", "Discover local culture.", "Relax and unwind."].sample,
+      lat: rand(-90.0..90.0),
+      lon: rand(-180.0..180.0),
+      expenses: rand(0..500),
+      rating: rand(2.0..5.0).round(1),
+      time: daily_itinerary.date + rand(0.0..0.9), # Random time within the day
     })
   end
 end
