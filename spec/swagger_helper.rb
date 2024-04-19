@@ -339,10 +339,10 @@ RSpec.configure do |config|
       },
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'https://api-hophop-9875038f278b.herokuapp.com/api-docs/index.html',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'https://api-hophop-9875038f278b.herokuapp.com/api-docs/index.html'
             }
           }
         }
